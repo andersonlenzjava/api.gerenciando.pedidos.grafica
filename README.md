@@ -33,3 +33,5 @@ um novo pedido ao sistema que será enviado a produção. Por fim, </br>
 o sistema deve apresentar uma lista de pedidos que estão na fila para serem confeccionados.</br>
 
 ## Funcionalidades Estabelecidas 
+
+CRUD Funcionario, Gerente e Terceirizadogit add.
