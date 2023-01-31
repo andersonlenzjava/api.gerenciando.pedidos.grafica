@@ -34,4 +34,9 @@ o sistema deve apresentar uma lista de pedidos que estão na fila para serem con
 
 ## Funcionalidades Estabelecidas 
 
-CRUD Funcionario, Gerente e Terceirizadogit add.
+## Etapas
+
+- [ ] Modelagem do relacionamento das entidades.
+- [ ] Estabelecimento das funcionalidades.
+  - [ ] CRUD.
+  - [ ] Regras de negócio.
