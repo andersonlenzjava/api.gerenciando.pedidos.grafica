@@ -34,9 +34,48 @@ o sistema deve apresentar uma lista de pedidos que estão na fila para serem con
 
 ## Funcionalidades Estabelecidas 
 
+CRUD para:
+  - GerenteVendas
+  - GerenteProducao
+  - GerenteFinanceiro
+  - Vendedor
+  - ProdutorCopias
+  - Financeiro
+  - Produto
+  - Pedido
+
+Funcionalidades
+ ### Gerentes:
+* Cadastrar funcionário do seu setor
+*  Cadastrar produto em conjunto com os três tipos de gerentes
+*  Cancelar um pedido conforme o statusPedido
+###  Vendedor:
+* AbrirPedido
+* ColocarFila
+* FecharPedido
+###  ProdutorCopias:
+*  TirarFila
+*  Produzir
+*  FecharImpressao
+###  Financeiro:
+*  RegistrarPedido
+*  GerarRelatorios
+
+##### Mais funcionalidades podem ser estabelecidas ao longo do projeto conforme necessário para o bom funcionamento do sistema
+
+
 ## Etapas
 
-- [ ] Modelagem do relacionamento das entidades.
-- [ ] Estabelecimento das funcionalidades.
+- [x] Modelagem do relacionamento das entidades.
+- [x] Estabelecimento das funcionalidades.
   - [ ] CRUD.
   - [ ] Regras de negócio.
+  - [ ] Modelagem do sistema. 
+    - [ ] Domain.
+      - [ ] Entity.
+      - [ ] Repository.
+      - [ ] EntityRegister.
+      - [ ] EntityResponse.
+    - [ ] Controller.
+    - [ ] Service.
+    - [ ] Migrations. 
