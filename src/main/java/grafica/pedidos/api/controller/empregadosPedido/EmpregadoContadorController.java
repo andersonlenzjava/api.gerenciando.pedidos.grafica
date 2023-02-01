@@ -5,7 +5,7 @@ import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 
-public class EmpregadoContador {
+public class EmpregadoContadorController {
 
     @PostMapping
     @Transactional

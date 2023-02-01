@@ -1,7 +1,7 @@
 package grafica.pedidos.api.domain.pedido;
 
-import grafica.pedidos.api.domain.funcionario.empregado.copiador.EmpregadoCopiador;
-import grafica.pedidos.api.domain.funcionario.empregado.vendedor.EmpregadoVendedor;
+import grafica.pedidos.api.domain.funcionario.empregado.copiador.Copiador;
+import grafica.pedidos.api.domain.funcionario.empregado.vendedor.Vendedor;
 import grafica.pedidos.api.domain.produto.Produto;
 import grafica.pedidos.api.domain.statusPedido.StatusPedido;
 import jakarta.persistence.Entity;
@@ -29,8 +29,8 @@ public class Pedido {
     private LocalDateTime dataEmissao; // gerada automatico ao ser criado
     private LocalDateTime dataFinalizacao; // geraado automatico ao ser fechado
     private StatusPedido statusPedido; // gerado automático em outros pontos
-    private EmpregadoVendedor vendedor;
-    private EmpregadoCopiador produtorCopias; // atribuido ao chegar na produçao
+    private Vendedor vendedor;
+    private Copiador produtorCopias; // atribuido ao chegar na produçao
 
 
 }

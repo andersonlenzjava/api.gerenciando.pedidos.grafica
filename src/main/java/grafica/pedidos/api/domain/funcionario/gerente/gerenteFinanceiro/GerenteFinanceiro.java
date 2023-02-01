@@ -1,6 +1,6 @@
 package grafica.pedidos.api.domain.funcionario.gerente.gerenteFinanceiro;
 
-import grafica.pedidos.api.domain.funcionario.empregado.contador.EmpregadoContador;
+import grafica.pedidos.api.domain.funcionario.empregado.contador.Contador;
 import grafica.pedidos.api.domain.funcionario.funcionario.Funcionario;
 import jakarta.persistence.*;
 import lombok.*;
@@ -19,7 +19,7 @@ public class GerenteFinanceiro {
     @Embedded
     private Funcionario funcionario;
 
-    private void CadastrarFuncionario(EmpregadoContador contador) {
+    private void CadastrarFuncionario(Contador contador) {
 
     }
 

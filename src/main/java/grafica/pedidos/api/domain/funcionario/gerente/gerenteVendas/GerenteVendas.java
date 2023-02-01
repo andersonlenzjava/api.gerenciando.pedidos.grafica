@@ -1,6 +1,6 @@
 package grafica.pedidos.api.domain.funcionario.gerente.gerenteVendas;
 
-import grafica.pedidos.api.domain.funcionario.empregado.vendedor.EmpregadoVendedor;
+import grafica.pedidos.api.domain.funcionario.empregado.vendedor.Vendedor;
 import grafica.pedidos.api.domain.funcionario.funcionario.Funcionario;
 import grafica.pedidos.api.domain.pedido.Pedido;
 import jakarta.persistence.*;
@@ -22,7 +22,7 @@ public class GerenteVendas {
 
     private void CancelarPedido(Pedido pedido) {}
 
-    private void CadastrarVendedor(EmpregadoVendedor vendedor) {
+    private void CadastrarVendedor(Vendedor vendedor) {
 
     }
 

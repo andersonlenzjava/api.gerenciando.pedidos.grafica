@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
-public class EmpregadoCopiador {
+public class EmpregadoCopiadorController {
 
 
     @PutMapping

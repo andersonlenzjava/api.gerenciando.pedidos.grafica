@@ -1,6 +1,6 @@
 package grafica.pedidos.api.domain.funcionario.gerente.gerenteProducao;
 
-import grafica.pedidos.api.domain.funcionario.empregado.copiador.EmpregadoCopiador;
+import grafica.pedidos.api.domain.funcionario.empregado.copiador.Copiador;
 import grafica.pedidos.api.domain.funcionario.funcionario.Funcionario;
 import grafica.pedidos.api.domain.pedido.Pedido;
 import jakarta.persistence.*;
@@ -22,6 +22,6 @@ public class GerenteProducao {
 
     public void CancelarPedido(Pedido pedido) {}
 
-    private void CadastrarProdutorCopias(EmpregadoCopiador produtorCopias) {}
+    private void CadastrarProdutorCopias(Copiador produtorCopias) {}
 
 }

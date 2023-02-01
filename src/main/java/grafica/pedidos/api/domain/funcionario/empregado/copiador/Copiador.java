@@ -10,7 +10,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(of = "id")
-public class EmpregadoCopiador {
+public class Copiador {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
