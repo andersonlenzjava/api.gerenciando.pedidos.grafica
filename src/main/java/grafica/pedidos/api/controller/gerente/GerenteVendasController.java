@@ -16,14 +16,14 @@ public class GerenteVendasController {
     private GerenteVendasService gerenteVendasService;
 
     @GetMapping
-    public void retornarGerenteVendas(@RequestParam(required = false) String nomeGerenteVendas,
+    public void listarGerenteVendas(@RequestParam(required = false) String nomeGerenteVendas,
                                  @PageableDefault(sort = "id", direction = Sort.Direction.ASC, page = 0, size = 10)
                                  Pageable paginacao) {
         return gerenteVendasService.retornarGerenteVendas(nomeGerenteVendas, paginacao);
     }
 
     @GetMapping("/{id}")
-    public void listarGerenteVendas(@PathVariable Long id) {
+    public void buscarGerenteVendas(@PathVariable Long id) {
 
         return gerenteVendasService.detalharGerenteVendasPorId(id);
     }

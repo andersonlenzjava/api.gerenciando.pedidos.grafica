@@ -1,8 +1,6 @@
-package grafica.pedidos.api.domain.funcionario.gerente.gerenteVendas;
+package grafica.pedidos.api.domain.funcionario.empregado.contador;
 
-import grafica.pedidos.api.domain.funcionario.empregado.vendedor.EmpregadoVendedor;
 import grafica.pedidos.api.domain.funcionario.funcionario.Funcionario;
-import grafica.pedidos.api.domain.pedido.Pedido;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -12,7 +10,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(of = "id")
-public class GerenteVendas {
+public class EmpregadoContador {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,10 +18,10 @@ public class GerenteVendas {
     @Embedded
     private Funcionario funcionario;
 
-    private void CancelarPedido(Pedido pedido) {}
+    private void RegistrarPedido() {
+    }
 
-    private void CadastrarVendedor(EmpregadoVendedor vendedor) {
-
+    private void Relatorios() {
     }
 
 }

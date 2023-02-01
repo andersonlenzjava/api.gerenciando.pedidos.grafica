@@ -16,7 +16,7 @@ public class GerenteFinaceiroController {
     private GerenteFinaceiroService gerenteFinaceiroService;
 
     @GetMapping
-    public void retornarGerenteFinaceiro(@RequestParam(required = false) String nomeGerenteFinceiro,
+    public void listarGerenteFinaceiro(@RequestParam(required = false) String nomeGerenteFinceiro,
                                  @PageableDefault(sort = "id", direction = Sort.Direction.ASC, page = 0, size = 10)
                                  Pageable paginacao) {
         return gerenteFinaceiroService.retornarGerenteFinaceiro(nomeGerenteFinaceiro, paginacao);

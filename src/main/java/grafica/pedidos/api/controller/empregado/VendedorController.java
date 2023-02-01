@@ -16,16 +16,16 @@ public class VendedorController {
     private VendedorService vendedorService;
 
     @GetMapping
-    public void retornarVendedor(@RequestParam(required = false) String nomeVendedor,
+    public void listarVendedor(@RequestParam(required = false) String nomeVendedor,
                                  @PageableDefault(sort = "id", direction = Sort.Direction.ASC, page = 0, size = 10)
                                  Pageable paginacao) {
-        return vendedorService.retornarContador(nomeVendedor, paginacao);
+        return vendedorService.retornarVendedor(nomeVendedor, paginacao);
     }
 
     @GetMapping("/{id}")
-    public void listarVendedores(@PathVariable Long id) {
+    public void buscarVendedor(@PathVariable Long id) {
 
-        return contadorService.detalharVendedorPorId(id);
+        return vendedorService.detalharVendedorPorId(id);
     }
 
     @PostMapping

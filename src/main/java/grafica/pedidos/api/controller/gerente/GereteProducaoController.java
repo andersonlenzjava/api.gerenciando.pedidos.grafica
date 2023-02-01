@@ -16,14 +16,14 @@ public class GereteProducaoController {
     private GereteProducaoService gereteProducaoService;
 
     @GetMapping
-    public void retornarGereteProducao(@RequestParam(required = false) String nomeGereteProducao,
+    public void listarGereteProducao(@RequestParam(required = false) String nomeGereteProducao,
                                  @PageableDefault(sort = "id", direction = Sort.Direction.ASC, page = 0, size = 10)
                                  Pageable paginacao) {
         return gereteProducaoService.retornarGereteProducao(nomeGereteProducao, paginacao);
     }
 
     @GetMapping("/{id}")
-    public void listarGereteProducao(@PathVariable Long id) {
+    public void buscarGereteProducao(@PathVariable Long id) {
 
         return gereteProducaoService.detalharGereteProducaoPorId(id);
     }

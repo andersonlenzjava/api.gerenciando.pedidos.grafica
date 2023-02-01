@@ -16,14 +16,15 @@ public class ContadorController {
     private ContadorService contadorService;
 
     @GetMapping
-    public void retornarContador(@RequestParam(required = false) String nomeContador,
+    public void listarContador(@RequestParam(required = false) String nomeContador,
                                  @PageableDefault(sort = "id", direction = Sort.Direction.ASC, page = 0, size = 10)
                                  Pageable paginacao) {
         return contadorService.retornarContador(nomeContador, paginacao);
     }
 
     @GetMapping("/{id}")
-    public void listarContadores(@PathVariable Long id) {
+    public void buscarContador(@PathVariable Long id) {
+
         return contadorService.detalharContadorPorId(id);
     }
 
@@ -35,13 +36,15 @@ public class ContadorController {
 
     @PutMapping
     @Transactional
-    public void atualizarContador(@PathVariable Long id, @RequestBody @Valid ContadorRegister contadorRegister) {
+    public void atualizarContador(@PathVariable Long id,
+                                           @RequestBody @Valid contadorRegister contadorRegister) {
         return contadorService.atualizarContador(id, contadorRegister);
     }
 
     @DeleteMapping
     @Transactional
     public void deletarContador(@PathVariable Long id) {
+
         return contadorService.deletarContador(id);
     }
 
