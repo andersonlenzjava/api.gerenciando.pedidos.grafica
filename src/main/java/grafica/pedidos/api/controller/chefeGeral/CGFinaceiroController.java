@@ -5,6 +5,7 @@ import grafica.pedidos.api.domain.funcionario.gerente.gerenteFinanceiro.GerenteF
 import grafica.pedidos.api.service.gerente.GerenteFinanceiroService;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
@@ -22,15 +23,16 @@ public class CGFinaceiroController {
     private GerenteFinanceiroService gerenteFinaceiroService;
 
     @GetMapping
-    public void listarGerenteFinaceiro(@RequestParam(required = false) String nomeGerenteFinceiro,
-                                 @PageableDefault(sort = "id", direction = Sort.Direction.ASC, page = 0, size = 10)
+    public Page<GerenteFinanceiroResponse> listarGerenteFinaceiro(
+            @RequestParam(required = false) String nomeGerenteFinanceiro,
+            @PageableDefault(sort = "id", direction = Sort.Direction.ASC, page = 0, size = 10)
                                  Pageable paginacao) {
-        return gerenteFinaceiroService.retornarGerenteFinaceiro(nomeGerenteFinaceiro, paginacao);
+        return gerenteFinaceiroService.listarGerenteFinanceiro(nomeGerenteFinanceiro, paginacao);
     }
 
     @GetMapping("/{id}")
-    public void listarGerenteFinaceiro(@PathVariable Long id) {
-        return gerenteFinaceiroService.detalharGerenteFinaceiroPorId(id);
+    public ResponseEntity<GerenteFinanceiroResponse> listarGerenteFinaceiro(@PathVariable Long id) {
+        return gerenteFinaceiroService.buscarGerenteFinanceiro(id);
     }
 
     @PostMapping
@@ -42,15 +44,15 @@ public class CGFinaceiroController {
 
     @PutMapping
     @Transactional
-    public void atualizarGerenteFinaceiro(@PathVariable Long id,
-                                          @RequestBody @Valid GerenteFinaceiroRegister gerenteFinaceiroRegister) {
-        return gerenteFinaceiroService.atualizarGerenteFinaceiro(id, gerenteFinaceiroRegister);
+    public ResponseEntity<GerenteFinanceiroResponse> atualizarGerenteFinaceiro(
+            @PathVariable Long id, @RequestBody @Valid GerenteFinaceiroRegister gerenteFinaceiroRegister) {
+        return gerenteFinaceiroService.atualizarGerenteFinanceiro(id, gerenteFinaceiroRegister);
     }
 
     @DeleteMapping
     @Transactional
-    public void deletarGerenteFinaceiro(@PathVariable Long id) {
-        return gerenteFinaceiroService.deletarGerenteFinaceiro(id);
+    public ResponseEntity<?> deletarGerenteFinaceiro(@PathVariable Long id) {
+        return gerenteFinaceiroService.removerGerenteFinanceiro(id);
     }
 
 }

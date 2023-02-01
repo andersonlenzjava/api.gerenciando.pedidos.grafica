@@ -1,12 +1,15 @@
 package grafica.pedidos.api.controller.gerentes;
 
 import grafica.pedidos.api.domain.funcionario.empregado.copiador.CopiadorRegister;
+import grafica.pedidos.api.domain.funcionario.empregado.copiador.CopiadorResponse;
 import grafica.pedidos.api.service.empregado.CopiadorService;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
@@ -20,35 +23,37 @@ public class GerenteProducaoController {
     private CopiadorService copiadorService;
 
     @GetMapping
-    public void listarCopiador(@RequestParam(required = false) String nomeCopiador,
-                                 @PageableDefault(sort = "id", direction = Sort.Direction.ASC, page = 0, size = 10)
+    public Page<CopiadorResponse> listarCopiador(
+            @RequestParam(required = false) String nomeCopiador,
+            @PageableDefault(sort = "id", direction = Sort.Direction.ASC, page = 0, size = 10)
                                  Pageable paginacao) {
-        return copiadorService.retornarCopiador(nomeCopiador, paginacao);
+        return copiadorService.listarCopiador(nomeCopiador, paginacao);
     }
 
     @GetMapping("/{id}")
-    public void buscarCopiador(@PathVariable Long id) {
-        return copiadorService.detalharCopiadorPorId(id);
+    public ResponseEntity<CopiadorResponse> buscarCopiador(@PathVariable Long id) {
+        return copiadorService.buscarCopiador(id);
     }
 
     @PostMapping
-    public void cadastrarCopiador(@RequestBody @Valid CopiadorRegister copiadorRegister,
-                                  UriComponentsBuilder uriBuilder) {
+    public ResponseEntity<CopiadorResponse> cadastrarCopiador(
+            @RequestBody @Valid CopiadorRegister copiadorRegister,
+            UriComponentsBuilder uriBuilder) throws Exception {
         return copiadorService.cadastrarCopiador(copiadorRegister, uriBuilder);
     }
 
     @PutMapping
     @Transactional
-    public void atualizarCopiador(@PathVariable Long id,
-                                        @RequestBody @Valid CopiadorRegister copiadorRegister) {
+    public ResponseEntity<CopiadorResponse> atualizarCopiador(
+            @PathVariable Long id,
+            @RequestBody @Valid CopiadorRegister copiadorRegister) {
         return copiadorService.atualizarCopiador(id, copiadorRegister);
     }
 
     @DeleteMapping
     @Transactional
-    public void deletarProdutorCopias(@PathVariable Long id) {
-
-        return copiadorService.deletarCopiador(id);
+    public ResponseEntity<?> deletarProdutorCopias(@PathVariable Long id) {
+        return copiadorService.removerCopiador(id);
     }
 
 //-----------------------------------------------------------------------------------------------

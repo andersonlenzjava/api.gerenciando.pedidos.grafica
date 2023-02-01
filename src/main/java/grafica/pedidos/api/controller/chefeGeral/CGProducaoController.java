@@ -5,6 +5,7 @@ import grafica.pedidos.api.domain.funcionario.gerente.gerenteProducao.GerentePro
 import grafica.pedidos.api.service.gerente.GerenteProducaoService;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
@@ -22,16 +23,16 @@ public class CGProducaoController {
     private GerenteProducaoService gereteProducaoService;
 
     @GetMapping
-    public void listarGereteProducao(@RequestParam(required = false) String nomeGereteProducao,
-                                 @PageableDefault(sort = "id", direction = Sort.Direction.ASC, page = 0, size = 10)
+    public Page<GerenteProducaoResponse> listarGereteProducao(
+            @RequestParam(required = false) String nomeGereteProducao,
+            @PageableDefault(sort = "id", direction = Sort.Direction.ASC, page = 0, size = 10)
                                  Pageable paginacao) {
-        return gereteProducaoService.retornarGereteProducao(nomeGereteProducao, paginacao);
+        return gereteProducaoService.listarGerenteProducao(nomeGereteProducao, paginacao);
     }
 
     @GetMapping("/{id}")
-    public void buscarGereteProducao(@PathVariable Long id) {
-
-        return gereteProducaoService.detalharGereteProducaoPorId(id);
+    public ResponseEntity<GerenteProducaoResponse> buscarGereteProducao(@PathVariable Long id) {
+        return gereteProducaoService.buscarGerenteProducao(id);
     }
 
     @PostMapping
@@ -43,16 +44,15 @@ public class CGProducaoController {
 
     @PutMapping
     @Transactional
-    public void atualizarGereteProducao(@PathVariable Long id,
-                                        @RequestBody @Valid GerenteProducaoRegister gereteProducaoRegister) {
-        return gereteProducaoService.atualizarGereteProducao(id, gereteProducaoRegister);
+    public ResponseEntity<GerenteProducaoResponse> atualizarGereteProducao(
+            @PathVariable Long id, @RequestBody @Valid GerenteProducaoRegister gereteProducaoRegister) {
+        return gereteProducaoService.atualizarGerenteProducao(id, gereteProducaoRegister);
     }
 
     @DeleteMapping
     @Transactional
-    public void deletarGereteProducao(@PathVariable Long id) {
-
-        return gereteProducaoService.deletarGereteProducao(id);
+    public ResponseEntity<?> deletarGereteProducao(@PathVariable Long id) {
+        return gereteProducaoService.removerGerenteProducao(id);
     }
 
 }

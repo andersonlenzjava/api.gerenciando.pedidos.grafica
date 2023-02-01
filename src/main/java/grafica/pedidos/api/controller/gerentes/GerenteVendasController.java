@@ -1,12 +1,15 @@
 package grafica.pedidos.api.controller.gerentes;
 
 import grafica.pedidos.api.domain.funcionario.empregado.vendedor.VendedorRegister;
+import grafica.pedidos.api.domain.funcionario.empregado.vendedor.VendedorResponse;
 import grafica.pedidos.api.service.empregado.VendedorService;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
@@ -20,35 +23,36 @@ public class GerenteVendasController {
     private VendedorService vendedorService;
 
     @GetMapping
-    public void listarVendedor(@RequestParam(required = false) String nomeVendedor,
-                                 @PageableDefault(sort = "id", direction = Sort.Direction.ASC, page = 0, size = 10)
+    public Page<VendedorResponse> listarVendedor(
+            @RequestParam(required = false) String nomeVendedor,
+            @PageableDefault(sort = "id", direction = Sort.Direction.ASC, page = 0, size = 10)
                                  Pageable paginacao) {
-        return vendedorService.retornarVendedor(nomeVendedor, paginacao);
+        return vendedorService.listarVendedor(nomeVendedor, paginacao);
     }
 
     @GetMapping("/{id}")
-    public void buscarVendedor(@PathVariable Long id) {
-
-        return vendedorService.detalharVendedorPorId(id);
+    public ResponseEntity<VendedorResponse> buscarVendedor(@PathVariable Long id) {
+        return vendedorService.buscarVendedor(id);
     }
 
     @PostMapping
-    public void cadastrarVendedor(@RequestBody @Valid VendedorRegister vendedorRegister,
-                                  UriComponentsBuilder uriBuilder) {
+    public ResponseEntity<VendedorResponse> cadastrarVendedor(
+            @RequestBody @Valid VendedorRegister vendedorRegister,
+            UriComponentsBuilder uriBuilder) throws Exception {
         return vendedorService.cadastrarVendedor(vendedorRegister, uriBuilder);
     }
 
     @PutMapping
     @Transactional
-    public void atualizarVendedor(@PathVariable Long id, @RequestBody @Valid VendedorRegister vendedorRegister) {
+    public ResponseEntity<VendedorResponse> atualizarVendedor(
+            @PathVariable Long id, @RequestBody @Valid VendedorRegister vendedorRegister) {
         return vendedorService.atualizarVendedor(id, vendedorRegister);
     }
 
     @DeleteMapping
     @Transactional
-    public void deletarVendedor(@PathVariable Long id) {
-
-        return vendedorService.deletarVendedor(id);
+    public ResponseEntity<?> deletarVendedor(@PathVariable Long id) {
+        return vendedorService.removerVendedor(id);
     }
 
 //---------------------------------------------------------------------------------------------------------------

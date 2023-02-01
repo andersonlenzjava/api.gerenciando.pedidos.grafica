@@ -5,6 +5,7 @@ import grafica.pedidos.api.domain.funcionario.gerente.gerenteVendas.GerenteVenda
 import grafica.pedidos.api.service.gerente.GerenteVendasService;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
@@ -22,16 +23,16 @@ public class CGVendasController {
     private GerenteVendasService gerenteVendasService;
 
     @GetMapping
-    public void listarGerenteVendas(@RequestParam(required = false) String nomeGerenteVendas,
-                                 @PageableDefault(sort = "id", direction = Sort.Direction.ASC, page = 0, size = 10)
+    public Page<GerenteVendasResponse> listarGerenteVendas(
+            @RequestParam(required = false) String nomeGerenteVendas,
+            @PageableDefault(sort = "id", direction = Sort.Direction.ASC, page = 0, size = 10)
                                  Pageable paginacao) {
-        return gerenteVendasService.retornarGerenteVendas(nomeGerenteVendas, paginacao);
+        return gerenteVendasService.listarGerenteVendas(nomeGerenteVendas, paginacao);
     }
 
     @GetMapping("/{id}")
-    public void buscarGerenteVendas(@PathVariable Long id) {
-
-        return gerenteVendasService.detalharGerenteVendasPorId(id);
+    public ResponseEntity<GerenteVendasResponse> buscarGerenteVendas(@PathVariable Long id) {
+        return gerenteVendasService.buscarGerenteVendas(id);
     }
 
     @PostMapping
@@ -43,16 +44,15 @@ public class CGVendasController {
 
     @PutMapping
     @Transactional
-    public void atualizarGerenteVendas(@PathVariable Long id,
-                                       @RequestBody @Valid GerenteVendasRegister gerenteVendasRegister) {
+    public ResponseEntity<GerenteVendasResponse> atualizarGerenteVendas(
+            @PathVariable Long id, @RequestBody @Valid GerenteVendasRegister gerenteVendasRegister) {
         return gerenteVendasService.atualizarGerenteVendas(id, gerenteVendasRegister);
     }
 
     @DeleteMapping
     @Transactional
-    public void deletarGerenteVendas(@PathVariable Long id) {
-
-        return gerenteVendasService.deletarGerenteVendas(id);
+    public ResponseEntity<?> deletarGerenteVendas(@PathVariable Long id) {
+        return gerenteVendasService.removerGerenteVendas(id);
     }
 
 }
