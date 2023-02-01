@@ -1,4 +1,4 @@
-package grafica.pedidos.api.domain.funcionario.empregado.produtorCopias;
+package grafica.pedidos.api.domain.funcionario.empregado.copiador;
 
 import grafica.pedidos.api.domain.funcionario.funcionario.Funcionario;
 import jakarta.persistence.*;

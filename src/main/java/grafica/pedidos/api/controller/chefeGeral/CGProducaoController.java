@@ -1,5 +1,6 @@
-package grafica.pedidos.api.controller.gerente;
+package grafica.pedidos.api.controller.chefeGeral;
 
+import grafica.pedidos.api.domain.funcionario.gerente.gerenteProducao.GerenteProducaoRegister;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import org.springframework.data.domain.Pageable;
@@ -9,8 +10,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
 @RestController
-@RequestMapping("/funcionario/gerenteProducao")
-public class GereteProducaoController {
+@RequestMapping("/funcionario/CGProducao")
+public class CGProducaoController {
 
 
     private GereteProducaoService gereteProducaoService;
@@ -29,7 +30,7 @@ public class GereteProducaoController {
     }
 
     @PostMapping
-    public void cadastrarGereteProducao(@RequestBody @Valid GereteProducaoRegister gereteProducaoRegister,
+    public void cadastrarGereteProducao(@RequestBody @Valid GerenteProducaoRegister gereteProducaoRegister,
                                   UriComponentsBuilder uriBuilder) {
         return gereteProducaoService.cadastrarGereteProducao(gereteProducaoRegister, uriBuilder);
     }
@@ -37,7 +38,7 @@ public class GereteProducaoController {
     @PutMapping
     @Transactional
     public void atualizarGereteProducao(@PathVariable Long id,
-                                        @RequestBody @Valid GereteProducaoRegister gereteProducaoRegister) {
+                                        @RequestBody @Valid GerenteProducaoRegister gereteProducaoRegister) {
         return gereteProducaoService.atualizarGereteProducao(id, gereteProducaoRegister);
     }
 

@@ -1,5 +1,6 @@
-package grafica.pedidos.api.controller.empregado;
+package grafica.pedidos.api.controller.gerentes;
 
+import grafica.pedidos.api.domain.funcionario.empregado.vendedor.VendedorRegister;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import org.springframework.data.domain.Pageable;
@@ -10,7 +11,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 @RestController
 @RequestMapping("/funcionario/empregadoVendedor")
-public class VendedorController {
+public class GerenteVendasController {
 
 
     private VendedorService vendedorService;

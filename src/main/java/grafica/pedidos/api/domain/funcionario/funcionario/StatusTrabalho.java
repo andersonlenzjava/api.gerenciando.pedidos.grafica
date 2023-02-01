@@ -1,4 +1,4 @@
-package grafica.pedidos.api.domain.funcionario.statusTrabalho;
+package grafica.pedidos.api.domain.funcionario.funcionario;
 
 public enum StatusTrabalho {
 

@@ -1,6 +1,6 @@
 package grafica.pedidos.api.domain.funcionario.gerente.gerenteProducao;
 
-import grafica.pedidos.api.domain.funcionario.empregado.produtorCopias.EmpregadoCopiador;
+import grafica.pedidos.api.domain.funcionario.empregado.copiador.EmpregadoCopiador;
 import grafica.pedidos.api.domain.funcionario.funcionario.Funcionario;
 import grafica.pedidos.api.domain.pedido.Pedido;
 import jakarta.persistence.*;

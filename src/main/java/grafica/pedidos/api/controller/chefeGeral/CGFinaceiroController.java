@@ -1,5 +1,6 @@
-package grafica.pedidos.api.controller.gerente;
+package grafica.pedidos.api.controller.chefeGeral;
 
+import grafica.pedidos.api.domain.funcionario.gerente.gerenteFinanceiro.GerenteFinaceiroRegister;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import org.springframework.data.domain.Pageable;
@@ -9,8 +10,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
 @RestController
-@RequestMapping("/funcionario/gerenteFinaceiro")
-public class GerenteFinaceiroController {
+@RequestMapping("/funcionario/CGFinaceiro")
+public class CGFinaceiroController {
 
 
     private GerenteFinaceiroService gerenteFinaceiroService;

@@ -1,5 +1,6 @@
-package grafica.pedidos.api.controller.empregado;
+package grafica.pedidos.api.controller.gerentes;
 
+import grafica.pedidos.api.domain.funcionario.empregado.contador.ContadorRegister;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import org.springframework.data.domain.Pageable;
@@ -10,7 +11,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 @RestController
 @RequestMapping("/funcionario/empregadoContador")
-public class ContadorController {
+public class GerenteFinaceiroController {
 
 
     private ContadorService contadorService;
@@ -37,7 +38,7 @@ public class ContadorController {
     @PutMapping
     @Transactional
     public void atualizarContador(@PathVariable Long id,
-                                           @RequestBody @Valid contadorRegister contadorRegister) {
+                                           @RequestBody @Valid ContadorRegister contadorRegister) {
         return contadorService.atualizarContador(id, contadorRegister);
     }
 

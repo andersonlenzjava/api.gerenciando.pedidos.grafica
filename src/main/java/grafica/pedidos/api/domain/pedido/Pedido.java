@@ -1,6 +1,6 @@
 package grafica.pedidos.api.domain.pedido;
 
-import grafica.pedidos.api.domain.funcionario.empregado.produtorCopias.EmpregadoCopiador;
+import grafica.pedidos.api.domain.funcionario.empregado.copiador.EmpregadoCopiador;
 import grafica.pedidos.api.domain.funcionario.empregado.vendedor.EmpregadoVendedor;
 import grafica.pedidos.api.domain.produto.Produto;
 import grafica.pedidos.api.domain.statusPedido.StatusPedido;
