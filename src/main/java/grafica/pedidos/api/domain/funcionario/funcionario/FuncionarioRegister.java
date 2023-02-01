@@ -20,8 +20,8 @@ public record FuncionarioRegister(
 
         @NotBlank
         @Positive
-        @Digits(integer=9, fraction = 0)
-        String telefone,
+        @Digits(integer = 9, fraction = 0)
+        Double telefone,
 
         @NotBlank
         String statusTrabalho
