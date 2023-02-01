@@ -1,10 +1,10 @@
 package grafica.pedidos.api.service.gerente;
 
-import grafica.pedidos.api.domain.funcionario.gerente.gerenteFinanceiro.GerenteFinaceiroRegister;
 import grafica.pedidos.api.domain.funcionario.gerente.gerenteVendas.GerenteVendas;
 import grafica.pedidos.api.domain.funcionario.gerente.gerenteVendas.GerenteVendasRegister;
 import grafica.pedidos.api.domain.funcionario.gerente.gerenteVendas.GerenteVendasRepository;
 import grafica.pedidos.api.domain.funcionario.gerente.gerenteVendas.GerenteVendasResponse;
+import grafica.pedidos.api.infra.exeption.ItemJaExisteException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -37,21 +37,21 @@ public class GerenteVendasService {
     public ResponseEntity<GerenteVendasResponse> buscarGerenteVendas(Long id) {
         Optional<GerenteVendas> gerenteVendasOptional = gerenteVendasRepository.findById(id);
         if (gerenteVendasOptional.isPresent()) {
-            return ResponseEntity.ok(GerenteVendasResponse.converterUmGerente(gerente.get()));
+            return ResponseEntity.ok(GerenteVendasResponse.converterUmGerente(gerenteVendasOptional.get()));
         }
         return ResponseEntity.notFound().build();
     }
 
     //cadastrar
     public ResponseEntity<GerenteVendasResponse> cadastrarGerenteVendas(
-            GerenteVendasRegister gerenteFinaceiroRegister,
+            GerenteVendasRegister gerenteVendasRegister,
             UriComponentsBuilder uriBuilder) throws Exception {
 
         Optional<GerenteVendas> gerenteVendasOptional = gerenteVendasRepository.findByFuncionarioCpfIgnoreCase(
-                GerenteVendasRegister.funcionarioRegister().cpf());
+                gerenteVendasRegister.funcionarioRegister().cpf());
 
         if (gerenteVendasOptional.isEmpty()) {
-            GerenteVendas gerente = GerenteFinaceiroRegister.converter();
+            GerenteVendas gerente = gerenteVendasRegister.converter();
             gerenteVendasRepository.save(gerente);
 
             URI uri = uriBuilder.path("/funcionario/CGVendas/{id}").buildAndExpand(gerente.getId()).toUri();
@@ -86,7 +86,7 @@ public class GerenteVendasService {
     public ResponseEntity<?> removerGerenteVendas(Long id) {
         Optional<GerenteVendas> gerenteVendasOptional = gerenteVendasRepository.findById(id);
         if (gerenteVendasOptional.isPresent()) {
-            gerenteVendasOptional.deleteById(id);
+            gerenteVendasRepository.deleteById(id);
             return ResponseEntity.noContent().build();
         }
         return ResponseEntity.notFound().build();

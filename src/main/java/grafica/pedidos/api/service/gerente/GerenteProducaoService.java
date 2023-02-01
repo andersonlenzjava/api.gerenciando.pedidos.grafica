@@ -1,11 +1,11 @@
 package grafica.pedidos.api.service.gerente;
 
 import grafica.pedidos.api.domain.funcionario.gerente.gerenteFinanceiro.GerenteFinaceiroRegister;
-import grafica.pedidos.api.domain.funcionario.gerente.gerenteFinanceiro.GerenteFinanceiro;
 import grafica.pedidos.api.domain.funcionario.gerente.gerenteProducao.GerenteProducao;
 import grafica.pedidos.api.domain.funcionario.gerente.gerenteProducao.GerenteProducaoRegister;
 import grafica.pedidos.api.domain.funcionario.gerente.gerenteProducao.GerenteProducaoRepository;
 import grafica.pedidos.api.domain.funcionario.gerente.gerenteProducao.GerenteProducaoResponse;
+import grafica.pedidos.api.infra.exeption.ItemJaExisteException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -38,7 +38,7 @@ public class GerenteProducaoService {
     public ResponseEntity<GerenteProducaoResponse> buscarGerenteProducao(Long id) {
         Optional<GerenteProducao> gerenteProducaoOptional = gerenteProducaoRepository.findById(id);
         if (gerenteProducaoOptional.isPresent()) {
-            return ResponseEntity.ok(GerenteProducaoResponse.converterUmGerente(gerente.get()));
+            return ResponseEntity.ok(GerenteProducaoResponse.converterUmGerente(gerenteProducaoOptional.get()));
         }
         return ResponseEntity.notFound().build();
     }
@@ -58,14 +58,14 @@ public class GerenteProducaoService {
             URI uri = uriBuilder.path("/funcionario/CGProducao/{id}").buildAndExpand(gerente.getId()).toUri();
             return ResponseEntity.created(uri).body(new GerenteProducaoResponse(gerente));
         } else {
-            throw new ItemJaExisteException("Vendedor já existe");
+            throw new ItemJaExisteException("Gerente já existe");
         }
     }
 
 
     //atualizar
     public ResponseEntity<GerenteProducaoResponse> atualizarGerenteProducao(Long id, GerenteProducaoRegister gerenteProducaoRegister) {
-        Optional<GerenteFinanceiro> gerenteProducaoOptional = gerenteProducaoRepository.findById(id);
+        Optional<GerenteProducao> gerenteProducaoOptional = gerenteProducaoRepository.findById(id);
         if (gerenteProducaoOptional.isPresent()) {
 
             GerenteProducao gerente = gerenteProducaoOptional.get();
@@ -86,7 +86,7 @@ public class GerenteProducaoService {
     public ResponseEntity<?> removerGerenteProducao(Long id) {
         Optional<GerenteProducao> gerenteProducaoOptional = gerenteProducaoRepository.findById(id);
         if (gerenteProducaoOptional.isPresent()) {
-            gerenteProducaoOptional.deleteById(id);
+            gerenteProducaoRepository.deleteById(id);
             return ResponseEntity.noContent().build();
         }
         return ResponseEntity.notFound().build();

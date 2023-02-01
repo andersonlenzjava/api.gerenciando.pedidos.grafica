@@ -1,12 +1,10 @@
 package grafica.pedidos.api.service.empregado;
 
-import grafica.pedidos.api.domain.funcionario.empregado.contador.Contador;
-import grafica.pedidos.api.domain.funcionario.empregado.contador.ContadorRegister;
-import grafica.pedidos.api.domain.funcionario.empregado.contador.ContadorRepository;
 import grafica.pedidos.api.domain.funcionario.empregado.copiador.Copiador;
 import grafica.pedidos.api.domain.funcionario.empregado.copiador.CopiadorRegister;
 import grafica.pedidos.api.domain.funcionario.empregado.copiador.CopiadorRepository;
 import grafica.pedidos.api.domain.funcionario.empregado.copiador.CopiadorResponse;
+import grafica.pedidos.api.infra.exeption.ItemJaExisteException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -45,30 +43,30 @@ public class CopiadorService {
     }
 
     //cadastrar
-    public ResponseEntity<CopiadorResponse> cadastrarCopiador(ContadorRegister contadorRegister,
+    public ResponseEntity<CopiadorResponse> cadastrarCopiador(CopiadorRegister copiadorRegister,
                                                                UriComponentsBuilder uriBuilder) throws Exception {
 
-        Optional<Copiador> contadorOptional = copiadorRepository.findByFuncionarioCpfIgnoreCase(
-                contadorRegister.funcionarioRegister().cpf());
+        Optional<Copiador> copiadorOptional = copiadorRepository.findByFuncionarioCpfIgnoreCase(
+                copiadorRegister.funcionarioRegister().cpf());
 
-        if (contadorOptional.isEmpty()) {
+        if (copiadorOptional.isEmpty()) {
             Copiador copiador = CopiadorRegister.converter();
             copiadorRepository.save(copiador);
 
             URI uri = uriBuilder.path("/funcionario/gerenteProducao/{id}").buildAndExpand(copiador.getId()).toUri();
             return ResponseEntity.created(uri).body(new CopiadorResponse(copiador));
         } else {
-            throw new ItemJaExisteException("Contador já existe");
+            throw new ItemJaExisteException("Copiador já existe");
         }
     }
 
 
     //atualizar
     public ResponseEntity<CopiadorResponse> atualizarCopiador(Long id, CopiadorRegister copiadorRegister) {
-        Optional<Copiador> contadorOptional = copiadorRepository.findById(id);
-        if (contadorOptional.isPresent()) {
+        Optional<Copiador> copiadorOptional = copiadorRepository.findById(id);
+        if (copiadorOptional.isPresent()) {
 
-            Copiador copiador = contadorOptional.get();
+            Copiador copiador = copiadorOptional.get();
             copiador.getFuncionario().setCpf(copiadorRegister.funcionarioRegister().cpf());
             copiador.getFuncionario().setNome(copiadorRegister.funcionarioRegister().nome());
             copiador.getFuncionario().setTelefone(copiadorRegister.funcionarioRegister().telefone());
@@ -86,7 +84,7 @@ public class CopiadorService {
     public ResponseEntity<?> removerCopiador(Long id) {
         Optional<Copiador> copiadorOptional = copiadorRepository.findById(id);
         if (copiadorOptional.isPresent()) {
-            copiadorOptional.deleteById(id);
+            copiadorRepository.deleteById(id);
             return ResponseEntity.noContent().build();
         }
         return ResponseEntity.notFound().build();

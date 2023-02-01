@@ -1,8 +1,10 @@
 package grafica.pedidos.api.service.empregado;
 
+import grafica.pedidos.api.domain.funcionario.empregado.contador.Contador;
 import grafica.pedidos.api.domain.funcionario.empregado.contador.ContadorRegister;
 import grafica.pedidos.api.domain.funcionario.empregado.contador.ContadorRepository;
-import grafica.pedidos.api.domain.funcionario.empregado.contador.Contador;
+import grafica.pedidos.api.domain.funcionario.empregado.contador.ContadorResponse;
+import grafica.pedidos.api.infra.exeption.ItemJaExisteException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -20,28 +22,28 @@ public class ContadorService {
     private ContadorRepository contadorRepository;
 
     //Get
-    public Page<ContadorRensponse> listarContador(String nomeContador, Pageable paginacao) {
+    public Page<ContadorResponse> listarContador(String nomeContador, Pageable paginacao) {
         if(nomeContador == null) {
             Page<Contador> contadores = contadorRepository.findAll(paginacao);
-            return ContadorRensponse.converter(contadores);
+            return ContadorResponse.converter(contadores);
         } else {
             Page<Contador> contador = contadorRepository.findByFuncionarioNomeIgnoreCase(
                     nomeContador, paginacao);
-            return ContadorRensponse.converterUmContador(contador);
+            return ContadorResponse.converterUmContador(contador);
         }
     }
 
     //Get id
-    public ResponseEntity<ContadorRensponse> buscarContador(Long id) {
+    public ResponseEntity<ContadorResponse> buscarContador(Long id) {
         Optional<Contador> contador = contadorRepository.findById(id);
         if (contador.isPresent()) {
-            return ResponseEntity.ok(ContadorRensponse.converterUmContador(contador.get()));
+            return ResponseEntity.ok(ContadorResponse.converterUmContador(contador.get()));
         }
         return ResponseEntity.notFound().build();
     }
 
     //cadastrar
-    public ResponseEntity<ContadorRensponse> cadastrarContador(ContadorRegister contadorRegister,
+    public ResponseEntity<ContadorResponse> cadastrarContador(ContadorRegister contadorRegister,
                                                                   UriComponentsBuilder uriBuilder) throws Exception {
 
         Optional<Contador> contadorOptional = contadorRepository.findByFuncionarioCpfIgnoreCase(
@@ -60,7 +62,7 @@ public class ContadorService {
 
 
     //atualizar
-    public ResponseEntity<ContadorRensponse> atualizarContador(Long id, ContadorRegister contadorRegister) {
+    public ResponseEntity<ContadorResponse> atualizarContador(Long id, ContadorRegister contadorRegister) {
         Optional<Contador> contadorOptional = contadorRepository.findById(id);
         if (contadorOptional.isPresent()) {
 
@@ -82,7 +84,7 @@ public class ContadorService {
     public ResponseEntity<?> removerContador(Long id) {
         Optional<Contador> contadorOptional = contadorRepository.findById(id);
         if (contadorOptional.isPresent()) {
-            contadorOptional.deleteById(id);
+            contadorRepository.deleteById(id);
             return ResponseEntity.noContent().build();
         }
         return ResponseEntity.notFound().build();

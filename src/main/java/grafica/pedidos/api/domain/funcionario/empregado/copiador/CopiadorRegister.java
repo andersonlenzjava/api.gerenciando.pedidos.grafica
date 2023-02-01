@@ -10,4 +10,6 @@ public record CopiadorRegister(
         @Valid
         FuncionarioRegister funcionarioRegister
 ) {
+    public static Copiador converter() {
+    }
 }

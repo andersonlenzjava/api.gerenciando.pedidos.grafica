@@ -1,15 +1,10 @@
 package grafica.pedidos.api.service.gerente;
 
-import grafica.pedidos.api.domain.funcionario.empregado.copiador.Copiador;
-import grafica.pedidos.api.domain.funcionario.empregado.copiador.CopiadorResponse;
-import grafica.pedidos.api.domain.funcionario.empregado.vendedor.VendedorRegister;
-import grafica.pedidos.api.domain.funcionario.empregado.vendedor.VendedorRepository;
-import grafica.pedidos.api.domain.funcionario.empregado.vendedor.VendedorResponse;
 import grafica.pedidos.api.domain.funcionario.gerente.gerenteFinanceiro.GerenteFinaceiroRegister;
 import grafica.pedidos.api.domain.funcionario.gerente.gerenteFinanceiro.GerenteFinanceiro;
 import grafica.pedidos.api.domain.funcionario.gerente.gerenteFinanceiro.GerenteFinanceiroRepository;
 import grafica.pedidos.api.domain.funcionario.gerente.gerenteFinanceiro.GerenteFinanceiroResponse;
-import grafica.pedidos.api.domain.funcionario.gerente.gerenteProducao.GerenteProducaoResponse;
+import grafica.pedidos.api.infra.exeption.ItemJaExisteException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -40,16 +35,16 @@ public class GerenteFinanceiroService {
 
     //Get id
     public ResponseEntity<GerenteFinanceiroResponse> buscarGerenteFinanceiro(Long id) {
-        Optional<GerenteFinanceiro> gerente = gerenteFinanceiroRepository.findById(id);
-        if (gerente.isPresent()) {
-            return ResponseEntity.ok(GerenteFinanceiroResponse.converterUmGerente(gerente.get()));
+        Optional<GerenteFinanceiro> gerenteFinanceiroOptional = gerenteFinanceiroRepository.findById(id);
+        if (gerenteFinanceiroOptional.isPresent()) {
+            return ResponseEntity.ok(GerenteFinanceiroResponse.converterUmGerente(gerenteFinanceiroOptional.get()));
         }
         return ResponseEntity.notFound().build();
     }
 
     //cadastrar
-    public ResponseEntity<GerenteFinanceiroResponse> cadastrarGerenteFinanceiro(GerenteFinaceiroRegister gerenteFinaceiroRegister,
-                                                                                UriComponentsBuilder uriBuilder) throws Exception {
+    public ResponseEntity<GerenteFinanceiroResponse> cadastrarGerenteFinanceiro(
+            GerenteFinaceiroRegister gerenteFinaceiroRegister, UriComponentsBuilder uriBuilder) throws Exception {
 
         Optional<GerenteFinanceiro> gerenteFinanceiroOptional = gerenteFinanceiroRepository.findByFuncionarioCpfIgnoreCase(
                 gerenteFinaceiroRegister.funcionarioRegister().cpf());
@@ -89,7 +84,7 @@ public class GerenteFinanceiroService {
     public ResponseEntity<?> removerGerenteFinanceiro(Long id) {
         Optional<GerenteFinanceiro> gerenteFinanceiroOptional = gerenteFinanceiroRepository.findById(id);
         if (gerenteFinanceiroOptional.isPresent()) {
-            gerenteFinanceiroOptional.deleteById(id);
+            gerenteFinanceiroRepository.deleteById(id);
             return ResponseEntity.noContent().build();
         }
         return ResponseEntity.notFound().build();

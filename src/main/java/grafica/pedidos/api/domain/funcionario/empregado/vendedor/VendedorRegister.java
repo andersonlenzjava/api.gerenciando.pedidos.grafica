@@ -10,4 +10,6 @@ public record VendedorRegister(
         @Valid
         FuncionarioRegister funcionarioRegister
 ) {
+    public static Vendedor converter() {
+    }
 }

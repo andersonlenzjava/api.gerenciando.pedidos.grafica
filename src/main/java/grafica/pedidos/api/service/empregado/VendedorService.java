@@ -1,10 +1,10 @@
 package grafica.pedidos.api.service.empregado;
 
-import grafica.pedidos.api.domain.funcionario.empregado.copiador.Copiador;
-import grafica.pedidos.api.domain.funcionario.empregado.copiador.CopiadorResponse;
+import grafica.pedidos.api.domain.funcionario.empregado.vendedor.Vendedor;
 import grafica.pedidos.api.domain.funcionario.empregado.vendedor.VendedorRegister;
 import grafica.pedidos.api.domain.funcionario.empregado.vendedor.VendedorRepository;
 import grafica.pedidos.api.domain.funcionario.empregado.vendedor.VendedorResponse;
+import grafica.pedidos.api.infra.exeption.ItemJaExisteException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -46,7 +46,7 @@ public class VendedorService {
     public ResponseEntity<VendedorResponse> cadastrarVendedor(VendedorRegister vendedorRegister,
                                                               UriComponentsBuilder uriBuilder) throws Exception {
 
-        Optional<Copiador> contadorOptional = vendedorRepository.findByFuncionarioCpfIgnoreCase(
+        Optional<Vendedor> contadorOptional = vendedorRepository.findByFuncionarioCpfIgnoreCase(
                 vendedorRegister.funcionarioRegister().cpf());
 
         if (contadorOptional.isEmpty()) {
@@ -54,7 +54,7 @@ public class VendedorService {
             vendedorRepository.save(vendedor);
 
             URI uri = uriBuilder.path("/funcionario/gerenteVendas/{id}").buildAndExpand(vendedor.getId()).toUri();
-            return ResponseEntity.created(uri).body(new CopiadorResponse(vendedor));
+            return ResponseEntity.created(uri).body(new VendedorResponse(vendedor));
         } else {
             throw new ItemJaExisteException("Vendedor já existe");
         }
@@ -84,7 +84,7 @@ public class VendedorService {
     public ResponseEntity<?> removerVendedor(Long id) {
         Optional<Vendedor> vendedorOptional = vendedorRepository.findById(id);
         if (vendedorOptional.isPresent()) {
-            vendedorOptional.deleteById(id);
+            vendedorRepository.deleteById(id);
             return ResponseEntity.noContent().build();
         }
         return ResponseEntity.notFound().build();

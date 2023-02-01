@@ -10,4 +10,6 @@ public record GerenteVendasRegister(
         @Valid
         FuncionarioRegister funcionarioRegister
 ) {
+    public GerenteVendas converter() {
+    }
 }

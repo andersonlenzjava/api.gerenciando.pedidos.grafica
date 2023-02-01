@@ -10,4 +10,6 @@ public record ContadorRegister(
         @Valid
         FuncionarioRegister funcionarioRegister
 ) {
+    public static Contador converter() {
+    }
 }
