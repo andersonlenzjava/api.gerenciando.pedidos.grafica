@@ -1,6 +1,5 @@
 package grafica.pedidos.api.service.gerente;
 
-import grafica.pedidos.api.domain.funcionario.gerente.gerenteFinanceiro.GerenteFinaceiroRegister;
 import grafica.pedidos.api.domain.funcionario.gerente.gerenteProducao.GerenteProducao;
 import grafica.pedidos.api.domain.funcionario.gerente.gerenteProducao.GerenteProducaoRegister;
 import grafica.pedidos.api.domain.funcionario.gerente.gerenteProducao.GerenteProducaoRepository;
@@ -30,7 +29,7 @@ public class GerenteProducaoService {
         } else {
             Page<GerenteProducao> gerente = gerenteProducaoRepository.findByFuncionarioNomeIgnoreCase(
                     nomeGerente, paginacao);
-            return GerenteProducaoResponse.converterUmGerente(gerente);
+            return GerenteProducaoResponse.converter(gerente);
         }
     }
 
@@ -45,14 +44,14 @@ public class GerenteProducaoService {
 
     //cadastrar
     public ResponseEntity<GerenteProducaoResponse> cadastrarGerenteProducao(
-            GerenteFinaceiroRegister gerenteFinaceiroRegister,
+            GerenteProducaoRegister gerenteProducaoRegister,
             UriComponentsBuilder uriBuilder) throws Exception {
 
         Optional<GerenteProducao> gerenteProducaoOptional = gerenteProducaoRepository.findByFuncionarioCpfIgnoreCase(
-                gerenteFinaceiroRegister.funcionarioRegister().cpf());
+                gerenteProducaoRegister.funcionarioRegister().cpf());
 
         if (gerenteProducaoOptional.isEmpty()) {
-            GerenteProducao gerente = GerenteFinaceiroRegister.converter();
+            GerenteProducao gerente = gerenteProducaoRegister.converter();
             gerenteProducaoRepository.save(gerente);
 
             URI uri = uriBuilder.path("/funcionario/CGProducao/{id}").buildAndExpand(gerente.getId()).toUri();
@@ -61,7 +60,6 @@ public class GerenteProducaoService {
             throw new ItemJaExisteException("Gerente já existe");
         }
     }
-
 
     //atualizar
     public ResponseEntity<GerenteProducaoResponse> atualizarGerenteProducao(Long id, GerenteProducaoRegister gerenteProducaoRegister) {

@@ -29,7 +29,7 @@ public class GerenteFinanceiroService {
         } else {
             Page<GerenteFinanceiro> gerente = gerenteFinanceiroRepository.findByFuncionarioNomeIgnoreCase(
                     nomeGerente, paginacao);
-            return GerenteFinanceiroResponse.converterUmGerente(gerente);
+            return GerenteFinanceiroResponse.converter(gerente);
         }
     }
 
@@ -50,7 +50,7 @@ public class GerenteFinanceiroService {
                 gerenteFinaceiroRegister.funcionarioRegister().cpf());
 
         if (gerenteFinanceiroOptional.isEmpty()) {
-            GerenteFinanceiro gerente = GerenteFinaceiroRegister.converter();
+            GerenteFinanceiro gerente = gerenteFinaceiroRegister.converter();
             gerenteFinanceiroRepository.save(gerente);
 
             URI uri = uriBuilder.path("/funcionario/CGFinaceiro/{id}").buildAndExpand(gerente.getId()).toUri();

@@ -10,6 +10,11 @@ public record ContadorRegister(
         @Valid
         FuncionarioRegister funcionarioRegister
 ) {
-    public static Contador converter() {
+    public Contador converter() {
+        return new Contador(
+                this.funcionarioRegister.cpf(),
+                this.funcionarioRegister.nome(),
+                this.funcionarioRegister.dataNascimento(),
+                this.funcionarioRegister.telefone());
     }
 }

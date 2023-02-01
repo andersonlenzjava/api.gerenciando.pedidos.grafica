@@ -29,7 +29,7 @@ public class GerenteVendasService {
         } else {
             Page<GerenteVendas> gerente = gerenteVendasRepository.findByFuncionarioNomeIgnoreCase(
                     nomeGerente, paginacao);
-            return GerenteVendasResponse.converterUmGerente(gerente);
+            return GerenteVendasResponse.converter(gerente);
         }
     }
 
@@ -43,7 +43,7 @@ public class GerenteVendasService {
     }
 
     //cadastrar
-    public ResponseEntity<GerenteVendasResponse> cadastrarGerenteVendas(
+    public ResponseEntity<GerenteVendasResponse> cadastrarGerenteVendas (
             GerenteVendasRegister gerenteVendasRegister,
             UriComponentsBuilder uriBuilder) throws Exception {
 
@@ -60,7 +60,6 @@ public class GerenteVendasService {
             throw new ItemJaExisteException("Vendedor já existe");
         }
     }
-
 
     //atualizar
     public ResponseEntity<GerenteVendasResponse> atualizarGerenteVendas(Long id,

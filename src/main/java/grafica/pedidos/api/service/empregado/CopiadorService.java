@@ -1,5 +1,6 @@
 package grafica.pedidos.api.service.empregado;
 
+import grafica.pedidos.api.domain.funcionario.empregado.contador.Contador;
 import grafica.pedidos.api.domain.funcionario.empregado.copiador.Copiador;
 import grafica.pedidos.api.domain.funcionario.empregado.copiador.CopiadorRegister;
 import grafica.pedidos.api.domain.funcionario.empregado.copiador.CopiadorRepository;
@@ -29,15 +30,15 @@ public class CopiadorService {
         } else {
             Page<Copiador> copiador = copiadorRepository.findByFuncionarioNomeIgnoreCase(
                     nomeCopiador, paginacao);
-            return CopiadorResponse.converterUmCopiador(copiador);
+            return CopiadorResponse.converter(copiador);
         }
     }
 
     //Get id
     public ResponseEntity<CopiadorResponse> buscarCopiador(Long id) {
-        Optional<Copiador> copiador = copiadorRepository.findById(id);
-        if (copiador.isPresent()) {
-            return ResponseEntity.ok(CopiadorResponse.converterUmCopiador(copiador.get()));
+        Optional<Copiador> copiadorOptional = copiadorRepository.findById(id);
+        if (copiadorOptional.isPresent()) {
+            return ResponseEntity.ok(CopiadorResponse.converterUmCopiador(copiadorOptional.get()));
         }
         return ResponseEntity.notFound().build();
     }
@@ -50,7 +51,7 @@ public class CopiadorService {
                 copiadorRegister.funcionarioRegister().cpf());
 
         if (copiadorOptional.isEmpty()) {
-            Copiador copiador = CopiadorRegister.converter();
+            Copiador copiador = copiadorRegister.converter();
             copiadorRepository.save(copiador);
 
             URI uri = uriBuilder.path("/funcionario/gerenteProducao/{id}").buildAndExpand(copiador.getId()).toUri();

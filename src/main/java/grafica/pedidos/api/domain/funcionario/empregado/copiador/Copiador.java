@@ -18,6 +18,13 @@ public class Copiador {
     @Embedded
     private Funcionario funcionario;
 
+    public Copiador(String cpf,
+                    String nome,
+                    String dataNascimento,
+                    String telefone,
+                    String statusTrabalho) {
+    }
+
     private void TirarFila() {
 
     }

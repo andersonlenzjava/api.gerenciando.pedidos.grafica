@@ -19,6 +19,13 @@ public class GerenteFinanceiro {
     @Embedded
     private Funcionario funcionario;
 
+    public GerenteFinanceiro(String cpf,
+                             String nome,
+                             String dataNascimento,
+                             String telefone,
+                             String statusTrabalho) {
+    }
+
     private void CadastrarFuncionario(Contador contador) {
 
     }

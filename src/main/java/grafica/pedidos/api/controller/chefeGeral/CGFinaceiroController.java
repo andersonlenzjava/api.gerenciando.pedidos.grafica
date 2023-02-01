@@ -1,11 +1,14 @@
 package grafica.pedidos.api.controller.chefeGeral;
 
 import grafica.pedidos.api.domain.funcionario.gerente.gerenteFinanceiro.GerenteFinaceiroRegister;
+import grafica.pedidos.api.domain.funcionario.gerente.gerenteFinanceiro.GerenteFinanceiroResponse;
+import grafica.pedidos.api.service.gerente.GerenteFinanceiroService;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
@@ -16,7 +19,7 @@ public class CGFinaceiroController {
 //-----------------------------------------------------------
 //    Chefiar GerenteFinaceiro
 
-    private GerenteFinaceiroService gerenteFinaceiroService;
+    private GerenteFinanceiroService gerenteFinaceiroService;
 
     @GetMapping
     public void listarGerenteFinaceiro(@RequestParam(required = false) String nomeGerenteFinceiro,
@@ -31,9 +34,10 @@ public class CGFinaceiroController {
     }
 
     @PostMapping
-    public void cadastrarGerenteFinaceiro(@RequestBody @Valid GerenteFinaceiroRegister gerenteFinaceiroRegister,
-                                  UriComponentsBuilder uriBuilder) {
-        return gerenteFinaceiroService.cadastrarGerenteFinaceiro(gerenteFinaceiroRegister, uriBuilder);
+    public ResponseEntity<GerenteFinanceiroResponse> cadastrarGerenteFinaceiro(
+            @RequestBody @Valid GerenteFinaceiroRegister gerenteFinaceiroRegister,
+            UriComponentsBuilder uriBuilder) throws Exception {
+        return gerenteFinaceiroService.cadastrarGerenteFinanceiro(gerenteFinaceiroRegister, uriBuilder);
     }
 
     @PutMapping

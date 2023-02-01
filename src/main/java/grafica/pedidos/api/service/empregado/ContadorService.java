@@ -29,15 +29,15 @@ public class ContadorService {
         } else {
             Page<Contador> contador = contadorRepository.findByFuncionarioNomeIgnoreCase(
                     nomeContador, paginacao);
-            return ContadorResponse.converterUmContador(contador);
+            return ContadorResponse.converter(contador);
         }
     }
 
     //Get id
     public ResponseEntity<ContadorResponse> buscarContador(Long id) {
-        Optional<Contador> contador = contadorRepository.findById(id);
-        if (contador.isPresent()) {
-            return ResponseEntity.ok(ContadorResponse.converterUmContador(contador.get()));
+        Optional<Contador> contadorOptional = contadorRepository.findById(id);
+        if (contadorOptional.isPresent()) {
+            return ResponseEntity.ok(ContadorResponse.converterUmContador(contadorOptional.get()));
         }
         return ResponseEntity.notFound().build();
     }
@@ -50,7 +50,7 @@ public class ContadorService {
                 contadorRegister.funcionarioRegister().cpf());
 
         if (contadorOptional.isEmpty()) {
-            Contador contador = ContadorRegister.converter();
+            Contador contador = contadorRegister.converter();
             contadorRepository.save(contador);
 
             URI uri = uriBuilder.path("/funcionario/gerenteFinaceiro/{id}").buildAndExpand(contador.getId()).toUri();

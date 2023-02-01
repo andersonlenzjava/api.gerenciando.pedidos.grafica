@@ -1,11 +1,32 @@
 package grafica.pedidos.api.domain.funcionario.gerente.gerenteVendas;
 
+import grafica.pedidos.api.domain.funcionario.funcionario.StatusTrabalho;
+import grafica.pedidos.api.domain.funcionario.gerente.gerenteProducao.GerenteProducao;
+import grafica.pedidos.api.domain.funcionario.gerente.gerenteProducao.GerenteProducaoResponse;
 import org.springframework.data.domain.Page;
 
-public record GerenteVendasResponse() {
-    public static Page<GerenteVendasResponse> converter(Page<GerenteVendas> gerentes) {
+import java.time.LocalDate;
+
+public record GerenteVendasResponse(Long id,
+                                    String nome,
+                                    LocalDate dataNascimento,
+                                    String telefone,
+                                    StatusTrabalho statusTrabalho) {
+
+    public GerenteVendasResponse (GerenteVendas gerenteVendas) {
+        this(gerenteVendas.getId(),
+                gerenteVendas.getFuncionario().getNome(),
+                gerenteVendas.getFuncionario().getDataNascimento(),
+                gerenteVendas.getFuncionario().getTelefone(),
+                gerenteVendas.getFuncionario().getStatusTrabalho());
     }
 
-    public static Page<GerenteVendasResponse> converterUmGerente(Page<GerenteVendas> gerente) {
+    public static Page<GerenteVendasResponse> converter(Page<GerenteVendas> gerentes) {
+        return gerentes.map(GerenteVendasResponse::new);
+    }
+
+
+    public static GerenteVendasResponse converterUmGerente(GerenteVendas gerenteVendas) {
+        return new GerenteVendasResponse(gerenteVendas);
     }
 }

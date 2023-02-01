@@ -1,6 +1,7 @@
 package grafica.pedidos.api.controller.gerentes;
 
 import grafica.pedidos.api.domain.funcionario.empregado.vendedor.VendedorRegister;
+import grafica.pedidos.api.service.empregado.VendedorService;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import org.springframework.data.domain.Pageable;

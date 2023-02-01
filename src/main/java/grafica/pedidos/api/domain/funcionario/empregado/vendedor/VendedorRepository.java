@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 import java.util.Optional;
 
 @Repository
-public interface VendedorRepository extends JpaRepository<Contador, Long> {
+public interface VendedorRepository extends JpaRepository<Vendedor, Long> {
     Page<Vendedor> findByFuncionarioNomeIgnoreCase(String nomeVendedor, Pageable paginacao);
 
     Optional<Vendedor> findByFuncionarioCpfIgnoreCase(String cpf);

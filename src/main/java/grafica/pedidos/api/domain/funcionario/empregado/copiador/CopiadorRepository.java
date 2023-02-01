@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 import java.util.Optional;
 
 @Repository
-public interface CopiadorRepository extends JpaRepository<Contador, Long> {
+public interface CopiadorRepository extends JpaRepository<Copiador, Long> {
     Page<Copiador> findByFuncionarioNomeIgnoreCase(String nomeCopiador, Pageable paginacao);
 
     Optional<Copiador> findByFuncionarioCpfIgnoreCase(String cpf);

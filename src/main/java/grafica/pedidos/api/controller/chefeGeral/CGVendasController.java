@@ -1,11 +1,14 @@
 package grafica.pedidos.api.controller.chefeGeral;
 
 import grafica.pedidos.api.domain.funcionario.gerente.gerenteVendas.GerenteVendasRegister;
+import grafica.pedidos.api.domain.funcionario.gerente.gerenteVendas.GerenteVendasResponse;
+import grafica.pedidos.api.service.gerente.GerenteVendasService;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
@@ -32,8 +35,9 @@ public class CGVendasController {
     }
 
     @PostMapping
-    public void cadastrarGerenteVendas(@RequestBody @Valid GerenteVendasRegister gerenteVendasRegister,
-                                  UriComponentsBuilder uriBuilder) {
+    public ResponseEntity<GerenteVendasResponse> cadastrarGerenteVendas(
+            @RequestBody @Valid GerenteVendasRegister gerenteVendasRegister,
+            UriComponentsBuilder uriBuilder) throws Exception {
         return gerenteVendasService.cadastrarGerenteVendas(gerenteVendasRegister, uriBuilder);
     }
 

@@ -29,15 +29,15 @@ public class VendedorService {
         } else {
             Page<Vendedor> vendedor = vendedorRepository.findByFuncionarioNomeIgnoreCase(
                     nomeVendedor, paginacao);
-            return VendedorResponse.converterUmVendedor(vendedor);
+            return VendedorResponse.converter(vendedor);
         }
     }
 
     //Get id
     public ResponseEntity<VendedorResponse> buscarVendedor(Long id) {
-        Optional<Vendedor> vendedor = vendedorRepository.findById(id);
-        if (vendedor.isPresent()) {
-            return ResponseEntity.ok(VendedorResponse.converterUmVendedor(vendedor.get()));
+        Optional<Vendedor> vendedorOptional = vendedorRepository.findById(id);
+        if (vendedorOptional.isPresent()) {
+            return ResponseEntity.ok(VendedorResponse.converterUmVendedor(vendedorOptional.get()));
         }
         return ResponseEntity.notFound().build();
     }
@@ -50,7 +50,7 @@ public class VendedorService {
                 vendedorRegister.funcionarioRegister().cpf());
 
         if (contadorOptional.isEmpty()) {
-            Vendedor vendedor = VendedorRegister.converter();
+            Vendedor vendedor = vendedorRegister.converter();
             vendedorRepository.save(vendedor);
 
             URI uri = uriBuilder.path("/funcionario/gerenteVendas/{id}").buildAndExpand(vendedor.getId()).toUri();

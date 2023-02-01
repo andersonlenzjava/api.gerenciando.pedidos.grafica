@@ -18,6 +18,13 @@ public class Vendedor {
     @Embedded
     private Funcionario funcionario;
 
+    public Vendedor(String cpf,
+                    String nome,
+                    String dataNascimento,
+                    String telefone,
+                    String statusTrabalho) {
+    }
+
 
     private void AbrirPedido() {
     }

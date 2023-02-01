@@ -20,6 +20,13 @@ public class GerenteVendas {
     @Embedded
     private Funcionario funcionario;
 
+    public GerenteVendas(String cpf,
+                         String nome,
+                         String dataNascimento,
+                         String telefone,
+                         String statusTrabalho) {
+    }
+
     private void CancelarPedido(Pedido pedido) {}
 
     private void CadastrarVendedor(Vendedor vendedor) {
