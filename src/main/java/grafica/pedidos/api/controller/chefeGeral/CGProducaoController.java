@@ -13,6 +13,8 @@ import org.springframework.web.util.UriComponentsBuilder;
 @RequestMapping("/funcionario/CGProducao")
 public class CGProducaoController {
 
+//-----------------------------------------------------------
+//    Chefiar GerenteProducao
 
     private GereteProducaoService gereteProducaoService;
 

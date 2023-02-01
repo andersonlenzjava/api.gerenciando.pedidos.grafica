@@ -10,9 +10,11 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
 @RestController
-@RequestMapping("/funcionario/empregadoContador")
+@RequestMapping("/funcionario/gerenteFinaceiro")
 public class GerenteFinaceiroController {
 
+//----------------------------------------------------------------------------------
+//    Gerenciar Contador
 
     private ContadorService contadorService;
 

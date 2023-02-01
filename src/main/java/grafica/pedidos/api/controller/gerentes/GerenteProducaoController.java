@@ -10,9 +10,11 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
 @RestController
-@RequestMapping("/funcionario/empregadoCopiador")
+@RequestMapping("/funcionario/gerenteProducao")
 public class GerenteProducaoController {
 
+//----------------------------------------------------------------------------------
+//    Gerenciar Copiador
 
     private CopiadorService copiadorService;
 
@@ -46,6 +48,23 @@ public class GerenteProducaoController {
     public void deletarProdutorCopias(@PathVariable Long id) {
 
         return copiadorService.deletarCopiador(id);
+    }
+
+//-----------------------------------------------------------------------------------------------
+//    Gerenciar Pedidos
+
+    @DeleteMapping
+    @Transactional
+    public void cancelarPedido(@PathVariable Long id) {
+
+        return vendedorService.deletarVendedor(id);
+    }
+
+    @GetMapping
+    public void buscarFilaPedidos(@RequestParam(required = false) String nomeCopiador,
+                               @PageableDefault(sort = "id", direction = Sort.Direction.ASC, page = 0, size = 10)
+                               Pageable paginacao) {
+        return copiadorService.retornarCopiador(nomeCopiador, paginacao);
     }
 
 }

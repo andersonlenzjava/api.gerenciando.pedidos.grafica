@@ -10,9 +10,11 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
 @RestController
-@RequestMapping("/funcionario/empregadoVendedor")
+@RequestMapping("/funcionario/gerenteVendas")
 public class GerenteVendasController {
 
+//----------------------------------------------------------------------------------
+//    Gerenciar Vendedor
 
     private VendedorService vendedorService;
 
@@ -47,5 +49,16 @@ public class GerenteVendasController {
 
         return vendedorService.deletarVendedor(id);
     }
+
+//---------------------------------------------------------------------------------------------------------------
+//    Gerenciar vendas
+
+    @DeleteMapping
+    @Transactional
+    public void cancelarPedido(@PathVariable Long id) {
+
+        return vendedorService.deletarVendedor(id);
+    }
+
 
 }
