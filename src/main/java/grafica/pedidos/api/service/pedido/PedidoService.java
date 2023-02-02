@@ -1,5 +1,7 @@
 package grafica.pedidos.api.service.pedido;
 
+import grafica.pedidos.api.domain.funcionario.empregado.copiador.Copiador;
+import grafica.pedidos.api.domain.funcionario.empregado.copiador.CopiadorRepository;
 import grafica.pedidos.api.domain.funcionario.empregado.vendedor.Vendedor;
 import grafica.pedidos.api.domain.funcionario.empregado.vendedor.VendedorRepository;
 import grafica.pedidos.api.domain.pedido.Pedido;
@@ -133,23 +135,34 @@ public class PedidoService {
 //    ---------------------------------------------------------------------
 //    Copiador
 
+    @Autowired
+    private CopiadorRepository copiadorRepository;
+
     //tirarDaFilaProduzir
-    public ResponseEntity<PedidoResponse> tirarFilaProduzir(
+    public ResponseEntity<PedidoResponse> tirarFilaProduzir(Long pedidoId,
             UriComponentsBuilder uriBuilder)
             throws ItemInesistenteException {
 
-        Queue<Pedido> listaPedidos = pedidoRepository.findByStatusPedidoFila(StatusPedido.FILA);
-        if (!listaPedidos.isEmpty()) {
+        Optional<Copiador> optionalCopiador = copiadorRepository.findById(pedidoId);
 
-           Pedido pedido = listaPedidos.remove();
-           pedido.setStatusPedido(StatusPedido.PRODUZINDO);
+        if (optionalCopiador.isPresent()) {
 
-            pedidoRepository.save(pedido);
+            Queue<Pedido> listaPedidos = pedidoRepository.findByStatusPedidoFila(StatusPedido.FILA);
+            if (!listaPedidos.isEmpty()) {
 
-            URI uri = uriBuilder.path("/vendedor/{pedidoId}").buildAndExpand(pedido.getId()).toUri();
+                Pedido pedido = listaPedidos.remove();
+                pedido.setCopiador(optionalCopiador.get());
+                pedido.setStatusPedido(StatusPedido.PRODUZINDO);
+
+                pedidoRepository.save(pedido);
+
+                URI uri = uriBuilder.path("/vendedor/{pedidoId}").buildAndExpand(pedido.getId()).toUri();
                 return ResponseEntity.created(uri).body(new PedidoResponse(pedido));
+
             }
-        throw new ItemInesistenteException("Não hé pedidos há imprimir");
+            throw new ItemInesistenteException("Não hé pedidos há imprimir");
+        }
+        throw new ItemInesistenteException("Copiador inesistente!");
     }
 
     //listarPedidosProduzindo
