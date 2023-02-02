@@ -3,8 +3,10 @@ package grafica.pedidos.api.controller.gerentes;
 import grafica.pedidos.api.domain.funcionario.empregado.vendedor.VendedorRegister;
 import grafica.pedidos.api.domain.funcionario.empregado.vendedor.VendedorResponse;
 import grafica.pedidos.api.service.empregado.VendedorService;
+import grafica.pedidos.api.service.pedido.PedidoService;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -20,6 +22,7 @@ public class GerenteVendasController {
 //----------------------------------------------------------------------------------
 //    Gerenciar Vendedor
 
+    @Autowired
     private VendedorService vendedorService;
 
     @GetMapping
@@ -55,15 +58,25 @@ public class GerenteVendasController {
         return vendedorService.removerVendedor(id);
     }
 
-//---------------------------------------------------------------------------------------------------------------
-//    Gerenciar vendas
+//-----------------------------------------------------------------------------------------------
+//    Gerenciar Pedidos
+
+    @Autowired
+    private PedidoService pedidoService;
 
     @DeleteMapping
     @Transactional
     public void cancelarPedido(@PathVariable Long id) {
-
-        return vendedorService.deletarVendedor(id);
+        return pedidoService.cancelarPedido(id);
     }
+
+    @GetMapping
+    public void buscarFilaPedidos(
+            @PageableDefault(sort = "id", direction = Sort.Direction.ASC, page = 0, size = 10) Pageable paginacao) {
+        return pedidoService.buscarFilaPedidos(paginacao);
+    }
+
+}
 
 
 }

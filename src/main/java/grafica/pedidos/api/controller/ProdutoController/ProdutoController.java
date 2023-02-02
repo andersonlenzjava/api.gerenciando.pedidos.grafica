@@ -1,7 +1,5 @@
 package grafica.pedidos.api.controller.ProdutoController;
 
-import grafica.pedidos.api.domain.pedido.PedidoRegister;
-import grafica.pedidos.api.domain.pedido.PedidoResponse;
 import grafica.pedidos.api.domain.produto.ProdutoRegister;
 import grafica.pedidos.api.domain.produto.ProdutoResponse;
 import grafica.pedidos.api.service.produto.ProdutoService;
@@ -25,8 +23,9 @@ public class ProdutoController {
 
     @GetMapping
     public Page<ProdutoResponse> listarProdutos(
+            @RequestParam(required = false) String nomeProduto,
             @PageableDefault(sort = "id", direction = Sort.Direction.ASC, page = 0, size = 10) Pageable paginacao) {
-        return produtoService.listarProdutos(paginacao);
+        return produtoService.listarProdutos(nomeProduto, paginacao);
     }
 
     @GetMapping("/{produtoId}")

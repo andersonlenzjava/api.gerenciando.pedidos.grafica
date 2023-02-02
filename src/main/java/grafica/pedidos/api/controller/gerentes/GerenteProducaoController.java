@@ -3,8 +3,10 @@ package grafica.pedidos.api.controller.gerentes;
 import grafica.pedidos.api.domain.funcionario.empregado.copiador.CopiadorRegister;
 import grafica.pedidos.api.domain.funcionario.empregado.copiador.CopiadorResponse;
 import grafica.pedidos.api.service.empregado.CopiadorService;
+import grafica.pedidos.api.service.pedido.PedidoService;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -20,7 +22,9 @@ public class GerenteProducaoController {
 //----------------------------------------------------------------------------------
 //    Gerenciar Copiador
 
+    @Autowired
     private CopiadorService copiadorService;
+
 
     @GetMapping
     public Page<CopiadorResponse> listarCopiador(
@@ -59,18 +63,19 @@ public class GerenteProducaoController {
 //-----------------------------------------------------------------------------------------------
 //    Gerenciar Pedidos
 
+    @Autowired
+    private PedidoService pedidoService;
+
     @DeleteMapping
     @Transactional
     public void cancelarPedido(@PathVariable Long id) {
-
-        return vendedorService.deletarVendedor(id);
+        return pedidoService.cancelarPedido(id);
     }
 
     @GetMapping
-    public void buscarFilaPedidos(@RequestParam(required = false) String nomeCopiador,
-                               @PageableDefault(sort = "id", direction = Sort.Direction.ASC, page = 0, size = 10)
-                               Pageable paginacao) {
-        return copiadorService.retornarCopiador(nomeCopiador, paginacao);
+    public void buscarFilaPedidos(
+            @PageableDefault(sort = "id", direction = Sort.Direction.ASC, page = 0, size = 10) Pageable paginacao) {
+        return pedidoService.buscarFilaPedidos(paginacao);
     }
 
 }
