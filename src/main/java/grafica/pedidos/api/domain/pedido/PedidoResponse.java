@@ -1,6 +1,7 @@
 package grafica.pedidos.api.domain.pedido;
 
 import grafica.pedidos.api.domain.statusPedido.StatusPedido;
+import org.springframework.data.domain.Page;
 
 import java.time.LocalDateTime;
 
@@ -26,5 +27,11 @@ public record PedidoResponse(
                 pedido.getStatusPedido(),
                 pedido.getVendedor().getFuncionario().getNome(),
                 pedido.getCopiador().getFuncionario().getNome());
+    }
+
+    public static Page<PedidoResponse> converter(Page<Pedido> pedidos) {
+    }
+
+    public static PedidoResponse converterUmProduto(Pedido pedido) {
     }
 }

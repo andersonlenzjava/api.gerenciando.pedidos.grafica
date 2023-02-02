@@ -24,4 +24,7 @@ public record PedidoRegister(
         @Positive
         Long produtorCopiasId
 ) {
+
+        public Pedido converter() {
+        }
 }

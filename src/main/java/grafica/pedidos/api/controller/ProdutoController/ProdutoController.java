@@ -34,33 +34,38 @@ public class ProdutoController {
     }
 
     @PostMapping
-    public void cadastrarProduto(
-            @RequestBody @Valid ProdutoRegister produtoRegister, UriComponentsBuilder uriBuilder) {
+    public ResponseEntity<ProdutoResponse> cadastrarProduto(
+            @RequestBody @Valid ProdutoRegister produtoRegister, UriComponentsBuilder uriBuilder) throws Exception {
         return produtoService.cadastrarProduto(produtoRegister, uriBuilder);
     }
 
     @PutMapping("/atualizarDados/{produtoId}")
     @Transactional
-    public void atualizarDadosProduto(
-            @PathVariable Long produtoId, @RequestBody @Valid ProdutoRegister produtoRegister) {
-        return produtoService.atualizarDadosProduto(produtoId, produtoRegister);
+    public ResponseEntity<ProdutoResponse> atualizarDadosProduto(
+            @PathVariable Long produtoId,
+            @RequestBody @Valid ProdutoRegister produtoRegister, UriComponentsBuilder uriBuilder) throws Exception {
+        return produtoService.atualizarDadosProduto(produtoId, produtoRegister, uriBuilder);
     }
 
 // -------------------------------------------------------------------
 //    Ativar Desativar
 
-    @PutMapping("/desativar/{produtoId}")
-    @Transactional
-    public void desativarProduto(
-            @PathVariable Long produtoId, @RequestBody @Valid ProdutoRegister produtoRegister) {
-        return produtoService.desativarProduto(produtoId, produtoRegister);
-    }
-
     @PutMapping("/ativar/{produtoId}")
     @Transactional
-    public void ativarProduto(
-            @PathVariable Long produtoId, @RequestBody @Valid ProdutoRegister produtoRegister) {
-        return produtoService.ativarProduto(produtoId, produtoRegister);
+    public ResponseEntity<ProdutoResponse> ativarProduto(
+            @PathVariable Long produtoId,
+            @RequestBody @Valid ProdutoRegister produtoRegister, UriComponentsBuilder uriBuilder) throws Exception {
+        return produtoService.ativarProduto(produtoId, produtoRegister, uriBuilder);
     }
+
+    @PutMapping("/desativar/{produtoId}")
+    @Transactional
+    public ResponseEntity<ProdutoResponse> desativarProduto(
+            @PathVariable Long produtoId,
+            @RequestBody @Valid ProdutoRegister produtoRegister, UriComponentsBuilder uriBuilder) throws Exception {
+        return produtoService.desativarProduto(produtoId, produtoRegister, uriBuilder);
+    }
+
+
 
 }

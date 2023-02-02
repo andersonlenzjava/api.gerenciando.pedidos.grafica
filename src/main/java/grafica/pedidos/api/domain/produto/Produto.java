@@ -20,14 +20,24 @@ public class Produto {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
+    private String codigo;
     private BigDecimal valorProduto;
     private Boolean ativo = true;
 
-    private void CadastrarProduto(
+    public  Produto(
             String name,
+            String codigo,
             BigDecimal valorProduto) {
         this.name = name;
+        this.codigo = codigo;
         this.valorProduto = valorProduto;
     }
 
+    public void ativar() {
+        this.ativo = true;
+    }
+
+    public void desativar() {
+        this.ativo = false;
+    }
 }

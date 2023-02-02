@@ -12,6 +12,9 @@ public record ProdutoRegister(
         String name,
 
         @NotBlank
+        String codigo,
+
+        @NotBlank
         @Positive
         Double valorProduto,
 
@@ -24,4 +27,9 @@ public record ProdutoRegister(
         @NotBlank
         String cpfGerenteFinanceiro
 ) {
+        public Produto converter() {
+                BigDecimal valorProd = new BigDecimal(this.valorProduto);
+                Produto produto = new Produto(this.name, this.codigo, valorProd);
+                return produto;
+        }
 }
