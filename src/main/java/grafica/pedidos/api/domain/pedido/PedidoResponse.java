@@ -1,5 +1,6 @@
 package grafica.pedidos.api.domain.pedido;
 
+import grafica.pedidos.api.domain.funcionario.empregado.contador.ContadorResponse;
 import grafica.pedidos.api.domain.statusPedido.StatusPedido;
 import org.springframework.data.domain.Page;
 
@@ -30,8 +31,10 @@ public record PedidoResponse(
     }
 
     public static Page<PedidoResponse> converter(Page<Pedido> pedidos) {
+        return pedidos.map(PedidoResponse::new);
     }
 
     public static PedidoResponse converterUmProduto(Pedido pedido) {
+        return new PedidoResponse(pedido);
     }
 }

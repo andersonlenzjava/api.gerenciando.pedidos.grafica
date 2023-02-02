@@ -1,13 +1,19 @@
 package grafica.pedidos.api.service.pedido;
 
+import grafica.pedidos.api.domain.funcionario.empregado.vendedor.Vendedor;
+import grafica.pedidos.api.domain.funcionario.empregado.vendedor.VendedorRepository;
 import grafica.pedidos.api.domain.pedido.Pedido;
 import grafica.pedidos.api.domain.pedido.PedidoRegister;
 import grafica.pedidos.api.domain.pedido.PedidoRepository;
 import grafica.pedidos.api.domain.pedido.PedidoResponse;
+import grafica.pedidos.api.domain.produto.Produto;
+import grafica.pedidos.api.domain.produto.ProdutoRepository;
 import grafica.pedidos.api.domain.statusPedido.StatusPedido;
 import grafica.pedidos.api.infra.exeption.ItemInesistenteException;
 import grafica.pedidos.api.infra.exeption.PedidoInalteravelException;
 import grafica.pedidos.api.infra.exeption.ValorPagoInsuficienteException;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Positive;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -52,9 +58,9 @@ public class PedidoService {
 
     //abrirPedido
     public ResponseEntity<PedidoResponse> abrirPedido(
-            PedidoRegister pedidoRegister, UriComponentsBuilder uriBuilder) {
+            PedidoRegister pedidoRegister, UriComponentsBuilder uriBuilder) throws ItemInesistenteException {
 
-        Pedido pedido = pedidoRegister.converter();
+        Pedido pedido = converterPedidoEntrada(pedidoRegister);
 
         pedido.setDataEmissao(LocalDateTime.now());
         pedido.setStatusPedido(StatusPedido.ABERTO);
@@ -71,7 +77,7 @@ public class PedidoService {
             throws PedidoInalteravelException, ItemInesistenteException {
         Optional<Pedido> pedidoOptional = pedidoRepository.findById(pedidoId);
         if (pedidoOptional.isPresent()) {
-            Pedido pedido = pedidoRegister.converter();
+            Pedido pedido = converterPedidoEntrada(pedidoRegister);
             if ((pedido.getStatusPedido().equals(StatusPedido.ABERTO))
                     || (pedido.getStatusPedido().equals(StatusPedido.FILA))) {
 
@@ -276,4 +282,31 @@ public class PedidoService {
         throw new ItemInesistenteException("Não há pedidos há imprimir");
     }
 
+//    ---------------------------------------------------------------------
+//    ConverterRegister
+
+    @Autowired
+    private ProdutoRepository produtoRepository;
+
+    @Autowired
+    private VendedorRepository vendedorRepository;
+
+
+    private Pedido converterPedidoEntrada(PedidoRegister pedidoRegister) throws ItemInesistenteException {
+
+        Optional<Produto> produtoOptional = produtoRepository.findById(pedidoRegister.produtoId());
+        Optional<Vendedor> vendedorOptional = vendedorRepository.findById(pedidoRegister.vendedorId());
+
+        if (produtoOptional.isPresent() && vendedorOptional.isPresent()) {
+            Pedido pedido = new Pedido(
+                    pedidoRegister.nomeCliente(),
+                    produtoOptional.get(),
+                    pedidoRegister.quantidade(),
+                    vendedorOptional.get());
+
+            return pedido;
+
+        }
+        throw new ItemInesistenteException("Produto ou vendedor inesistente!!");
+    }
 }

@@ -43,7 +43,7 @@ public class Pedido {
     @ManyToOne
     private Copiador copiador; // atribuido ao chegar na produçao
 
-    private Pedido (String nomeCliente,
+    public Pedido (String nomeCliente,
                     Produto produto,
                     Double quantidade,
                     Vendedor vendedor) {

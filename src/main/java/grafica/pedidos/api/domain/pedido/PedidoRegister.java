@@ -1,5 +1,6 @@
 package grafica.pedidos.api.domain.pedido;
 
+import grafica.pedidos.api.domain.funcionario.empregado.contador.Contador;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Positive;
 
@@ -18,13 +19,7 @@ public record PedidoRegister(
 
         @NotBlank
         @Positive
-        Long vendedorId,
+        Long vendedorId
 
-        @NotBlank
-        @Positive
-        Long produtorCopiasId
 ) {
-
-        public Pedido converter() {
-        }
 }
