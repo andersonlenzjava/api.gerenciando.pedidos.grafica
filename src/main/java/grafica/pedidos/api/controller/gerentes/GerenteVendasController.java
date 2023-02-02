@@ -2,6 +2,8 @@ package grafica.pedidos.api.controller.gerentes;
 
 import grafica.pedidos.api.domain.funcionario.empregado.vendedor.VendedorRegister;
 import grafica.pedidos.api.domain.funcionario.empregado.vendedor.VendedorResponse;
+import grafica.pedidos.api.domain.pedido.PedidoResponse;
+import grafica.pedidos.api.infra.exeption.ItemInesistenteException;
 import grafica.pedidos.api.service.empregado.VendedorService;
 import grafica.pedidos.api.service.pedido.PedidoService;
 import jakarta.transaction.Transactional;
@@ -64,19 +66,17 @@ public class GerenteVendasController {
     @Autowired
     private PedidoService pedidoService;
 
-    @DeleteMapping
+    @DeleteMapping("/deletarPedido/{id}")
     @Transactional
-    public void cancelarPedido(@PathVariable Long id) {
+    public ResponseEntity<?> cancelarPedido(@PathVariable Long id) throws ItemInesistenteException {
         return pedidoService.cancelarPedido(id);
     }
 
-    @GetMapping
-    public void buscarFilaPedidos(
-            @PageableDefault(sort = "id", direction = Sort.Direction.ASC, page = 0, size = 10) Pageable paginacao) {
+    @GetMapping("/buscarPedidosFila")
+    public Page<PedidoResponse> buscarFilaPedidos(
+            @PageableDefault(sort = "id", direction = Sort.Direction.ASC, page = 0, size = 10) Pageable paginacao) throws ItemInesistenteException {
         return pedidoService.buscarFilaPedidos(paginacao);
     }
 
 }
 
-
-}

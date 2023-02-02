@@ -18,9 +18,10 @@ public record ProdutoResponse(
                 produto.getValorProduto());
     }
 
+    public static Page<ProdutoResponse> converter(Page<Produto> produto) {
+    }
+
     public static ProdutoResponse converterUmProduto(Produto produto) {
     }
 
-    public static Page<ProdutoResponse> converter(Page<Produto> produto) {
-    }
 }

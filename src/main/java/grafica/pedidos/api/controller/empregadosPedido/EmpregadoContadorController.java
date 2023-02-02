@@ -1,6 +1,7 @@
 package grafica.pedidos.api.controller.empregadosPedido;
 
 import grafica.pedidos.api.domain.pedido.PedidoResponse;
+import grafica.pedidos.api.infra.exeption.ItemInesistenteException;
 import grafica.pedidos.api.service.pedido.PedidoService;
 import grafica.pedidos.api.service.produto.ProdutoService;
 import jakarta.transaction.Transactional;
@@ -11,6 +12,9 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.util.UriComponentsBuilder;
+
+import java.math.BigDecimal;
 
 @RestController
 @RequestMapping("/contador")
@@ -22,34 +26,34 @@ public class EmpregadoContadorController {
     @Autowired
     private ProdutoService produtoService;
 
-    @PutMapping("/documentar/{pedidoId}")
-    @Transactional
-    public void documentarPedido(@PathVariable Long pedidoId) {
-        return pedidoService.documentarPedido(pedidoId);
-    }
 
     @GetMapping
-    public Page<PedidoResponse> listarPedidos(
+    public Page<PedidoResponse> listarPedidosPagoFinalizado(
+            @RequestParam(required = false) String nomeProduto,
             @PageableDefault(sort = "id", direction = Sort.Direction.ASC, page = 0, size = 10) Pageable paginacao) {
-        return pedidoService.listarPedidos(paginacao);
+        return pedidoService.listarPedidosPagoFinalizado(nomeProduto, paginacao);
     }
 
-    @GetMapping("/{pedidoId}")
-    public ResponseEntity<PedidoResponse> listarPedidoPorId(@PathVariable Long pedidoId) {
-        return pedidoService.listarPedidoPorId(pedidoId);
+    @PutMapping("/documentar/{pedidoId}")
+    @Transactional
+    public ResponseEntity<PedidoResponse> documentarPedido(
+            @PathVariable Long pedidoId, UriComponentsBuilder uriBuilder) throws ItemInesistenteException {
+        return pedidoService.documentarPedido(pedidoId, uriBuilder);
     }
 
     @GetMapping("/porCliente/{nomeCliente}")
-    public ResponseEntity<PedidoResponse> pedidosPorNomecliente(
-            @PathVariable Long nomeCliente,
-            @PageableDefault(sort = "id", direction = Sort.Direction.ASC, page = 0, size = 10) Pageable paginacao) {
-        return pedidoService.pedidosPorNomecliente(nomeCliente, paginacao);
+    public Page<PedidoResponse> pedidosPorNomecliente(
+            @PathVariable String nomeCliente,
+            @PageableDefault(sort = "id", direction = Sort.Direction.ASC, page = 0, size = 10) Pageable paginacao)
+            throws ItemInesistenteException {
+        return pedidoService.pedidosPorNomeCliente(nomeCliente, paginacao);
     }
 
     @GetMapping("/maioresQue/{valorPedido}")
-    public ResponseEntity<PedidoResponse> pedidosMaioresQue(
-            @PathVariable Long valorPedido,
-            @PageableDefault(sort = "id", direction = Sort.Direction.ASC, page = 0, size = 10) Pageable paginacao) {
+    public Page<PedidoResponse> pedidosMaioresQue(
+            @PathVariable BigDecimal valorPedido,
+            @PageableDefault(sort = "id", direction = Sort.Direction.ASC, page = 0, size = 10) Pageable paginacao)
+            throws ItemInesistenteException {
         return pedidoService.pedidosMaioresQue(valorPedido, paginacao);
     }
 
@@ -57,10 +61,11 @@ public class EmpregadoContadorController {
 //    Produto
 
     @GetMapping("/Produto/{nomeProduto}")
-    public void listarPedidosPorProduto(
-            @PathVariable Long nomeProduto,
-            @PageableDefault(sort = "id", direction = Sort.Direction.ASC, page = 0, size = 10) Pageable paginacao) {
-        return produtoService.listarPedidosPorProduto(nomeProduto, paginacao);
+    public Page<PedidoResponse> listarPedidosPorProduto(
+            @PathVariable String nomeProduto,
+            @PageableDefault(sort = "id", direction = Sort.Direction.ASC, page = 0, size = 10) Pageable paginacao)
+            throws ItemInesistenteException {
+        return pedidoService.listarPedidosPorProduto(nomeProduto, paginacao);
     }
 
 //    ---------------------------------------------------------------------------

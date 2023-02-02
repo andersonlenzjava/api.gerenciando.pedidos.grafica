@@ -56,10 +56,9 @@ public class EmpregadoVendedorController {
     @PutMapping("/colocarFila/{pedidoId}")
     @Transactional
     public ResponseEntity<PedidoResponse> colocarFilaProducao(
-            @PathVariable Long pedidoId,
-            @RequestBody @Valid PedidoRegister pedidoRegister, UriComponentsBuilder uriBuilder)
+            @PathVariable Long pedidoId, UriComponentsBuilder uriBuilder)
             throws PedidoInalteravelException, ItemInesistenteException {
-        return pedidoService.colocarFilaProducao(pedidoId, pedidoRegister, uriBuilder);
+        return pedidoService.colocarFilaProducao(pedidoId,  uriBuilder);
     }
 
     @PutMapping("/fechar/{pedidoId}")

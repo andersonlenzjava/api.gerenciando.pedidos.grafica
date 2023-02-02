@@ -86,11 +86,11 @@ public class PedidoService {
 
     //colocarFilaProducao
     public ResponseEntity<PedidoResponse> colocarFilaProducao(
-            Long pedidoId, PedidoRegister pedidoRegister, UriComponentsBuilder uriBuilder)
+            Long pedidoId,  UriComponentsBuilder uriBuilder)
             throws ItemInesistenteException {
         Optional<Pedido> pedidoOptional = pedidoRepository.findById(pedidoId);
         if (pedidoOptional.isPresent()) {
-            Pedido pedido = pedidoRegister.converter();
+            Pedido pedido = pedidoOptional.get();
             if (pedido.getStatusPedido().equals(StatusPedido.ABERTO)) {
 
                 pedido.setStatusPedido(StatusPedido.FILA);
@@ -146,9 +146,21 @@ public class PedidoService {
         throw new ItemInesistenteException("Não hé pedidos há imprimir");
     }
 
+    //listarPedidosProduzindo
+    public Page<PedidoResponse> listarPedidosProduzindo(String nomeProduto, Pageable paginacao) {
+        if (nomeProduto == null) {
+            Page<Pedido> pedidos = pedidoRepository.findByStatusPedido(StatusPedido.PRODUZINDO, paginacao);
+            return PedidoResponse.converter(pedidos);
+        } else {
+            Page<Pedido> pedidos = pedidoRepository
+                    .findByProdutoNameIgnoreCaseAndStatusPedido(nomeProduto, StatusPedido.PRODUZINDO, paginacao);
+            return PedidoResponse.converter(pedidos);
+        }
+    }
+
+
     //fecharImpressao
-    public ResponseEntity<PedidoResponse> fecharImpressao(
-            Long pedidoId, UriComponentsBuilder uriBuilder)
+    public ResponseEntity<PedidoResponse> fecharImpressao(Long pedidoId, UriComponentsBuilder uriBuilder)
             throws ItemInesistenteException {
 
         Optional<Pedido> pedidoOptional = pedidoRepository.findById(pedidoId);
@@ -167,6 +179,101 @@ public class PedidoService {
             throw new ItemInesistenteException("Pedido não está em producao!");
         }
         throw new ItemInesistenteException("Pedido inesistente!");
+    }
+
+//    ---------------------------------------------------------------------
+//    Contador
+
+    //listarPedidosPagoFinalizado
+    public Page<PedidoResponse> listarPedidosPagoFinalizado(String nomeProduto, Pageable paginacao) {
+        if (nomeProduto == null) {
+            Page<Pedido> pedidos = pedidoRepository.findByStatusPedido(StatusPedido.PAGOFINALIZADO, paginacao);
+            return PedidoResponse.converter(pedidos);
+        } else {
+            Page<Pedido> pedidos = pedidoRepository
+                    .findByProdutoNameIgnoreCaseAndStatusPedido(nomeProduto, StatusPedido.PAGOFINALIZADO, paginacao);
+            return PedidoResponse.converter(pedidos);
+        }
+    }
+
+    //documentarPedido
+    public ResponseEntity<PedidoResponse> documentarPedido(
+            Long pedidoId,  UriComponentsBuilder uriBuilder)
+            throws ItemInesistenteException {
+        Optional<Pedido> pedidoOptional = pedidoRepository.findById(pedidoId);
+        if (pedidoOptional.isPresent()) {
+            Pedido pedido = pedidoOptional.get();
+            if (pedido.getStatusPedido().equals(StatusPedido.PAGOFINALIZADO)) {
+
+                pedido.setStatusPedido(StatusPedido.REGISTRADO);
+
+                pedidoRepository.save(pedido);
+                URI uri = uriBuilder.path("/vendedor/{pedidoId}").buildAndExpand(pedido.getId()).toUri();
+                return ResponseEntity.created(uri).body(new PedidoResponse(pedido));
+            }
+            throw new ItemInesistenteException("Pedido não pode ser documentado");
+        }
+        throw new ItemInesistenteException("Pedido inexistente!");
+    }
+
+    //GetPorNomeCliente
+    public Page<PedidoResponse> pedidosPorNomeCliente(
+            String nomeCliente, Pageable paginacao) throws ItemInesistenteException {
+        if (!(nomeCliente == null)) {
+            Page<Pedido> pedidos = pedidoRepository.findByNomeClienteIgnoreCase(nomeCliente, paginacao);
+            return PedidoResponse.converter(pedidos);
+        }
+        throw new ItemInesistenteException("Cliente inesistente!");
+    }
+
+    //GetPedidosMaioresQue
+    public Page<PedidoResponse> pedidosMaioresQue(
+            BigDecimal valorPedido, Pageable paginacao) throws ItemInesistenteException {
+        if (!(valorPedido == null)) {
+            Page<Pedido> pedidos = pedidoRepository.findMaiorQue(valorPedido, paginacao);
+            return PedidoResponse.converter(pedidos);
+        }
+        throw new ItemInesistenteException("Valor não especificado!");
+    }
+
+
+    //GetListarPedidosPorProduto
+    public Page<PedidoResponse> listarPedidosPorProduto(
+            String nomeProduto, Pageable paginacao) throws ItemInesistenteException {
+        if (!(nomeProduto == null)) {
+            Page<Pedido> pedidos = pedidoRepository.findByProdutoNameIgnoreCase(nomeProduto, paginacao);
+            return PedidoResponse.converter(pedidos);
+        }
+        throw new ItemInesistenteException("Cliente inesistente!");
+    }
+
+//    ---------------------------------------------
+//    Gerente
+
+    public ResponseEntity<?> cancelarPedido(Long id) throws ItemInesistenteException {
+        Optional<Pedido> pedidoOptional = pedidoRepository.findById(id);
+        if(pedidoOptional.isPresent()) {
+            Pedido pedido = pedidoOptional.get();
+
+            if ((pedido.getStatusPedido().equals(StatusPedido.ABERTO))
+                    || (pedido.getStatusPedido().equals(StatusPedido.FILA))) {
+                pedidoRepository.deleteById(id);
+                return ResponseEntity.noContent().build();
+            }
+        }
+        throw new ItemInesistenteException("Pedido inesistente!");
+    }
+
+    //buscarFilaPedidos
+    public Page<PedidoResponse> buscarFilaPedidos(Pageable paginacao)
+            throws ItemInesistenteException {
+
+        Page<Pedido> listaPedidos = pedidoRepository.findByStatusPedido(StatusPedido.FILA, paginacao);
+        if (!listaPedidos.isEmpty()) {
+
+            return PedidoResponse.converter(listaPedidos);
+        }
+        throw new ItemInesistenteException("Não há pedidos há imprimir");
     }
 
 }

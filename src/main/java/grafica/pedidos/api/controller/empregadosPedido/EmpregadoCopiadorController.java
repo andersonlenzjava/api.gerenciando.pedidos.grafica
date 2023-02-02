@@ -5,6 +5,10 @@ import grafica.pedidos.api.infra.exeption.ItemInesistenteException;
 import grafica.pedidos.api.service.pedido.PedidoService;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
@@ -16,6 +20,7 @@ public class EmpregadoCopiadorController {
     @Autowired
     private PedidoService pedidoService;
 
+
     @PutMapping("/tirarFila")
     @Transactional
     public ResponseEntity<PedidoResponse> tirarFilaProduzir(
@@ -23,11 +28,17 @@ public class EmpregadoCopiadorController {
         return pedidoService.tirarFilaProduzir(uriBuilder);
     }
 
-    // pedidos produzindo
+    @GetMapping
+    public Page<PedidoResponse> listarPedidosProduzindo(
+            @RequestParam(required = false) String nomeProduto,
+            @PageableDefault(sort = "id", direction = Sort.Direction.ASC, page = 0, size = 10) Pageable paginacao) {
+        return pedidoService.listarPedidosProduzindo(nomeProduto, paginacao);
+    }
 
     @PutMapping("/fecharImpressao/{pedidoId}")
     @Transactional
-    public void fecharImpressao(@PathVariable Long pedidoId, UriComponentsBuilder uriBuilder) {
+    public ResponseEntity<PedidoResponse> fecharImpressao(
+            @PathVariable Long pedidoId, UriComponentsBuilder uriBuilder) throws ItemInesistenteException {
         return pedidoService.fecharImpressao(pedidoId, uriBuilder);
     }
 

@@ -2,6 +2,8 @@ package grafica.pedidos.api.controller.gerentes;
 
 import grafica.pedidos.api.domain.funcionario.empregado.copiador.CopiadorRegister;
 import grafica.pedidos.api.domain.funcionario.empregado.copiador.CopiadorResponse;
+import grafica.pedidos.api.domain.pedido.PedidoResponse;
+import grafica.pedidos.api.infra.exeption.ItemInesistenteException;
 import grafica.pedidos.api.service.empregado.CopiadorService;
 import grafica.pedidos.api.service.pedido.PedidoService;
 import jakarta.transaction.Transactional;
@@ -72,9 +74,10 @@ public class GerenteProducaoController {
         return pedidoService.cancelarPedido(id);
     }
 
-    @GetMapping
-    public void buscarFilaPedidos(
-            @PageableDefault(sort = "id", direction = Sort.Direction.ASC, page = 0, size = 10) Pageable paginacao) {
+
+    @GetMapping("/buscarPedidosFila")
+    public Page<PedidoResponse> buscarFilaPedidos(
+            @PageableDefault(sort = "id", direction = Sort.Direction.ASC, page = 0, size = 10) Pageable paginacao) throws ItemInesistenteException {
         return pedidoService.buscarFilaPedidos(paginacao);
     }
 
