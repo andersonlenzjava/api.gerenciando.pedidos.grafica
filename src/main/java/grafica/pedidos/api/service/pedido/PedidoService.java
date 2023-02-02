@@ -77,13 +77,17 @@ public class PedidoService {
     public ResponseEntity<PedidoResponse> atualizarDadosPedido(
             Long pedidoId, PedidoRegister pedidoRegister, UriComponentsBuilder uriBuilder)
             throws PedidoInalteravelException, ItemInesistenteException {
+
         Optional<Pedido> pedidoOptional = pedidoRepository.findById(pedidoId);
+
         if (pedidoOptional.isPresent()) {
             Pedido pedido = converterPedidoEntrada(pedidoRegister);
+
             if ((pedido.getStatusPedido().equals(StatusPedido.ABERTO))
                     || (pedido.getStatusPedido().equals(StatusPedido.FILA))) {
 
                 pedidoRepository.save(pedido);
+
                 URI uri = uriBuilder.path("/vendedor/{pedidoId}").buildAndExpand(pedido.getId()).toUri();
                 return ResponseEntity.created(uri).body(new PedidoResponse(pedido));
             }
@@ -96,11 +100,14 @@ public class PedidoService {
     public ResponseEntity<PedidoResponse> colocarFilaProducao(
             Long pedidoId,  UriComponentsBuilder uriBuilder)
             throws ItemInesistenteException {
-        Optional<Pedido> pedidoOptional = pedidoRepository.findById(pedidoId);
-        if (pedidoOptional.isPresent()) {
-            Pedido pedido = pedidoOptional.get();
-            if (pedido.getStatusPedido().equals(StatusPedido.ABERTO)) {
 
+        Optional<Pedido> pedidoOptional = pedidoRepository.findById(pedidoId);
+
+        if (pedidoOptional.isPresent()) {
+
+            Pedido pedido = pedidoOptional.get();
+
+            if (pedido.getStatusPedido().equals(StatusPedido.ABERTO)) {
                 pedido.setStatusPedido(StatusPedido.FILA);
 
                 pedidoRepository.save(pedido);
@@ -116,12 +123,16 @@ public class PedidoService {
     public ResponseEntity<BigDecimal> calculaTrocoFechaPedido(
             Long pedidoId, BigDecimal valorPago)
             throws PedidoInalteravelException, ItemInesistenteException, ValorPagoInsuficienteException {
+
         Optional<Pedido> pedidoOptional = pedidoRepository.findById(pedidoId);
+
         if (pedidoOptional.isPresent()) {
             Pedido pedido = pedidoOptional.get();
+
             if (pedido.getStatusPedido().equals(StatusPedido.IMPRESSO)) {
 
                 BigDecimal valorTroco = pedido.calcularTroco(valorPago);
+                pedido.setDataFinalizacao(LocalDateTime.now());
                 pedido.setStatusPedido(StatusPedido.PAGOFINALIZADO);
 
                 pedidoRepository.save(pedido);
@@ -156,7 +167,7 @@ public class PedidoService {
 
                 pedidoRepository.save(pedido);
 
-                URI uri = uriBuilder.path("/vendedor/{pedidoId}").buildAndExpand(pedido.getId()).toUri();
+                URI uri = uriBuilder.path("/copiador/{pedidoId}").buildAndExpand(pedido.getId()).toUri();
                 return ResponseEntity.created(uri).body(new PedidoResponse(pedido));
 
             }
@@ -192,7 +203,7 @@ public class PedidoService {
                 pedido.setStatusPedido(StatusPedido.IMPRESSO);
                 pedidoRepository.save(pedido);
 
-                URI uri = uriBuilder.path("/vendedor/{pedidoId}").buildAndExpand(pedido.getId()).toUri();
+                URI uri = uriBuilder.path("/copiador/{pedidoId}").buildAndExpand(pedido.getId()).toUri();
                 return ResponseEntity.created(uri).body(new PedidoResponse(pedido));
             }
             throw new ItemInesistenteException("Pedido não está em producao!");
@@ -227,7 +238,7 @@ public class PedidoService {
                 pedido.setStatusPedido(StatusPedido.REGISTRADO);
 
                 pedidoRepository.save(pedido);
-                URI uri = uriBuilder.path("/vendedor/{pedidoId}").buildAndExpand(pedido.getId()).toUri();
+                URI uri = uriBuilder.path("/contador/{pedidoId}").buildAndExpand(pedido.getId()).toUri();
                 return ResponseEntity.created(uri).body(new PedidoResponse(pedido));
             }
             throw new ItemInesistenteException("Pedido não pode ser documentado");
@@ -267,7 +278,7 @@ public class PedidoService {
     }
 
 //    ---------------------------------------------
-//    Gerente
+//    Gerente producao e vendas
 
     public ResponseEntity<?> cancelarPedido(Long id) throws ItemInesistenteException {
         Optional<Pedido> pedidoOptional = pedidoRepository.findById(id);
@@ -296,7 +307,7 @@ public class PedidoService {
     }
 
 //    ---------------------------------------------------------------------
-//    ConverterRegister
+//    ConverterRegister AUX
 
     @Autowired
     private ProdutoRepository produtoRepository;

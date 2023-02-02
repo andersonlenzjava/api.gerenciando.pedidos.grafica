@@ -68,12 +68,11 @@ public class GerenteProducaoController {
     @Autowired
     private PedidoService pedidoService;
 
-    @DeleteMapping
+    @DeleteMapping("/deletarPedido/{id}")
     @Transactional
-    public void cancelarPedido(@PathVariable Long id) {
+    public ResponseEntity<?> cancelarPedido(@PathVariable Long id) throws ItemInesistenteException {
         return pedidoService.cancelarPedido(id);
     }
-
 
     @GetMapping("/buscarPedidosFila")
     public Page<PedidoResponse> buscarFilaPedidos(

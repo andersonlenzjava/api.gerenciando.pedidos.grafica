@@ -18,4 +18,11 @@ public class ChefeGeral {
     @Embedded
     private Funcionario funcionario;
 
+    public ChefeGeral(String cpf,
+                             String nome,
+                             String dataNascimento,
+                             String telefone) {
+        this.funcionario = new Funcionario (cpf, nome, dataNascimento, telefone);
+    }
+
 }

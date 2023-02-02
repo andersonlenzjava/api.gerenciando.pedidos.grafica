@@ -16,7 +16,6 @@ public record CopiadorRegister(
                 this.funcionarioRegister.cpf(),
                 this.funcionarioRegister.nome(),
                 this.funcionarioRegister.dataNascimento(),
-                this.funcionarioRegister.telefone(),
-                this.funcionarioRegister.statusTrabalho());
+                this.funcionarioRegister.telefone());
     }
 }

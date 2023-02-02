@@ -24,17 +24,18 @@ public class Pedido {
     private Long id;
     private String nomeCliente;
 
-    @ManyToOne
-    private Produto produto;
-
-    private Double quantidade;
-
     private BigDecimal valorTotalServico = BigDecimal.ZERO;
-    private BigDecimal troco = BigDecimal.ZERO;
     private BigDecimal valorPago = BigDecimal.ZERO;
+    private BigDecimal troco = BigDecimal.ZERO;
 
     private LocalDateTime dataEmissao; // gerada automatico ao ser criado
     private LocalDateTime dataFinalizacao; // geraado automatico ao ser fechado
+
+    private Double quantidade;
+    @ManyToOne
+    private Produto produto;
+
+    @Enumerated(EnumType.STRING)
     private StatusPedido statusPedido; // gerado automático em outros pontos
 
     @ManyToOne

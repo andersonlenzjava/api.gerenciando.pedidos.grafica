@@ -40,7 +40,7 @@ public class EmpregadoVendedorController {
 
     @PostMapping
     public ResponseEntity<PedidoResponse> abrirPedido(
-            @RequestBody @Valid PedidoRegister pedidoRegister, UriComponentsBuilder uriBuilder) {
+            @RequestBody @Valid PedidoRegister pedidoRegister, UriComponentsBuilder uriBuilder) throws ItemInesistenteException {
         return pedidoService.abrirPedido(pedidoRegister, uriBuilder);
     }
 
