@@ -20,7 +20,6 @@ public class EmpregadoCopiadorController {
     @Autowired
     private PedidoService pedidoService;
 
-
     @PutMapping("/tirarFila/{copiadorId}")
     @Transactional
     public ResponseEntity<PedidoResponse> tirarFilaProduzir(

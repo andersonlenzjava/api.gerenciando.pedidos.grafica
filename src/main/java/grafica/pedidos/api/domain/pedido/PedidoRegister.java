@@ -1,6 +1,7 @@
 package grafica.pedidos.api.domain.pedido;
 
 import grafica.pedidos.api.domain.funcionario.empregado.contador.Contador;
+import jakarta.validation.constraints.Digits;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Positive;
 
@@ -14,8 +15,8 @@ public record PedidoRegister(
         Long produtoId,
 
         @NotBlank
-        @Positive
-        Double quantidade,
+        @Digits(integer=4, fraction=0)
+        double quantidade,
 
         @NotBlank
         @Positive

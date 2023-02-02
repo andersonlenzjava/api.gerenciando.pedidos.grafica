@@ -5,6 +5,7 @@ import grafica.pedidos.api.domain.funcionario.gerente.gerenteFinanceiro.GerenteF
 import grafica.pedidos.api.service.gerente.GerenteFinanceiroService;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -20,6 +21,7 @@ public class CGFinaceiroController {
 //-----------------------------------------------------------
 //    Chefiar GerenteFinaceiro
 
+    @Autowired
     private GerenteFinanceiroService gerenteFinaceiroService;
 
     @GetMapping

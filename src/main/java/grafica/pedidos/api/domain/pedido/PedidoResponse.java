@@ -10,7 +10,7 @@ public record PedidoResponse(
         Long id,
         String nomeCliente,
         String nomeProduto,
-        Double quantidade,
+        double quantidade,
         LocalDateTime dataEmissao,
         LocalDateTime dataFinalizacao,
         StatusPedido statusPedido,

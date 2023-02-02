@@ -31,7 +31,7 @@ public class Pedido {
     private LocalDateTime dataEmissao; // gerada automatico ao ser criado
     private LocalDateTime dataFinalizacao; // geraado automatico ao ser fechado
 
-    private Double quantidade;
+    private double quantidade;
     @ManyToOne
     private Produto produto;
 

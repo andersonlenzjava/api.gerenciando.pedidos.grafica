@@ -1,5 +1,6 @@
 package grafica.pedidos.api.domain.produto;
 
+import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.Digits;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Positive;
@@ -14,9 +15,9 @@ public record ProdutoRegister(
         @NotBlank
         String codigo,
 
-        @NotBlank
-        @Positive
-        Double valorProduto,
+        @DecimalMin(value = "0.1", inclusive = true)
+        @Digits(integer=3, fraction=2)
+        BigDecimal valorProduto,
 
         @NotBlank
         String cpfGerenteVendas,
@@ -28,8 +29,7 @@ public record ProdutoRegister(
         String cpfGerenteFinanceiro
 ) {
         public Produto converter() {
-                BigDecimal valorProd = new BigDecimal(this.valorProduto);
-                Produto produto = new Produto(this.name, this.codigo, valorProd);
+                Produto produto = new Produto(this.name, this.codigo, this.valorProduto);
                 return produto;
         }
 }

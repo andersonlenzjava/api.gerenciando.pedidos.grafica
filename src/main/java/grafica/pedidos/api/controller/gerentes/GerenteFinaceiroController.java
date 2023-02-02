@@ -5,6 +5,7 @@ import grafica.pedidos.api.domain.funcionario.empregado.contador.ContadorRespons
 import grafica.pedidos.api.service.empregado.ContadorService;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -20,6 +21,7 @@ public class GerenteFinaceiroController {
 //----------------------------------------------------------------------------------
 //    Gerenciar Contador
 
+    @Autowired
     private ContadorService contadorService;
 
     @GetMapping

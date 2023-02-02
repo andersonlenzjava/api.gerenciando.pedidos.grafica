@@ -23,10 +23,6 @@ public class EmpregadoContadorController {
     @Autowired
     private PedidoService pedidoService;
 
-    @Autowired
-    private ProdutoService produtoService;
-
-
     @GetMapping
     public Page<PedidoResponse> listarPedidosPagoFinalizado(
             @RequestParam(required = false) String nomeProduto,

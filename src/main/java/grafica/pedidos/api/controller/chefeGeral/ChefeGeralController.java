@@ -8,6 +8,7 @@ import grafica.pedidos.api.service.gerente.ChefeGeralService;
 import grafica.pedidos.api.service.gerente.GerenteFinanceiroService;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -23,6 +24,7 @@ public class ChefeGeralController {
 //-----------------------------------------------------------
 //    Chefiar ChefeGeral
 
+    @Autowired
     private ChefeGeralService chefeGeralService;
 
     @GetMapping
