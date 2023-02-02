@@ -46,10 +46,10 @@ public class VendedorService {
     public ResponseEntity<VendedorResponse> cadastrarVendedor(VendedorRegister vendedorRegister,
                                                               UriComponentsBuilder uriBuilder) throws Exception {
 
-        Optional<Vendedor> contadorOptional = vendedorRepository.findByFuncionarioCpfIgnoreCase(
+        Optional<Vendedor> vendedorOptional = vendedorRepository.findByFuncionarioCpfIgnoreCase(
                 vendedorRegister.funcionarioRegister().cpf());
 
-        if (contadorOptional.isEmpty()) {
+        if (vendedorOptional.isEmpty()) {
             Vendedor vendedor = vendedorRegister.converter();
             vendedorRepository.save(vendedor);
 
@@ -63,10 +63,10 @@ public class VendedorService {
 
     //atualizar
     public ResponseEntity<VendedorResponse> atualizarVendedor(Long id, VendedorRegister vendedorRegister) {
-        Optional<Vendedor> contadorOptional = vendedorRepository.findById(id);
-        if (contadorOptional.isPresent()) {
+        Optional<Vendedor> vendedorOptional = vendedorRepository.findById(id);
+        if (vendedorOptional.isPresent()) {
 
-            Vendedor vendedor = contadorOptional.get();
+            Vendedor vendedor = vendedorOptional.get();
             vendedor.getFuncionario().setCpf(vendedorRegister.funcionarioRegister().cpf());
             vendedor.getFuncionario().setNome(vendedorRegister.funcionarioRegister().nome());
             vendedor.getFuncionario().setTelefone(vendedorRegister.funcionarioRegister().telefone());

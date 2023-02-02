@@ -23,8 +23,8 @@ public class GerenteVendas {
     public GerenteVendas(String cpf,
                          String nome,
                          String dataNascimento,
-                         String telefone,
-                         String statusTrabalho) {
+                         String telefone) {
+        this.funcionario = new Funcionario (cpf, nome, dataNascimento, telefone);
     }
 
     private void CancelarPedido(Pedido pedido) {}

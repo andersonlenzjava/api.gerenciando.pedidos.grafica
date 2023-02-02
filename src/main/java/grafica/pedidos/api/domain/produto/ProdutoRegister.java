@@ -13,6 +13,15 @@ public record ProdutoRegister(
 
         @NotBlank
         @Positive
-        Double valorProduto
+        Double valorProduto,
+
+        @NotBlank
+        String cpfGerenteVendas,
+
+        @NotBlank
+        String cpfGerenteProducao,
+
+        @NotBlank
+        String cpfGerenteFinanceiro
 ) {
 }

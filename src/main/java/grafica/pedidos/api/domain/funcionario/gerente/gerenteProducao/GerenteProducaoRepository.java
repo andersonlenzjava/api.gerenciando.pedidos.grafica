@@ -10,6 +10,7 @@ import java.util.Optional;
 
 @Repository
 public interface GerenteProducaoRepository extends JpaRepository<GerenteProducao, Long> {
+
     Page<GerenteProducao> findByFuncionarioNomeIgnoreCase(String nomeGerente, Pageable paginacao);
 
     Optional<GerenteProducao> findByFuncionarioCpfIgnoreCase(String cpf);

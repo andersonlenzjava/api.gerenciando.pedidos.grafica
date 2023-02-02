@@ -1,8 +1,6 @@
 package grafica.pedidos.api.domain.funcionario.gerente.gerenteVendas;
 
 import grafica.pedidos.api.domain.funcionario.funcionario.StatusTrabalho;
-import grafica.pedidos.api.domain.funcionario.gerente.gerenteProducao.GerenteProducao;
-import grafica.pedidos.api.domain.funcionario.gerente.gerenteProducao.GerenteProducaoResponse;
 import org.springframework.data.domain.Page;
 
 import java.time.LocalDate;

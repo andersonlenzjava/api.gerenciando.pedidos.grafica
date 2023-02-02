@@ -57,7 +57,7 @@ public class GerenteProducaoService {
             URI uri = uriBuilder.path("/funcionario/CGProducao/{id}").buildAndExpand(gerente.getId()).toUri();
             return ResponseEntity.created(uri).body(new GerenteProducaoResponse(gerente));
         } else {
-            throw new ItemJaExisteException("Gerente já existe");
+            throw new ItemJaExisteException("Gerente de Producao já existe");
         }
     }
 

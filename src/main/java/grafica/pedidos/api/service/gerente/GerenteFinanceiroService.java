@@ -56,7 +56,7 @@ public class GerenteFinanceiroService {
             URI uri = uriBuilder.path("/funcionario/CGFinaceiro/{id}").buildAndExpand(gerente.getId()).toUri();
             return ResponseEntity.created(uri).body(new GerenteFinanceiroResponse(gerente));
         } else {
-            throw new ItemJaExisteException("Vendedor já existe");
+            throw new ItemJaExisteException("Gerente Financeiro já existe");
         }
     }
 

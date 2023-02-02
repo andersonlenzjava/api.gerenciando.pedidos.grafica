@@ -31,7 +31,7 @@ public class CGFinaceiroController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<GerenteFinanceiroResponse> listarGerenteFinaceiro(@PathVariable Long id) {
+    public ResponseEntity<GerenteFinanceiroResponse> buscarGerenteFinaceiro(@PathVariable Long id) {
         return gerenteFinaceiroService.buscarGerenteFinanceiro(id);
     }
 

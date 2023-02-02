@@ -21,8 +21,8 @@ public class Vendedor {
     public Vendedor(String cpf,
                     String nome,
                     String dataNascimento,
-                    String telefone,
-                    String statusTrabalho) {
+                    String telefone) {
+        this.funcionario = new Funcionario (cpf, nome, dataNascimento, telefone);
     }
 
 

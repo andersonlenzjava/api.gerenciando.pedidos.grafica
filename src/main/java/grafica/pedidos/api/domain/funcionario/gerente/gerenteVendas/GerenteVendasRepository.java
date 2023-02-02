@@ -10,6 +10,7 @@ import java.util.Optional;
 
 @Repository
 public interface GerenteVendasRepository extends JpaRepository<GerenteVendas, Long> {
+
     Page<GerenteVendas> findByFuncionarioNomeIgnoreCase(String nomeGerente, Pageable paginacao);
 
     Optional<GerenteVendas> findByFuncionarioCpfIgnoreCase(String cpf);

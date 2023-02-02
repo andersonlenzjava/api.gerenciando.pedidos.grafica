@@ -1,27 +1,30 @@
 package grafica.pedidos.api.controller.empregadosPedido;
 
 import grafica.pedidos.api.domain.funcionario.empregado.copiador.CopiadorRegister;
+import grafica.pedidos.api.domain.pedido.PedidoRegister;
+import grafica.pedidos.api.service.pedido.PedidoService;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
+@RestController
+@RequestMapping("/copiador")
 public class EmpregadoCopiadorController {
 
+    @Autowired
+    private PedidoService pedidoService;
 
-    @PutMapping
+    @PutMapping("/tirarFila/{pedidoId}")
     @Transactional
-    public void tirarFilaProduzir(@PathVariable Long id,
-                                     @RequestBody @Valid CopiadorRegister copiadorRegister) {
-        return copiadorService.atualizarCopiador(id, copiadorRegister);
+    public void tirarFilaProduzir(@PathVariable Long pedidoId) {
+        return pedidoService.tirarFilaProduzir(pedidoId);
     }
 
-    @PutMapping
+    @PutMapping("/fecharImpressao/{pedidoId}")
     @Transactional
-    public void fecharImpressao(@PathVariable Long id,
-                                  @RequestBody @Valid CopiadorRegister copiadorRegister) {
-        return copiadorService.atualizarCopiador(id, copiadorRegister);
+    public void fecharImpressao(@PathVariable Long pedidoId) {
+        return pedidoService.fecharImpressao(pedidoId);
     }
 
 }

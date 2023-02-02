@@ -57,7 +57,7 @@ public class GerenteVendasService {
             URI uri = uriBuilder.path("/funcionario/CGVendas/{id}").buildAndExpand(gerente.getId()).toUri();
             return ResponseEntity.created(uri).body(new GerenteVendasResponse(gerente));
         } else {
-            throw new ItemJaExisteException("Vendedor já existe");
+            throw new ItemJaExisteException("Gerente de Vendas já existe");
         }
     }
 

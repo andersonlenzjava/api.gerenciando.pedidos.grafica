@@ -1,6 +1,5 @@
 package grafica.pedidos.api.service.empregado;
 
-import grafica.pedidos.api.domain.funcionario.empregado.contador.Contador;
 import grafica.pedidos.api.domain.funcionario.empregado.copiador.Copiador;
 import grafica.pedidos.api.domain.funcionario.empregado.copiador.CopiadorRegister;
 import grafica.pedidos.api.domain.funcionario.empregado.copiador.CopiadorRepository;
