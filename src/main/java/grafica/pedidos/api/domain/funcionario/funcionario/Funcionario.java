@@ -18,11 +18,10 @@ public class Funcionario {
 
     private String cpf;
     private String nome;
-    private LocalDate dataNascimento;
+    private String dataNascimento;
     private String telefone;
     private StatusTrabalho statusTrabalho;
 
-    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
     public Funcionario(String cpf,
                        String nome,
@@ -30,15 +29,9 @@ public class Funcionario {
                        String telefone) {
         this.cpf = cpf;
         this.nome = nome;
-        LocalDate dataNasc = LocalDate.parse(dataNascimento,this.formatter);
-        this.dataNascimento = dataNasc;
+        this.dataNascimento = dataNascimento;
         this.telefone = telefone;
         this.statusTrabalho = StatusTrabalho.TRABALHANDO;
-    }
-
-    public void setDataNascimento(String dataNascimento) {
-        LocalDate dataNasc = LocalDate.parse(dataNascimento,this.formatter);
-        this.dataNascimento = dataNasc;
     }
 
     public void setStatusTrabalho(String statusTrabalho) {

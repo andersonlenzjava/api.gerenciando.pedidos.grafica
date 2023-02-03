@@ -7,7 +7,7 @@ import java.time.LocalDate;
 
 public record ChefeGeralResponse(Long id,
                                  String nome,
-                                 LocalDate dataNascimento,
+                                 String dataNascimento,
                                  String telefone,
                                  StatusTrabalho statusTrabalho) {
 
