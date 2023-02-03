@@ -18,6 +18,7 @@ dos pedidos, conforme passam pelos setores da empresa: Vendas, Produção e Cont
 <a href="#-requisitos-apresentados-pelo-cliente">📃 Requisitos apresentados pelo cliente</a></br>
 <a href="#%EF%B8%8F-funcionalidades-estabelecidas">⚙️ Funcionalidades Estabelecidas</a></br>
 <a href="#%EF%B8%8Fetapas">Etapas</a></br>
+<a href="#-tecnologias">Tecnologias</a></br>
 <a href="#como-utilizar">Como utilizar</a></br>
 <a href="#um-melhor-detalhamento-do-uso-desta-api-é-apresentado-no-video-deste-link">Video Projeto</a></br>
 
