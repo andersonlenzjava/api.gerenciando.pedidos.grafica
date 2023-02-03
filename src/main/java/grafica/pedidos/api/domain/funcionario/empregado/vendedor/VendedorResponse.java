@@ -3,9 +3,8 @@ package grafica.pedidos.api.domain.funcionario.empregado.vendedor;
 import grafica.pedidos.api.domain.funcionario.funcionario.StatusTrabalho;
 import org.springframework.data.domain.Page;
 
-import java.time.LocalDate;
-
 public record VendedorResponse(Long id,
+                               String cpf,
                                String nome,
                                String dataNascimento,
                                String telefone,
@@ -13,6 +12,7 @@ public record VendedorResponse(Long id,
 
     public VendedorResponse (Vendedor vendedor) {
         this(vendedor.getId(),
+                vendedor.getFuncionario().getCpf(),
                 vendedor.getFuncionario().getNome(),
                 vendedor.getFuncionario().getDataNascimento(),
                 vendedor.getFuncionario().getTelefone(),

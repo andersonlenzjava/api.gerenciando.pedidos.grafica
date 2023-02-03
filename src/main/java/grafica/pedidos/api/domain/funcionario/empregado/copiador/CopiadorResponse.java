@@ -3,9 +3,8 @@ package grafica.pedidos.api.domain.funcionario.empregado.copiador;
 import grafica.pedidos.api.domain.funcionario.funcionario.StatusTrabalho;
 import org.springframework.data.domain.Page;
 
-import java.time.LocalDate;
-
 public record CopiadorResponse(Long id,
+                               String cpf,
                                String nome,
                                String dataNascimento,
                                String telefone,
@@ -13,6 +12,7 @@ public record CopiadorResponse(Long id,
 
     public CopiadorResponse (Copiador copiador) {
         this(copiador.getId(),
+                copiador.getFuncionario().getCpf(),
                 copiador.getFuncionario().getNome(),
                 copiador.getFuncionario().getDataNascimento(),
                 copiador.getFuncionario().getTelefone(),
