@@ -6,10 +6,7 @@ import grafica.pedidos.api.domain.funcionario.gerente.gerenteProducao.GerentePro
 import grafica.pedidos.api.domain.funcionario.gerente.gerenteProducao.GerenteProducaoRepository;
 import grafica.pedidos.api.domain.funcionario.gerente.gerenteVendas.GerenteVendas;
 import grafica.pedidos.api.domain.funcionario.gerente.gerenteVendas.GerenteVendasRepository;
-import grafica.pedidos.api.domain.produto.Produto;
-import grafica.pedidos.api.domain.produto.ProdutoRegister;
-import grafica.pedidos.api.domain.produto.ProdutoRepository;
-import grafica.pedidos.api.domain.produto.ProdutoResponse;
+import grafica.pedidos.api.domain.produto.*;
 import grafica.pedidos.api.infra.exeption.ItemInesistenteException;
 import grafica.pedidos.api.infra.exeption.ItemJaExisteException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -122,7 +119,7 @@ public class ProdutoService {
 
     //ativar
     public ResponseEntity<ProdutoResponse> ativarProduto(
-            Long produtoId, ProdutoRegister produtoRegister, UriComponentsBuilder uriBuilder) throws Exception {
+            Long produtoId, ProdutoRegisterAtivarDesativar produtoRegister, UriComponentsBuilder uriBuilder) throws Exception {
         Optional<Produto> produtoOptional = produtoRepository.findById(produtoId);
 
         if (produtoOptional.isPresent()) {
@@ -151,7 +148,7 @@ public class ProdutoService {
 
     //desativar
     public ResponseEntity<ProdutoResponse> desativarProduto(
-            Long produtoId, ProdutoRegister produtoRegister, UriComponentsBuilder uriBuilder) throws Exception {
+            Long produtoId, ProdutoRegisterAtivarDesativar produtoRegister, UriComponentsBuilder uriBuilder) throws Exception {
         Optional<Produto> produtoOptional = produtoRepository.findById(produtoId);
 
         if (produtoOptional.isPresent()) {

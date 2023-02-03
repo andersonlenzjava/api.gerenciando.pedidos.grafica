@@ -1,6 +1,7 @@
 package grafica.pedidos.api.controller.ProdutoController;
 
 import grafica.pedidos.api.domain.produto.ProdutoRegister;
+import grafica.pedidos.api.domain.produto.ProdutoRegisterAtivarDesativar;
 import grafica.pedidos.api.domain.produto.ProdutoResponse;
 import grafica.pedidos.api.service.produto.ProdutoService;
 import jakarta.transaction.Transactional;
@@ -54,7 +55,7 @@ public class ProdutoController {
     @Transactional
     public ResponseEntity<ProdutoResponse> ativarProduto(
             @PathVariable Long produtoId,
-            @RequestBody @Valid ProdutoRegister produtoRegister, UriComponentsBuilder uriBuilder) throws Exception {
+            @RequestBody @Valid ProdutoRegisterAtivarDesativar produtoRegister, UriComponentsBuilder uriBuilder) throws Exception {
         return produtoService.ativarProduto(produtoId, produtoRegister, uriBuilder);
     }
 
@@ -62,7 +63,7 @@ public class ProdutoController {
     @Transactional
     public ResponseEntity<ProdutoResponse> desativarProduto(
             @PathVariable Long produtoId,
-            @RequestBody @Valid ProdutoRegister produtoRegister, UriComponentsBuilder uriBuilder) throws Exception {
+            @RequestBody @Valid ProdutoRegisterAtivarDesativar produtoRegister, UriComponentsBuilder uriBuilder) throws Exception {
         return produtoService.desativarProduto(produtoId, produtoRegister, uriBuilder);
     }
 
