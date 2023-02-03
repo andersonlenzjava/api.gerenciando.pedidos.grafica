@@ -260,7 +260,7 @@ public class PedidoService {
     }
 
     //documentarPedido
-    public ResponseEntity<PedidoResponse> documentarPedido(
+    public ResponseEntity<PedidoResponse> registrarPedido(
             Long pedidoId,  UriComponentsBuilder uriBuilder)
             throws ItemInesistenteException {
         Optional<Pedido> pedidoOptional = pedidoRepository.findById(pedidoId);

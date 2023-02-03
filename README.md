@@ -1,5 +1,14 @@
 # API Gerenciando pedidos de uma gráfica 
 
+## 💻 Sobre o projeto
+
+Este projeto apresenta uma solução para o desafio do desenvolvimento de um sistema 
+para gerenciar as ordens de pedido de uma gráfica e cadastro dos funcionarios em formato de API.
+
+A API permite cadadastrar e gerenciar os funcionarios da empresa. E também fazer o controle 
+dos pedidos, conforme passam pelos setores da empresa: Vendas, Produção e Contabilidade. 
+
+
 ## Requisitos apresentados pelo cliente
 
 
@@ -32,50 +41,48 @@ adicionar funcionários ao quadro de funcionários. O funcionário poderá inclu
 um novo pedido ao sistema que será enviado a produção. Por fim, </br>
 o sistema deve apresentar uma lista de pedidos que estão na fila para serem confeccionados.</br>
 
-## Funcionalidades Estabelecidas 
+## ⚙️ Funcionalidades Estabelecidas
 
-CRUD para:
-  - GerenteVendas
-  - GerenteProducao
-  - GerenteFinanceiro
-  - Vendedor
-  - ProdutorCopias
-  - Financeiro
-  - Produto
-  - Pedido
-
-Funcionalidades
+### ChefeGeral:
+* CRUD de gerentes
  ### Gerentes:
-* Cadastrar funcionário do seu setor
-*  Cadastrar produto em conjunto com os três tipos de gerentes
+* CRUD funcionário do seu setor
+*  CRUD produto em conjunto com os três tipos de gerentes
 *  Cancelar um pedido conforme o statusPedido
 ###  Vendedor:
+* ListarPedidos
+* ListarPedidoPorId
 * AbrirPedido
+* AtualizarDadosPedido
 * ColocarFila
-* FecharPedido
-###  ProdutorCopias:
-*  TirarFila
-*  Produzir
+* CalculaTrocoFecharPedido
+###  Copiador:
+* ListarPedidosFila
+*  TirarFilaProduzir
+* ListarPeidodosProduzindo
 *  FecharImpressao
-###  Financeiro:
+###  Contador:
+* ListarPedidoPagoFinalizado
+* ListarPedidoRegistrado
 *  RegistrarPedido
-*  GerarRelatorios
+*  ListarPedidosPorNome
+* PedidosPorProduto
+* PedidosMaioresQue
 
 ##### Mais funcionalidades podem ser estabelecidas ao longo do projeto conforme necessário para o bom funcionamento do sistema
-
 
 ## Etapas
 
 - [x] Modelagem do relacionamento das entidades.
 - [x] Estabelecimento das funcionalidades.
-  - [ ] CRUD.
-  - [ ] Regras de negócio.
-  - [ ] Modelagem do sistema. 
-    - [ ] Domain.
-      - [ ] Entity.
-      - [ ] Repository.
-      - [ ] EntityRegister.
-      - [ ] EntityResponse.
-    - [ ] Controller.
-    - [ ] Service.
-    - [ ] Migrations. 
+  - [x] CRUD.
+  - [x] Regras de negócio.
+  - [x] Modelagem do sistema. 
+    - [x] Domain.
+      - [x] Entity.
+      - [x] Repository.
+      - [x] EntityRegister.
+      - [x] EntityResponse.
+    - [x] Controller.
+    - [x] Service.
+    - [x] Migrations. 

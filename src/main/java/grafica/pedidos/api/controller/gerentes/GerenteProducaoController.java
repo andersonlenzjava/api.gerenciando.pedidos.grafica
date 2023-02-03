@@ -58,7 +58,7 @@ public class GerenteProducaoController {
 
     @DeleteMapping("/{id}")
     @Transactional
-    public ResponseEntity<?> deletarProdutorCopias(@PathVariable Long id) {
+    public ResponseEntity<?> deletarCopiador(@PathVariable Long id) {
         return copiadorService.removerCopiador(id);
     }
 
@@ -68,16 +68,15 @@ public class GerenteProducaoController {
     @Autowired
     private PedidoService pedidoService;
 
-    @DeleteMapping("/deletarPedido/{id}")
-    @Transactional
-    public ResponseEntity<?> cancelarPedido(@PathVariable Long id) throws ItemInesistenteException {
-        return pedidoService.cancelarPedido(id);
-    }
-
     @GetMapping("/buscarPedidosFila")
     public Page<PedidoResponse> buscarFilaPedidos(
             @PageableDefault(sort = "id", direction = Sort.Direction.ASC, page = 0, size = 10) Pageable paginacao) throws ItemInesistenteException {
         return pedidoService.buscarFilaPedidos(paginacao);
     }
 
+    @DeleteMapping("/deletarPedido/{id}")
+    @Transactional
+    public ResponseEntity<?> cancelarPedido(@PathVariable Long id) throws ItemInesistenteException {
+        return pedidoService.cancelarPedido(id);
+    }
 }

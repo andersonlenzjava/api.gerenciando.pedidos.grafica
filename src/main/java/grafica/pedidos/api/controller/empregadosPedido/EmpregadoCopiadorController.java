@@ -42,4 +42,10 @@ public class EmpregadoCopiadorController {
         return pedidoService.fecharImpressao(pedidoId, uriBuilder);
     }
 
+    @GetMapping("/buscarPedidosFila")
+    public Page<PedidoResponse> buscarFilaPedidos(
+            @PageableDefault(sort = "id", direction = Sort.Direction.ASC, page = 0, size = 10) Pageable paginacao) throws ItemInesistenteException {
+        return pedidoService.buscarFilaPedidos(paginacao);
+    }
+
 }

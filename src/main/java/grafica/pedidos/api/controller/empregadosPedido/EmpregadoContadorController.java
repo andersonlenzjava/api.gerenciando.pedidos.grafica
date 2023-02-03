@@ -39,9 +39,9 @@ public class EmpregadoContadorController {
 
     @PutMapping("/documentar/{pedidoId}")
     @Transactional
-    public ResponseEntity<PedidoResponse> documentarPedido(
+    public ResponseEntity<PedidoResponse> registrarPedido(
             @PathVariable Long pedidoId, UriComponentsBuilder uriBuilder) throws ItemInesistenteException {
-        return pedidoService.documentarPedido(pedidoId, uriBuilder);
+        return pedidoService.registrarPedido(pedidoId, uriBuilder);
     }
 
     @GetMapping("/porCliente/")

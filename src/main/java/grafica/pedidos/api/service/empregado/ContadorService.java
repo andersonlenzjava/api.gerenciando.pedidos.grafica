@@ -63,10 +63,12 @@ public class ContadorService {
 
     //atualizar
     public ResponseEntity<ContadorResponse> atualizarContador(Long id, ContadorRegister contadorRegister) {
+
         Optional<Contador> contadorOptional = contadorRepository.findById(id);
         if (contadorOptional.isPresent()) {
 
             Contador contador = contadorOptional.get();
+
             contador.getFuncionario().setCpf(contadorRegister.funcionarioRegister().cpf());
             contador.getFuncionario().setNome(contadorRegister.funcionarioRegister().nome());
             contador.getFuncionario().setTelefone(contadorRegister.funcionarioRegister().telefone());
