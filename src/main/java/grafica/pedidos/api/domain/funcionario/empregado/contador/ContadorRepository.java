@@ -13,4 +13,5 @@ public interface ContadorRepository extends JpaRepository<Contador, Long> {
     Page<Contador> findByFuncionarioNomeIgnoreCase(String nomeContador, Pageable paginacao);
 
     Optional<Contador> findByFuncionarioCpfIgnoreCase(String cpf);
+
 }

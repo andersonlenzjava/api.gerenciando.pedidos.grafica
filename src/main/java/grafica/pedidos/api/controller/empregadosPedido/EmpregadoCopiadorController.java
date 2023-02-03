@@ -20,10 +20,10 @@ public class EmpregadoCopiadorController {
     @Autowired
     private PedidoService pedidoService;
 
-    @PutMapping("/tirarFila/{copiadorId}")
+    @PutMapping("/tirarFila")
     @Transactional
     public ResponseEntity<PedidoResponse> tirarFilaProduzir(
-            @PathVariable Long copiadorId,
+            @RequestParam Long copiadorId,
             UriComponentsBuilder uriBuilder) throws ItemInesistenteException {
         return pedidoService.tirarFilaProduzir(copiadorId, uriBuilder);
     }

@@ -250,6 +250,15 @@ public class PedidoService {
         }
     }
 
+    //listarPedidosRegistrado
+    public Page<PedidoResponse> listarPedidosRegistrado(Pageable paginacao) throws ItemInesistenteException {
+        Page<Pedido> pedidos = pedidoRepository.findByStatusPedido(StatusPedido.REGISTRADO, paginacao);
+        if (!pedidos.isEmpty()) {
+            return PedidoResponse.converter(pedidos);
+        }
+        throw new ItemInesistenteException("Não há pedidos registrados");
+    }
+
     //documentarPedido
     public ResponseEntity<PedidoResponse> documentarPedido(
             Long pedidoId,  UriComponentsBuilder uriBuilder)

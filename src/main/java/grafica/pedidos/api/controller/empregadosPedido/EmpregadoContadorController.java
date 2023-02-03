@@ -30,6 +30,13 @@ public class EmpregadoContadorController {
         return pedidoService.listarPedidosPagoFinalizado(nomeProduto, paginacao);
     }
 
+    @GetMapping("/listarPedidosRegistrado")
+    public Page<PedidoResponse> listarPedidosRegistrado(
+            @PageableDefault(sort = "id", direction = Sort.Direction.ASC, page = 0, size = 10) Pageable paginacao)
+            throws ItemInesistenteException {
+        return pedidoService.listarPedidosRegistrado(paginacao);
+    }
+
     @PutMapping("/documentar/{pedidoId}")
     @Transactional
     public ResponseEntity<PedidoResponse> documentarPedido(
@@ -37,9 +44,9 @@ public class EmpregadoContadorController {
         return pedidoService.documentarPedido(pedidoId, uriBuilder);
     }
 
-    @GetMapping("/porCliente/{nomeCliente}")
+    @GetMapping("/porCliente/")
     public Page<PedidoResponse> pedidosPorNomecliente(
-            @PathVariable String nomeCliente,
+            @RequestParam(required = true) String nomeCliente,
             @PageableDefault(sort = "id", direction = Sort.Direction.ASC, page = 0, size = 10) Pageable paginacao)
             throws ItemInesistenteException {
         return pedidoService.pedidosPorNomeCliente(nomeCliente, paginacao);
@@ -56,9 +63,9 @@ public class EmpregadoContadorController {
 //    ---------------------------------------------------------------------------
 //    Produto
 
-    @GetMapping("/Produto/{nomeProduto}")
+    @GetMapping("/Produto/")
     public Page<PedidoResponse> listarPedidosPorProduto(
-            @PathVariable String nomeProduto,
+            @RequestParam(required = true) String nomeProduto,
             @PageableDefault(sort = "id", direction = Sort.Direction.ASC, page = 0, size = 10) Pageable paginacao)
             throws ItemInesistenteException {
         return pedidoService.listarPedidosPorProduto(nomeProduto, paginacao);
