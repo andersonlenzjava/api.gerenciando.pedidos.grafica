@@ -1,6 +1,5 @@
 package grafica.pedidos.api.domain.pedido;
 
-import grafica.pedidos.api.domain.funcionario.empregado.contador.ContadorResponse;
 import grafica.pedidos.api.domain.statusPedido.StatusPedido;
 import org.springframework.data.domain.Page;
 

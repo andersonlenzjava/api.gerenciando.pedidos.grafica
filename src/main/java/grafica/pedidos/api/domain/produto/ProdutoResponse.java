@@ -1,7 +1,5 @@
 package grafica.pedidos.api.domain.produto;
 
-import grafica.pedidos.api.domain.funcionario.empregado.contador.ContadorResponse;
-import grafica.pedidos.api.domain.pedido.PedidoResponse;
 import org.springframework.data.domain.Page;
 
 import java.math.BigDecimal;
