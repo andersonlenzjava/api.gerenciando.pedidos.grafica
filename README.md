@@ -49,6 +49,7 @@ o sistema deve apresentar uma lista de pedidos que estão na fila para serem con
 * CRUD funcionário do seu setor
 *  CRUD produto em conjunto com os três tipos de gerentes
 *  Cancelar um pedido conforme o statusPedido
+* ListarPedidos na Fila
 ###  Vendedor:
 * ListarPedidos
 * ListarPedidoPorId
