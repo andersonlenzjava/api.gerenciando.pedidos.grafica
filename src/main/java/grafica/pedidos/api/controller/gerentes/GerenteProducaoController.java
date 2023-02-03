@@ -48,7 +48,7 @@ public class GerenteProducaoController {
         return copiadorService.cadastrarCopiador(copiadorRegister, uriBuilder);
     }
 
-    @PutMapping
+    @PutMapping("/{id}")
     @Transactional
     public ResponseEntity<CopiadorResponse> atualizarCopiador(
             @PathVariable Long id,
@@ -56,7 +56,7 @@ public class GerenteProducaoController {
         return copiadorService.atualizarCopiador(id, copiadorRegister);
     }
 
-    @DeleteMapping
+    @DeleteMapping("/{id}")
     @Transactional
     public ResponseEntity<?> deletarProdutorCopias(@PathVariable Long id) {
         return copiadorService.removerCopiador(id);

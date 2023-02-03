@@ -4,10 +4,11 @@ import grafica.pedidos.api.domain.funcionario.funcionario.FuncionarioRegister;
 import grafica.pedidos.api.domain.funcionario.gerente.gerenteProducao.GerenteProducao;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 public record GerenteVendasRegister(
 
-        @NotBlank
+        @NotNull
         @Valid
         FuncionarioRegister funcionarioRegister
 ) {

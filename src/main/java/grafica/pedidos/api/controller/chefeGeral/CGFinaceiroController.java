@@ -44,14 +44,14 @@ public class CGFinaceiroController {
         return gerenteFinaceiroService.cadastrarGerenteFinanceiro(gerenteFinaceiroRegister, uriBuilder);
     }
 
-    @PutMapping
+    @PutMapping("/{id}")
     @Transactional
     public ResponseEntity<GerenteFinanceiroResponse> atualizarGerenteFinaceiro(
             @PathVariable Long id, @RequestBody @Valid GerenteFinaceiroRegister gerenteFinaceiroRegister) {
         return gerenteFinaceiroService.atualizarGerenteFinanceiro(id, gerenteFinaceiroRegister);
     }
 
-    @DeleteMapping
+    @DeleteMapping("/{id}")
     @Transactional
     public ResponseEntity<?> deletarGerenteFinaceiro(@PathVariable Long id) {
         return gerenteFinaceiroService.removerGerenteFinanceiro(id);

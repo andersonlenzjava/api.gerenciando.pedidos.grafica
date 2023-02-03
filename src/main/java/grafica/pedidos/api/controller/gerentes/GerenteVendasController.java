@@ -47,14 +47,14 @@ public class GerenteVendasController {
         return vendedorService.cadastrarVendedor(vendedorRegister, uriBuilder);
     }
 
-    @PutMapping
+    @PutMapping("/{id}")
     @Transactional
     public ResponseEntity<VendedorResponse> atualizarVendedor(
             @PathVariable Long id, @RequestBody @Valid VendedorRegister vendedorRegister) {
         return vendedorService.atualizarVendedor(id, vendedorRegister);
     }
 
-    @DeleteMapping
+    @DeleteMapping("/{id}")
     @Transactional
     public ResponseEntity<?> deletarVendedor(@PathVariable Long id) {
         return vendedorService.removerVendedor(id);

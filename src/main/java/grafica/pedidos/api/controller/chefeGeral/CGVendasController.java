@@ -44,14 +44,14 @@ public class CGVendasController {
         return gerenteVendasService.cadastrarGerenteVendas(gerenteVendasRegister, uriBuilder);
     }
 
-    @PutMapping
+    @PutMapping("/{id}")
     @Transactional
     public ResponseEntity<GerenteVendasResponse> atualizarGerenteVendas(
             @PathVariable Long id, @RequestBody @Valid GerenteVendasRegister gerenteVendasRegister) {
         return gerenteVendasService.atualizarGerenteVendas(id, gerenteVendasRegister);
     }
 
-    @DeleteMapping
+    @DeleteMapping("/{id}")
     @Transactional
     public ResponseEntity<?> deletarGerenteVendas(@PathVariable Long id) {
         return gerenteVendasService.removerGerenteVendas(id);

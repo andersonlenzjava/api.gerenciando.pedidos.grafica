@@ -44,7 +44,7 @@ public class GerenteFinaceiroController {
         return contadorService.cadastrarContador(contadorRegister, uriBuilder);
     }
 
-    @PutMapping
+    @PutMapping("/{id}")
     @Transactional
     public ResponseEntity<ContadorResponse> atualizarContador(
             @PathVariable Long id,
@@ -52,7 +52,7 @@ public class GerenteFinaceiroController {
         return contadorService.atualizarContador(id, contadorRegister);
     }
 
-    @DeleteMapping
+    @DeleteMapping("/{id}")
     @Transactional
     public ResponseEntity<?> deletarContador(@PathVariable Long id) {
         return contadorService.removerContador(id);

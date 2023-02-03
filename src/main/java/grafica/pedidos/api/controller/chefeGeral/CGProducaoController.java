@@ -44,14 +44,14 @@ public class CGProducaoController {
         return gereteProducaoService.cadastrarGerenteProducao(gereteProducaoRegister, uriBuilder);
     }
 
-    @PutMapping
+    @PutMapping("/{id}")
     @Transactional
     public ResponseEntity<GerenteProducaoResponse> atualizarGereteProducao(
             @PathVariable Long id, @RequestBody @Valid GerenteProducaoRegister gereteProducaoRegister) {
         return gereteProducaoService.atualizarGerenteProducao(id, gereteProducaoRegister);
     }
 
-    @DeleteMapping
+    @DeleteMapping("/{id}")
     @Transactional
     public ResponseEntity<?> deletarGereteProducao(@PathVariable Long id) {
         return gereteProducaoService.removerGerenteProducao(id);

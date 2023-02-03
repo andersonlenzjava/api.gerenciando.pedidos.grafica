@@ -4,10 +4,11 @@ import grafica.pedidos.api.domain.funcionario.empregado.contador.Contador;
 import grafica.pedidos.api.domain.funcionario.funcionario.FuncionarioRegister;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 public record CopiadorRegister(
 
-        @NotBlank
+        @NotNull
         @Valid
         FuncionarioRegister funcionarioRegister
 ) {

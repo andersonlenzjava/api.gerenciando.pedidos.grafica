@@ -47,14 +47,14 @@ public class ChefeGeralController {
         return chefeGeralService.cadastrarChefeGeral(chefeGeralRegister, uriBuilder);
     }
 
-    @PutMapping
+    @PutMapping("/{id}")
     @Transactional
     public ResponseEntity<ChefeGeralResponse> atualizarChefeGeral(
             @PathVariable Long id, @RequestBody @Valid ChefeGeralRegister chefeGeralRegister) {
         return chefeGeralService.atualizarChefeGeral(id, chefeGeralRegister);
     }
 
-    @DeleteMapping
+    @DeleteMapping("/{id}")
     @Transactional
     public ResponseEntity<?> deletarChefeGeral(@PathVariable Long id) {
         return chefeGeralService.removerChefeGeral(id);
