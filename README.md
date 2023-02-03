@@ -9,7 +9,9 @@ A API permite cadadastrar e gerenciar os funcionarios da empresa. E também faze
 dos pedidos, conforme passam pelos setores da empresa: Vendas, Produção e Contabilidade. 
 
 
-## Requisitos apresentados pelo cliente
+---
+
+## 📃 Requisitos apresentados pelo cliente
 
 
 O cliente que será atendido será uma gráfica onde são impressos banners, revistas, material publicitário, livros,</br> 
@@ -40,6 +42,8 @@ Um ponto adicional e importante é que o pode dar a possibilidade do operador (g
 adicionar funcionários ao quadro de funcionários. O funcionário poderá incluir</br>
 um novo pedido ao sistema que será enviado a produção. Por fim, </br>
 o sistema deve apresentar uma lista de pedidos que estão na fila para serem confeccionados.</br>
+
+---
 
 ## ⚙️ Funcionalidades Estabelecidas
 
@@ -72,6 +76,8 @@ o sistema deve apresentar uma lista de pedidos que estão na fila para serem con
 
 ##### Mais funcionalidades podem ser estabelecidas ao longo do projeto conforme necessário para o bom funcionamento do sistema
 
+---
+
 ## Etapas
 
 - [x] Modelagem do relacionamento das entidades.
@@ -87,3 +93,68 @@ o sistema deve apresentar uma lista de pedidos que estão na fila para serem con
     - [x] Controller.
     - [x] Service.
     - [x] Migrations. 
+
+---
+
+## Como utilizar
+
+#### Carregamento do projeto
+
+ <p>Neste momento para utilizar o sistema é necessário rodar o sistema offline dentro de alguma IDE, através do Spring Boot.</p>
+   <p><strong>Etapas:</strong></p>
+     - Download do projeto e descompactar </br>
+     - Fazer a atualização das dependências com o Maven</br>
+     - Fazer a configuração do banco de dados de sua preferência</br>
+     - Criar o banco de dados </br>
+     - Configurar a API a este banco de dados</br>
+     - Rodar o projeto com a app.properties em spring.jpa.hibernate.ddl-auto=create</br>
+     - Em seguida colocar spring.jpa.hibernate.ddl-auto=none</br>
+     - Abrir a collection de endpoints com o software que gerencia requisições PostMan</br>
+
+#### Na operacionalização do sistema obedecer a seguinte sequência:
+
+Na operacionalização do sistema obedecer a seguinte sequência  na collection de endpoints junto ao arquivo do postman em anexo:</br>
+Cadastrar todas as entidades:</br>
+Cadastrar as entidades: 
+#### ChefeGeral
+- ChefeGeral
+- GerenteVendas
+- GerenteProducao
+- GerenteFinanceiro
+#### GerenteVendas
+- Vendedor
+#### GerenteProducao
+- Copiador
+#### GerenteFinanceiro
+- Contador
+
+Para o produto obedecer a seguinte sequência:
+
+#### Vendedor
+- AbrirPedido
+- listarPedidoPorId
+- colocarFilaProducao
+
+#### Copiador
+- listarPedidosFila
+- tirarFilaProduzir
+- fecharImpressao
+
+#### Vendedor
+- calculaTrocoFechaPedido
+
+#### Contador
+- listarPedidosPagoFinalizado
+- documentarPedido
+- listarPedidosRegistrado
+
+---
+
+## Um melhor detalhamento do uso desta API é apresentado no video deste link.
+
+---
+
+## Considerações:
+
+<p> Neste sistema foi possível construir uma API REST com Spring Boot, realizando operações de CRUD, regras de negócio</br>
+fazendo a persistência dos dados de acordo com a sua estrutura</p>
