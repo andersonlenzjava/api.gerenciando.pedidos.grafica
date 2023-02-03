@@ -81,6 +81,7 @@ o sistema deve apresentar uma lista de pedidos que estão na fila para serem con
 ## Etapas
 
 - [x] Modelagem do relacionamento das entidades.
+<img src="https://github.com/andersonlenzjava/api.gerenciando.pedidos.grafica/blob/main/Diagrama_entidades_inicial.png">
 - [x] Estabelecimento das funcionalidades.
   - [x] CRUD.
   - [x] Regras de negócio.
