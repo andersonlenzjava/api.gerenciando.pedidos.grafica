@@ -46,8 +46,8 @@ public class CopiadorService {
     public ResponseEntity<CopiadorResponse> cadastrarCopiador(CopiadorRegister copiadorRegister,
                                                                UriComponentsBuilder uriBuilder) throws Exception {
 
-        Optional<Copiador> copiadorOptional = copiadorRepository.findByFuncionarioCpfIgnoreCase(
-                copiadorRegister.funcionarioRegister().cpf());
+        Optional<Copiador> copiadorOptional = copiadorRepository.findByFuncionarioCpfOrFuncionarioNomeIgnoreCase(
+                copiadorRegister.funcionarioRegister().cpf(), copiadorRegister.funcionarioRegister().nome());
 
         if (copiadorOptional.isEmpty()) {
             Copiador copiador = copiadorRegister.converter();

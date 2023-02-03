@@ -50,8 +50,8 @@ public class ChefeGeralService {
     public ResponseEntity<ChefeGeralResponse> cadastrarChefeGeral(
             ChefeGeralRegister chefeGeralRegister, UriComponentsBuilder uriBuilder) throws Exception {
 
-        Optional<ChefeGeral> chefeGeralOptional = chefeGeralRepository.findByFuncionarioCpfIgnoreCase(
-                chefeGeralRegister.funcionarioRegister().cpf());
+        Optional<ChefeGeral> chefeGeralOptional = chefeGeralRepository.findByFuncionarioCpfOrFuncionarioNomeIgnoreCase(
+                chefeGeralRegister.funcionarioRegister().cpf(), chefeGeralRegister.funcionarioRegister().nome());
 
         if (chefeGeralOptional.isEmpty()) {
             ChefeGeral chefeGeral = chefeGeralRegister.converter();

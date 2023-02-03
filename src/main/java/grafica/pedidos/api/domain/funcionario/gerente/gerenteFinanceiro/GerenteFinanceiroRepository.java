@@ -12,5 +12,7 @@ public interface GerenteFinanceiroRepository extends JpaRepository<GerenteFinanc
 
     Page<GerenteFinanceiro> findByFuncionarioNomeIgnoreCase(String nomeGerente, Pageable paginacao);
 
-    Optional<GerenteFinanceiro> findByFuncionarioCpfIgnoreCase(String cpf);
+    Optional<GerenteFinanceiro> findByFuncionarioCpfOrFuncionarioNomeIgnoreCase(String cpf, String nome);
+
+    Optional<GerenteFinanceiro> findByFuncionarioCpfIgnoreCase(String cpfGerenteFinanceiro);
 }

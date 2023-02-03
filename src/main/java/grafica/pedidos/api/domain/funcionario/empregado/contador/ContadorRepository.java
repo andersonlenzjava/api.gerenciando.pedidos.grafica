@@ -14,4 +14,5 @@ public interface ContadorRepository extends JpaRepository<Contador, Long> {
 
     Optional<Contador> findByFuncionarioCpfIgnoreCase(String cpf);
 
+    Optional<Contador> findByFuncionarioCpfOrFuncionarioNomeIgnoreCase(String cpf, String nome);
 }

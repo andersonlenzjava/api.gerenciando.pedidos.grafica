@@ -46,8 +46,8 @@ public class VendedorService {
     public ResponseEntity<VendedorResponse> cadastrarVendedor(VendedorRegister vendedorRegister,
                                                               UriComponentsBuilder uriBuilder) throws Exception {
 
-        Optional<Vendedor> vendedorOptional = vendedorRepository.findByFuncionarioCpfIgnoreCase(
-                vendedorRegister.funcionarioRegister().cpf());
+        Optional<Vendedor> vendedorOptional = vendedorRepository.findByFuncionarioCpfOrFuncionarioNomeIgnoreCase(
+                vendedorRegister.funcionarioRegister().cpf(), vendedorRegister.funcionarioRegister().nome());
 
         if (vendedorOptional.isEmpty()) {
             Vendedor vendedor = vendedorRegister.converter();

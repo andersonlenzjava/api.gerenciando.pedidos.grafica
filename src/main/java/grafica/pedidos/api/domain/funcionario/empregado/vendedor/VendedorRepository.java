@@ -13,4 +13,6 @@ public interface VendedorRepository extends JpaRepository<Vendedor, Long> {
     Page<Vendedor> findByFuncionarioNomeIgnoreCase(String nomeVendedor, Pageable paginacao);
 
     Optional<Vendedor> findByFuncionarioCpfIgnoreCase(String cpf);
+
+    Optional<Vendedor> findByFuncionarioCpfOrFuncionarioNomeIgnoreCase(String cpf, String nome);
 }

@@ -46,8 +46,8 @@ public class GerenteFinanceiroService {
     public ResponseEntity<GerenteFinanceiroResponse> cadastrarGerenteFinanceiro(
             GerenteFinaceiroRegister gerenteFinaceiroRegister, UriComponentsBuilder uriBuilder) throws Exception {
 
-        Optional<GerenteFinanceiro> gerenteFinanceiroOptional = gerenteFinanceiroRepository.findByFuncionarioCpfIgnoreCase(
-                gerenteFinaceiroRegister.funcionarioRegister().cpf());
+        Optional<GerenteFinanceiro> gerenteFinanceiroOptional = gerenteFinanceiroRepository.findByFuncionarioCpfOrFuncionarioNomeIgnoreCase(
+                gerenteFinaceiroRegister.funcionarioRegister().cpf(), gerenteFinaceiroRegister.funcionarioRegister().nome());
 
         if (gerenteFinanceiroOptional.isEmpty()) {
             GerenteFinanceiro gerente = gerenteFinaceiroRegister.converter();

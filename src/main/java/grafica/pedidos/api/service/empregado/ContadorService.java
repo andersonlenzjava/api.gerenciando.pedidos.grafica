@@ -46,8 +46,8 @@ public class ContadorService {
     public ResponseEntity<ContadorResponse> cadastrarContador(ContadorRegister contadorRegister,
                                                                   UriComponentsBuilder uriBuilder) throws Exception {
 
-        Optional<Contador> contadorOptional = contadorRepository.findByFuncionarioCpfIgnoreCase(
-                contadorRegister.funcionarioRegister().cpf());
+        Optional<Contador> contadorOptional = contadorRepository.findByFuncionarioCpfOrFuncionarioNomeIgnoreCase(
+                contadorRegister.funcionarioRegister().cpf(), contadorRegister.funcionarioRegister().nome());
 
         if (contadorOptional.isEmpty()) {
             Contador contador = contadorRegister.converter();

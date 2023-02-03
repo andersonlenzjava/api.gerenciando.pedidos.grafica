@@ -13,4 +13,6 @@ public interface ChefeGeralRepository extends JpaRepository<ChefeGeral, Long> {
     Page<ChefeGeral> findByFuncionarioNomeIgnoreCase(String nomeGerente, Pageable paginacao);
 
     Optional<ChefeGeral> findByFuncionarioCpfIgnoreCase(String cpf);
+
+    Optional<ChefeGeral> findByFuncionarioCpfOrFuncionarioNomeIgnoreCase(String cpf, String nome);
 }

@@ -13,4 +13,6 @@ public interface GerenteVendasRepository extends JpaRepository<GerenteVendas, Lo
     Page<GerenteVendas> findByFuncionarioNomeIgnoreCase(String nomeGerente, Pageable paginacao);
 
     Optional<GerenteVendas> findByFuncionarioCpfIgnoreCase(String cpf);
+
+    Optional<GerenteVendas> findByFuncionarioCpfOrFuncionarioNomeIgnoreCase(String cpf, String nome);
 }

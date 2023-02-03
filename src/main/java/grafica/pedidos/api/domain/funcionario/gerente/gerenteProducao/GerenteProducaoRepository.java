@@ -13,4 +13,6 @@ public interface GerenteProducaoRepository extends JpaRepository<GerenteProducao
     Page<GerenteProducao> findByFuncionarioNomeIgnoreCase(String nomeGerente, Pageable paginacao);
 
     Optional<GerenteProducao> findByFuncionarioCpfIgnoreCase(String cpf);
+
+    Optional<GerenteProducao> findByFuncionarioCpfOrFuncionarioNomeIgnoreCase(String cpf, String nome);
 }

@@ -47,8 +47,8 @@ public class GerenteVendasService {
             GerenteVendasRegister gerenteVendasRegister,
             UriComponentsBuilder uriBuilder) throws Exception {
 
-        Optional<GerenteVendas> gerenteVendasOptional = gerenteVendasRepository.findByFuncionarioCpfIgnoreCase(
-                gerenteVendasRegister.funcionarioRegister().cpf());
+        Optional<GerenteVendas> gerenteVendasOptional = gerenteVendasRepository.findByFuncionarioCpfOrFuncionarioNomeIgnoreCase(
+                gerenteVendasRegister.funcionarioRegister().cpf(), gerenteVendasRegister.funcionarioRegister().nome());
 
         if (gerenteVendasOptional.isEmpty()) {
             GerenteVendas gerente = gerenteVendasRegister.converter();
