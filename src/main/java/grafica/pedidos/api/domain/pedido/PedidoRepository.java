@@ -9,6 +9,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.math.BigDecimal;
+import java.util.List;
 import java.util.Queue;
 
 @Repository
@@ -18,7 +19,7 @@ public interface PedidoRepository extends JpaRepository<Pedido, Long> {
     Page<Pedido> findByNomeClienteIgnoreCase(@Param("nomeCliente") String nomeCliente, Pageable paginacao);
 
     @Query("SELECT u FROM Pedido u WHERE u.statusPedido = :status ")
-    Queue<Pedido> findByStatusPedidoFila(@Param("status") StatusPedido statusPedido);
+    List<Pedido> findByStatusPedidoFila(@Param("status") StatusPedido statusPedido);
 
     @Query("SELECT u FROM Pedido u WHERE u.statusPedido = :status ")
     Page<Pedido> findByStatusPedido(@Param("status") StatusPedido statusPedido, Pageable paginacao);

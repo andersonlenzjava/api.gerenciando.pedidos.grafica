@@ -8,14 +8,16 @@ public record ProdutoResponse(
         Long id,
         String nome,
         String codigo,
-        BigDecimal valorProduto
+        BigDecimal valorProduto,
+        boolean ativo
 ) {
 
     public ProdutoResponse (Produto produto) {
         this(produto.getId(),
                 produto.getNome(),
                 produto.getCodigo(),
-                produto.getValorProduto());
+                produto.getValorProduto(),
+                produto.getAtivo());
     }
 
     public static Page<ProdutoResponse> converter(Page<Produto> produtos) {

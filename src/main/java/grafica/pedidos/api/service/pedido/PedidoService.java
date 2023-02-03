@@ -26,6 +26,8 @@ import org.springframework.web.util.UriComponentsBuilder;
 import java.math.BigDecimal;
 import java.net.URI;
 import java.time.LocalDateTime;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Optional;
 import java.util.Queue;
 
@@ -62,15 +64,22 @@ public class PedidoService {
     public ResponseEntity<PedidoResponse> abrirPedido(
             PedidoRegister pedidoRegister, UriComponentsBuilder uriBuilder) throws ItemInesistenteException {
 
-        Pedido pedido = converterPedidoEntrada(pedidoRegister);
+        // inclusão do copiador indefinido inicial
+        Optional<Copiador> copiadorEstatico = copiadorRepository.findById(1L);
 
-        pedido.setDataEmissao(LocalDateTime.now());
-        pedido.setStatusPedido(StatusPedido.ABERTO);
+        if  (copiadorEstatico.isPresent()) {
+            Pedido pedido = converterPedidoEntrada(pedidoRegister);
 
-        pedidoRepository.save(pedido);
+            pedido.setDataEmissao(LocalDateTime.now());
+            pedido.setCopiador(copiadorEstatico.get());
+            pedido.setStatusPedido(StatusPedido.ABERTO);
 
-        URI uri = uriBuilder.path("/vendedor/{pedidoId}").buildAndExpand(pedido.getId()).toUri();
-        return ResponseEntity.created(uri).body(new PedidoResponse(pedido));
+            pedidoRepository.save(pedido);
+
+            URI uri = uriBuilder.path("/vendedor/{pedidoId}").buildAndExpand(pedido.getId()).toUri();
+            return ResponseEntity.created(uri).body(new PedidoResponse(pedido));
+        }
+        throw new ItemInesistenteException("Copiador inicial inexistente!");
     }
 
     //atualizarDadosPedido
@@ -81,17 +90,29 @@ public class PedidoService {
         Optional<Pedido> pedidoOptional = pedidoRepository.findById(pedidoId);
 
         if (pedidoOptional.isPresent()) {
-            Pedido pedido = converterPedidoEntrada(pedidoRegister);
+            Pedido pedido = pedidoOptional.get();
 
             if ((pedido.getStatusPedido().equals(StatusPedido.ABERTO))
                     || (pedido.getStatusPedido().equals(StatusPedido.FILA))) {
 
-                pedidoRepository.save(pedido);
+                Optional<Produto> produtoOptional = produtoRepository.findById(pedidoRegister.produtoId());
+                Optional<Vendedor> vendedorOptional = vendedorRepository.findById(pedidoRegister.vendedorId());
 
-                URI uri = uriBuilder.path("/vendedor/{pedidoId}").buildAndExpand(pedido.getId()).toUri();
-                return ResponseEntity.created(uri).body(new PedidoResponse(pedido));
+                if (produtoOptional.isPresent() && vendedorOptional.isPresent()) {
+
+                    pedido.setNomeCliente(pedidoRegister.nomeCliente());
+                    pedido.setProduto(produtoOptional.get());
+                    pedido.setQuantidade(pedidoRegister.quantidade());
+                    pedido.setVendedor(vendedorOptional.get());
+
+                    pedidoRepository.save(pedido);
+
+                    URI uri = uriBuilder.path("/vendedor/{pedidoId}").buildAndExpand(pedido.getId()).toUri();
+                    return ResponseEntity.created(uri).body(new PedidoResponse(pedido));
+                }
+                throw new ItemInesistenteException("Produto ou pedido inesistente!");
             }
-            throw new PedidoInalteravelException("Pedido não pode ser mais editado");
+            throw new PedidoInalteravelException("Pedido não pode ser mais editado!");
         }
         throw new ItemInesistenteException("Pedido inexistente!");
     }
@@ -99,7 +120,7 @@ public class PedidoService {
     //colocarFilaProducao
     public ResponseEntity<PedidoResponse> colocarFilaProducao(
             Long pedidoId,  UriComponentsBuilder uriBuilder)
-            throws ItemInesistenteException {
+            throws ItemInesistenteException, PedidoInalteravelException {
 
         Optional<Pedido> pedidoOptional = pedidoRepository.findById(pedidoId);
 
@@ -114,7 +135,7 @@ public class PedidoService {
                 URI uri = uriBuilder.path("/vendedor/{pedidoId}").buildAndExpand(pedido.getId()).toUri();
                 return ResponseEntity.created(uri).body(new PedidoResponse(pedido));
             }
-            throw new ItemInesistenteException("Pedido não pode entrar em produção");
+            throw new PedidoInalteravelException("Pedido não pode entrar em produção");
         }
         throw new ItemInesistenteException("Pedido inexistente!");
     }
@@ -158,7 +179,10 @@ public class PedidoService {
 
         if (optionalCopiador.isPresent()) {
 
-            Queue<Pedido> listaPedidos = pedidoRepository.findByStatusPedidoFila(StatusPedido.FILA);
+            List<Pedido> listaPedidosBanco = pedidoRepository.findByStatusPedidoFila(StatusPedido.FILA);
+
+            Queue<Pedido> listaPedidos = new LinkedList<>(listaPedidosBanco);
+
             if (!listaPedidos.isEmpty()) {
 
                 Pedido pedido = listaPedidos.remove();
@@ -333,4 +357,5 @@ public class PedidoService {
         }
         throw new ItemInesistenteException("Produto ou vendedor inesistente!!");
     }
+
 }

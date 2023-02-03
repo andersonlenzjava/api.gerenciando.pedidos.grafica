@@ -102,7 +102,11 @@ public class ProdutoService {
             if ((gerenteVendasOptional.isPresent())
                     && (gerenteProducaoOptional.isPresent())
                     && (gerenteFinanceiroOptional.isPresent())) {
-                Produto produto = produtoRegister.converter();
+                Produto produto = produtoOptional.get();
+
+                produto.setNome(produtoRegister.nome());
+                produto.setCodigo(produtoRegister.codigo());
+                produto.setValorProduto(produtoRegister.valorProduto());
 
                 produtoRepository.save(produto);
                 URI uri = uriBuilder.path("/atualizarDados/{produtoId}").buildAndExpand(produto.getId()).toUri();
@@ -110,7 +114,7 @@ public class ProdutoService {
             }
             throw new ItemInesistenteException("Gerente inexistente!");
         }
-        throw new ItemJaExisteException("Produto já existe");
+        throw new ItemJaExisteException("Produto inesistente!");
     }
 
 //    ----------------------------------------------------------
@@ -132,7 +136,8 @@ public class ProdutoService {
             if ((gerenteVendasOptional.isPresent())
                     && (gerenteProducaoOptional.isPresent())
                     && (gerenteFinanceiroOptional.isPresent())) {
-                Produto produto = produtoRegister.converter();
+                Produto produto = produtoOptional.get();
+
                 produto.ativar();
 
                 produtoRepository.save(produto);
@@ -160,7 +165,8 @@ public class ProdutoService {
             if ((gerenteVendasOptional.isPresent())
                     && (gerenteProducaoOptional.isPresent())
                     && (gerenteFinanceiroOptional.isPresent())) {
-                Produto produto = produtoRegister.converter();
+                Produto produto = produtoOptional.get();
+
                 produto.desativar();
 
                 produtoRepository.save(produto);
