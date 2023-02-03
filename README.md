@@ -11,37 +11,52 @@ dos pedidos, conforme passam pelos setores da empresa: Vendas, Produção e Cont
 
 ---
 
+## Índice
+
+<a href="#api-gerenciando-pedidos-de-uma-gráfica">API Gerenciando pedidos de uma gráfica</a></br>
+<a href="#-sobre-o-projeto">💻 Sobre o projeto</a></br>
+<a href="#-requisitos-apresentados-pelo-cliente">📃 Requisitos apresentados pelo cliente</a></br>
+<a href="#%EF%B8%8F-funcionalidades-estabelecidas">⚙️ Funcionalidades Estabelecidas</a></br>
+<a href="#%EF%B8%8Fetapas">Etapas</a></br>
+<a href="#como-utilizar">Como utilizar</a></br>
+<a href="#um-melhor-detalhamento-do-uso-desta-api-é-apresentado-no-video-deste-link">Video Projeto</a></br>
+
+---
+
 ## 📃 Requisitos apresentados pelo cliente
 
 
 O cliente que será atendido será uma gráfica onde são impressos banners, revistas, material publicitário, livros,</br> 
-entre outros produtos. O cliente procurou você para resolver um problema muito específico dele. </br>
-O cliente deseja realizar o gerenciamento das ordem dos pedidos que serão impressos. Portanto,</br>
+entre outros produtos. O cliente procurou você para resolver um problema muito específico dele. 
+O cliente deseja realizar o gerenciamento das ordem dos pedidos que serão impressos. Portanto,
 ele gostaria que você desenvolvesse uma solução elegante onde alguns requisitos fossem satisfeitos.</br>
 
-Lembre-se que para esse exercício de UML você terá vários requisitos levantados na entrevista, </br>
-porém nem todos necessariamente são relevantes ao seu sistema. Tome as decisões de analista</br>
+Lembre-se que para esse exercício de UML você terá vários requisitos levantados na entrevista, 
+porém nem todos necessariamente são relevantes ao seu sistema. Tome as decisões de analista
 de sistemas e construa um diagrama de classes que atenda a necessidade de gerenciar os pedidos.</br>
 
-O sistema deverá ter tipos diferentes de usuários: gerente, empregado e empregado terceirizado.</br>
-O gerente deverá ser o administrador do sistema e cada gerente terá um setor específico da gráfica para cuidar. </br>
-Por exemplo (gerente financeiro, gerente da produção, gerente de vendas).</br>
-O empregado é assalariado mensal e opera qualquer tipo de equipamento dentro da gráfica</br>
-O empregado terceirizado não faz parte do quadro de funcionários, porém, executam tarefas importantes na empresa. </br>
-Desde limpeza até alimentação dos funcionários.</br>
-Cada empregado ocupa uma função dentro da empresa, isso deve ser registrado no cadastro.</br>
-Cada pedido é composto por data e hora de emissão e de finalização, bem como o preço. </br>
-O pedido é feito pela equipe de vendas da gráfica e é repassado a produção.</br>
-Cada pedido é vinculado a um funcionário do setor de vendas para que ele se responsabilize pelo que será entregue.</br>
-A produção deverá seguir o sistema de gerenciamento de pedidos e cada funcionário da produção deverá </br>
-se responsabilizar pela produção de um produto (impressão).</br>
-Cada produto que será impresso pode ter um tipo diferente ( banner, livro, panfleto).</br>
+O sistema deverá ter tipos diferentes de usuários: gerente, empregado e empregado terceirizado.
+O gerente deverá ser o administrador do sistema e cada gerente terá um setor específico da gráfica para cuidar. 
+Por exemplo (gerente financeiro, gerente da produção, gerente de vendas).
+O empregado é assalariado mensal e opera qualquer tipo de equipamento dentro da gráfica
+O empregado terceirizado não faz parte do quadro de funcionários, porém, executam tarefas importantes na empresa. 
+Desde limpeza até alimentação dos funcionários.
+Cada empregado ocupa uma função dentro da empresa, isso deve ser registrado no cadastro.
+Cada pedido é composto por data e hora de emissão e de finalização, bem como o preço. 
+O pedido é feito pela equipe de vendas da gráfica e é repassado a produção.
+Cada pedido é vinculado a um funcionário do setor de vendas para que ele se responsabilize pelo que será entregue.
+A produção deverá seguir o sistema de gerenciamento de pedidos e cada funcionário da produção deverá 
+se responsabilizar pela produção de um produto (impressão).
+Cada produto que será impresso pode ter um tipo diferente ( banner, livro, panfleto).
 O preço de cada impressão varia através de uma tabela fixa que é definida pelos gerentes.</br>
 
-Um ponto adicional e importante é que o pode dar a possibilidade do operador (gerente)</br>
-adicionar funcionários ao quadro de funcionários. O funcionário poderá incluir</br>
-um novo pedido ao sistema que será enviado a produção. Por fim, </br>
+Um ponto adicional e importante é que o pode dar a possibilidade do operador (gerente)
+adicionar funcionários ao quadro de funcionários. O funcionário poderá incluir
+um novo pedido ao sistema que será enviado a produção. Por fim, 
 o sistema deve apresentar uma lista de pedidos que estão na fila para serem confeccionados.</br>
+
+Os requisitos do cliente são apresentados no desafio de programação orientada a objetos encontrado 
+neste link: https://www.computersciencemaster.com.br/exercicio-sistema-de-gerenciamento-de-pedidos-grafica/.
 
 ---
 
@@ -78,7 +93,7 @@ o sistema deve apresentar uma lista de pedidos que estão na fila para serem con
 
 ---
 
-## Etapas
+## ✔️Etapas
 
 <img src="https://github.com/andersonlenzjava/api.gerenciando.pedidos.grafica/blob/main/Diagrama_entidades_inicial.png">
 
@@ -95,6 +110,21 @@ o sistema deve apresentar uma lista de pedidos que estão na fila para serem con
     - [x] Controller.
     - [x] Service.
     - [x] Migrations. 
+
+---
+
+## 🛠 Tecnologias
+
+As seguintes tecnologias foram utilizadas no desenvolvimento da API Rest do projeto:
+
+- **[Java 17](https://www.oracle.com/java)**
+- **[Spring Boot 3](https://spring.io/projects/spring-boot)**
+- **[Maven](https://maven.apache.org)**
+- **[PostgreSQL](https://www.postgresql.org/)**
+- **[Hibernate](https://hibernate.org)**
+- **[Flyway](https://flywaydb.org)**
+- **[Lombok](https://projectlombok.org)**
+- **[Postman](https://www.postman.com/)**
 
 ---
 
@@ -117,35 +147,34 @@ o sistema deve apresentar uma lista de pedidos que estão na fila para serem con
 
 Na operacionalização do sistema obedecer a seguinte sequência  na collection de endpoints junto ao arquivo do postman em anexo:</br>
 Cadastrar todas as entidades:</br>
-Cadastrar as entidades: 
-#### ChefeGeral
+###### ChefeGeral
 - ChefeGeral
 - GerenteVendas
 - GerenteProducao
 - GerenteFinanceiro
-#### GerenteVendas
+###### GerenteVendas
 - Vendedor
-#### GerenteProducao
+###### GerenteProducao
 - Copiador
-#### GerenteFinanceiro
+###### GerenteFinanceiro
 - Contador
 
 Para o produto obedecer a seguinte sequência:
 
-#### Vendedor
+###### Vendedor
 - AbrirPedido
 - listarPedidoPorId
 - colocarFilaProducao
 
-#### Copiador
+###### Copiador
 - listarPedidosFila
-- tirarFilaProduzir
+- tirarFilaProduzir 
 - fecharImpressao
 
-#### Vendedor
+###### Vendedor
 - calculaTrocoFechaPedido
 
-#### Contador
+###### Contador
 - listarPedidosPagoFinalizado
 - documentarPedido
 - listarPedidosRegistrado
