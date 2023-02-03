@@ -20,7 +20,7 @@ public record PedidoResponse(
     public PedidoResponse (Pedido pedido) {
         this(pedido.getId(),
                 pedido.getNomeCliente(),
-                pedido.getProduto().getName(),
+                pedido.getProduto().getNome(),
                 pedido.getQuantidade(),
                 pedido.getDataEmissao(),
                 pedido.getDataFinalizacao(),

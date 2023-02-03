@@ -12,9 +12,9 @@ import java.util.Optional;
 @Repository
 public interface ProdutoRepository  extends JpaRepository<Produto, Long> {
 
-    @Query("SELECT u FROM Produto u WHERE u.name = :nomeProduto")
-    Page<Produto> findByNameIgnoreCase(@Param("nomeProduto") String nomeProduto, Pageable paginacao);
+    @Query("SELECT u FROM Produto u WHERE u.nome = :nome")
+    Page<Produto> findByNameIgnoreCase(@Param("nome") String nomeProduto, Pageable paginacao);
 
-    @Query("SELECT u FROM Produto u WHERE u.name = :name AND u.codigo=:codigo")
-    Optional<Produto> findByNameAndCodigoIgnoreCase(@Param("name") String name,@Param("codigo") String codigo);
+    @Query("SELECT u FROM Produto u WHERE u.nome = :nome AND u.codigo=:codigo")
+    Optional<Produto> findByNameAndCodigoIgnoreCase(@Param("nome") String nome,@Param("codigo") String codigo);
 }

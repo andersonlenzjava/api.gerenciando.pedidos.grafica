@@ -6,14 +6,14 @@ import java.math.BigDecimal;
 
 public record ProdutoResponse(
         Long id,
-        String name,
+        String nome,
         String codigo,
         BigDecimal valorProduto
 ) {
 
     public ProdutoResponse (Produto produto) {
         this(produto.getId(),
-                produto.getName(),
+                produto.getNome(),
                 produto.getCodigo(),
                 produto.getValorProduto());
     }

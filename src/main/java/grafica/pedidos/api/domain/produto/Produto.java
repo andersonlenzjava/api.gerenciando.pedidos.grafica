@@ -19,16 +19,16 @@ public class Produto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String name;
+    private String nome;
     private String codigo;
     private BigDecimal valorProduto;
     private Boolean ativo = true;
 
     public  Produto(
-            String name,
+            String nome,
             String codigo,
             BigDecimal valorProduto) {
-        this.name = name;
+        this.nome = nome;
         this.codigo = codigo;
         this.valorProduto = valorProduto;
     }

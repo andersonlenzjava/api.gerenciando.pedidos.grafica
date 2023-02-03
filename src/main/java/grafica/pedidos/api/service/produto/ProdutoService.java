@@ -61,7 +61,7 @@ public class ProdutoService {
     public ResponseEntity<ProdutoResponse> cadastrarProduto(
             ProdutoRegister produtoRegister, UriComponentsBuilder uriBuilder) throws Exception {
         Optional<Produto> produtoOptional = produtoRepository.findByNameAndCodigoIgnoreCase(
-                produtoRegister.name(), produtoRegister.codigo());
+                produtoRegister.nome(), produtoRegister.codigo());
 
         if (!produtoOptional.isPresent()) {
             Optional<GerenteVendas> gerenteVendasOptional = gerenteVendasRepository.

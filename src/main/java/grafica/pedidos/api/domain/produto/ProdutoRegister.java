@@ -10,7 +10,7 @@ import java.math.BigDecimal;
 public record ProdutoRegister(
 
         @NotBlank
-        String name,
+        String nome,
 
         @NotBlank
         String codigo,
@@ -29,7 +29,7 @@ public record ProdutoRegister(
         String cpfGerenteFinanceiro
 ) {
         public Produto converter() {
-                Produto produto = new Produto(this.name, this.codigo, this.valorProduto);
+                Produto produto = new Produto(this.nome, this.codigo, this.valorProduto);
                 return produto;
         }
 }

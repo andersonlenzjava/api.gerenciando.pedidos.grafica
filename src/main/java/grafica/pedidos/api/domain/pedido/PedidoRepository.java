@@ -23,10 +23,10 @@ public interface PedidoRepository extends JpaRepository<Pedido, Long> {
     @Query("SELECT u FROM Pedido u WHERE u.statusPedido = :status ")
     Page<Pedido> findByStatusPedido(@Param("status") StatusPedido statusPedido, Pageable paginacao);
 
-    @Query("SELECT u FROM Pedido u WHERE u.produto.name = :nomeProduto ")
+    @Query("SELECT u FROM Pedido u WHERE u.produto.nome = :nomeProduto ")
     Page<Pedido> findByProdutoNameIgnoreCase(@Param("nomeProduto") String nomeProduto, Pageable paginacao);
 
-    @Query("SELECT u FROM Pedido u WHERE u.produto.name = :nomeProduto AND u.statusPedido=:status")
+    @Query("SELECT u FROM Pedido u WHERE u.produto.nome = :nomeProduto AND u.statusPedido=:status")
     Page<Pedido> findByProdutoNameIgnoreCaseAndStatusPedido(
             @Param("nomeProduto") String nomeProduto, @Param("status") StatusPedido statusPedido, Pageable paginacao);
 

@@ -39,7 +39,7 @@ public class ProdutoController {
         return produtoService.cadastrarProduto(produtoRegister, uriBuilder);
     }
 
-    @PutMapping("/atualizarDados/{produtoId}")
+    @PutMapping("/{produtoId}")
     @Transactional
     public ResponseEntity<ProdutoResponse> atualizarDadosProduto(
             @PathVariable Long produtoId,
