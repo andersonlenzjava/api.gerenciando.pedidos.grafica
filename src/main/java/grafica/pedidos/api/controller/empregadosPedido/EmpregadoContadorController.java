@@ -37,7 +37,7 @@ public class EmpregadoContadorController {
         return pedidoService.listarPedidosRegistrado(paginacao);
     }
 
-    @PutMapping("/documentar/{pedidoId}")
+    @PutMapping("/registrar/{pedidoId}")
     @Transactional
     public ResponseEntity<PedidoResponse> registrarPedido(
             @PathVariable Long pedidoId, UriComponentsBuilder uriBuilder) throws ItemInesistenteException {
