@@ -104,6 +104,7 @@ public class PedidoService {
                     pedido.setProduto(produtoOptional.get());
                     pedido.setQuantidade(pedidoRegister.quantidade());
                     pedido.setVendedor(vendedorOptional.get());
+                    pedido.calculaTotal();
 
                     pedidoRepository.save(pedido);
 

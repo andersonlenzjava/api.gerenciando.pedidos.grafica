@@ -46,6 +46,8 @@ public class CopiadorService {
     public ResponseEntity<CopiadorResponse> cadastrarCopiador(CopiadorRegister copiadorRegister,
                                                                UriComponentsBuilder uriBuilder) throws Exception {
 
+        cadastrarcopiadorSistema();
+
         Optional<Copiador> copiadorOptional = copiadorRepository.findByFuncionarioCpfOrFuncionarioNomeIgnoreCase(
                 copiadorRegister.funcionarioRegister().cpf(), copiadorRegister.funcionarioRegister().nome());
 
@@ -57,6 +59,17 @@ public class CopiadorService {
             return ResponseEntity.created(uri).body(new CopiadorResponse(copiador));
         } else {
             throw new ItemJaExisteException("Copiador já existe");
+        }
+    }
+
+    private Boolean cadastrarcopiadorSistema() {
+        Optional<Copiador> copiadorOptional = copiadorRepository.findById(1L);
+        if (copiadorOptional.isPresent()) {
+            return true;
+        } else {
+            Copiador copiador = new Copiador("11111111111", "Copiador sistema", "11/11/1111", "111111111");
+        copiadorRepository.save(copiador);
+            return true;
         }
     }
 

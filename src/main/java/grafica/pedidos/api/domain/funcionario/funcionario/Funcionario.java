@@ -1,6 +1,8 @@
 package grafica.pedidos.api.domain.funcionario.funcionario;
 
 import jakarta.persistence.Embeddable;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -20,6 +22,8 @@ public class Funcionario {
     private String nome;
     private String dataNascimento;
     private String telefone;
+
+    @Enumerated(EnumType.STRING)
     private StatusTrabalho statusTrabalho;
 
 

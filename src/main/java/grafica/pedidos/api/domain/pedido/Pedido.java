@@ -52,6 +52,10 @@ public class Pedido {
         this.produto = produto;
         this.quantidade = quantidade;
         this.vendedor = vendedor;
+        this.calculaTotal();
+    }
+
+    public void calculaTotal() {
         this.valorTotalServico = produto.getValorProduto().multiply(BigDecimal.valueOf(quantidade));
     }
 
