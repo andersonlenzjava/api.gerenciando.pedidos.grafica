@@ -71,13 +71,4 @@ public class EmpregadoContadorController {
         return pedidoService.listarPedidosPorProduto(nomeProduto, paginacao);
     }
 
-//    ---------------------------------------------------------------------------
-//    Busca Dinâmica
-
-//    GetMapping
-//    public void buscaDinamica(@PathVariable Long id,
-//                                        @RequestBody @Valid CopiadorRegister copiadorRegister) {
-//        return copiadorService.atualizarCopiador(id, copiadorRegister);
-//    }
-
 }
