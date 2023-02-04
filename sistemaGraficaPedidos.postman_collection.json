@@ -1,0 +1,1593 @@
+{
+	"info": {
+		"_postman_id": "6d876f08-2b42-40c8-ba0e-76045a5c6269",
+		"name": "sistemaGraficaPedidos",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23154256"
+	},
+	"item": [
+		{
+			"name": "chefeGeral",
+			"item": [
+				{
+					"name": "CGFinanceiro",
+					"item": [
+						{
+							"name": "listarGerenteFinaceiro",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/funcionario/CGFinaceiro",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"funcionario",
+										"CGFinaceiro"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "buscarGerenteFinaceiro",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/funcionario/CGFinaceiro/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"funcionario",
+										"CGFinaceiro",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "cadastrarGerenteFinaceiro",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{   \"funcionarioRegister\" :\r\n        {\r\n            \"nome\":\"Jack sparrowte\",\r\n            \"cpf\":\"66693335712\",\r\n            \"dataNascimento\":\"22/01/2000\",\r\n            \"telefone\":\"11223344\",\r\n            \"statusTrabalho\":\"TRABALHANDO\"\r\n        }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/funcionario/CGFinaceiro",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"funcionario",
+										"CGFinaceiro"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "atualizarGerenteFinaceiro",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{   \"funcionarioRegister\" :\r\n        {\r\n            \"nome\":\"Salazar nueve munhoz\",\r\n            \"cpf\":\"66695535711\",\r\n            \"dataNascimento\":\"22/02/2000\",\r\n            \"telefone\":\"11223344\",\r\n            \"statusTrabalho\":\"TRABALHANDO\"\r\n        }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/funcionario/CGFinaceiro/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"funcionario",
+										"CGFinaceiro",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "deletarGerenteFinaceiro",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/funcionario/CGFinaceiro/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"funcionario",
+										"CGFinaceiro",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "CGProducao",
+					"item": [
+						{
+							"name": "listarGereteProducao",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/funcionario/CGProducao",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"funcionario",
+										"CGProducao"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "buscarGereteProducao",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/funcionario/CGProducao/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"funcionario",
+										"CGProducao",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "cadastrarGereteProducao",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{   \"funcionarioRegister\" :\r\n        {\r\n            \"nome\":\"Salazar cunha da silva\",\r\n            \"cpf\":\"66693335744\",\r\n            \"dataNascimento\":\"22/01/2000\",\r\n            \"telefone\":\"11223344\",\r\n            \"statusTrabalho\":\"TRABALHANDO\"\r\n        }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/funcionario/CGProducao",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"funcionario",
+										"CGProducao"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "atualizarGereteProducao",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{   \"funcionarioRegister\" :\r\n        {\r\n            \"nome\":\"Salazar cunha da silva\",\r\n            \"cpf\":\"66693335714\",\r\n            \"dataNascimento\":\"22/01/2000\",\r\n            \"telefone\":\"11223344\",\r\n            \"statusTrabalho\":\"TRABALHANDO\"\r\n        }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/funcionario/CGProducao/2",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"funcionario",
+										"CGProducao",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "deletarGereteProducao",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/funcionario/CGProducao/2",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"funcionario",
+										"CGProducao",
+										"2"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "CGVendas",
+					"item": [
+						{
+							"name": "listarGerenteVendas",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/funcionario/CGVendas",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"funcionario",
+										"CGVendas"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "buscarGerenteVendas",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/funcionario/CGVendas/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"funcionario",
+										"CGVendas",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "cadastrarGerenteVendas",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{   \"funcionarioRegister\" :\r\n        {\r\n            \"nome\":\"Salazar agamenon\",\r\n            \"cpf\":\"6669333559\",\r\n            \"dataNascimento\":\"22/01/2000\",\r\n            \"telefone\":\"11223344\",\r\n            \"statusTrabalho\":\"TRABALHANDO\"\r\n        }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/funcionario/CGVendas",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"funcionario",
+										"CGVendas"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "atualizarGerenteVendas",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{   \"funcionarioRegister\" :\r\n        {\r\n            \"nome\":\"Salazar cunha da silva\",\r\n            \"cpf\":\"66693335714\",\r\n            \"dataNascimento\":\"22/01/2000\",\r\n            \"telefone\":\"11223344\",\r\n            \"statusTrabalho\":\"TRABALHANDO\"\r\n        }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/funcionario/CGVendas/2",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"funcionario",
+										"CGVendas",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "deletarGerenteVendas",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/funcionario/CGVendas/2",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"funcionario",
+										"CGVendas",
+										"2"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "ChefeGeral",
+					"item": [
+						{
+							"name": "listarChefeGeral",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/funcionario/chefeGeral",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"funcionario",
+										"chefeGeral"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "buscarChefeGeral",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/funcionario/chefeGeral/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"funcionario",
+										"chefeGeral",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "CadastrarChefeGeral",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{   \"funcionarioRegister\" :\r\n        {\r\n            \"nome\":\"Salazar agamenon\",\r\n            \"cpf\":\"66693337575\",\r\n            \"dataNascimento\":\"22/01/2000\",\r\n            \"telefone\":\"11223344\",\r\n            \"statusTrabalho\":\"TRABALHANDO\"\r\n        }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/funcionario/chefeGeral",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"funcionario",
+										"chefeGeral"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "AtualizarChefeGeral",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{   \"funcionarioRegister\" :\r\n        {\r\n            \"nome\":\"Salazar cunha da silva\",\r\n            \"cpf\":\"66693335714\",\r\n            \"dataNascimento\":\"22/01/2000\",\r\n            \"telefone\":\"11223344\",\r\n            \"statusTrabalho\":\"TRABALHANDO\"\r\n        }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/funcionario/chefeGeral/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"funcionario",
+										"chefeGeral",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "RemoverChefeGeral",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/funcionario/chefeGeral/2",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"funcionario",
+										"chefeGeral",
+										"2"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "GerentesControlaFuncionario",
+			"item": [
+				{
+					"name": "GerenteFinanceiro",
+					"item": [
+						{
+							"name": "listarContador",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/funcionario/gerenteFinaceiro",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"funcionario",
+										"gerenteFinaceiro"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "buscarContador",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/funcionario/gerenteFinaceiro/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"funcionario",
+										"gerenteFinaceiro",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "cadastrarContador",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{   \"funcionarioRegister\" :\r\n        {\r\n            \"nome\":\"Salazar agamenon\",\r\n            \"cpf\":\"66690037576\",\r\n            \"dataNascimento\":\"22/01/2000\",\r\n            \"telefone\":\"11223344\",\r\n            \"statusTrabalho\":\"TRABALHANDO\"\r\n        }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/funcionario/gerenteFinaceiro",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"funcionario",
+										"gerenteFinaceiro"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "atualizarContador",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{   \"funcionarioRegister\" :\r\n        {\r\n            \"nome\":\"Salazar cunha da silva\",\r\n            \"cpf\":\"66693335714\",\r\n            \"dataNascimento\":\"22/01/2000\",\r\n            \"telefone\":\"11223344\",\r\n            \"statusTrabalho\":\"TRABALHANDO\"\r\n        }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/funcionario/gerenteFinaceiro/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"funcionario",
+										"gerenteFinaceiro",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "deletarContador",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/funcionario/gerenteFinaceiro/2",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"funcionario",
+										"gerenteFinaceiro",
+										"2"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "GerenteProducao",
+					"item": [
+						{
+							"name": "listarCopiador",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/funcionario/gerenteProducao",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"funcionario",
+										"gerenteProducao"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "buscarCopiador",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/funcionario/gerenteProducao/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"funcionario",
+										"gerenteProducao",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "cadastrarCopiador",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{   \"funcionarioRegister\" :\r\n        {\r\n            \"nome\":\"Salazar agamenouo\",\r\n            \"cpf\":\"65590037579\",\r\n            \"dataNascimento\":\"22/01/2000\",\r\n            \"telefone\":\"11223344\",\r\n            \"statusTrabalho\":\"TRABALHANDO\"\r\n        }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/funcionario/gerenteProducao",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"funcionario",
+										"gerenteProducao"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "atualizarCopiador",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{   \"funcionarioRegister\" :\r\n        {\r\n            \"nome\":\"Salazar cunha da silva\",\r\n            \"cpf\":\"66693335714\",\r\n            \"dataNascimento\":\"22/01/2000\",\r\n            \"telefone\":\"11223344\",\r\n            \"statusTrabalho\":\"TRABALHANDO\"\r\n        }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/funcionario/gerenteProducao/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"funcionario",
+										"gerenteProducao",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "deletarCopiador",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/funcionario/gerenteProducao/2",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"funcionario",
+										"gerenteProducao",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "buscarFilaPedidos",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/funcionario/gerenteProducao/buscarPedidosFila",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"funcionario",
+										"gerenteProducao",
+										"buscarPedidosFila"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "cancelarPedido",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/funcionario/gerenteProducao/deletarPedido/9",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"funcionario",
+										"gerenteProducao",
+										"deletarPedido",
+										"9"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "GerenteVendas",
+					"item": [
+						{
+							"name": "listarVendedor",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/funcionario/gerenteVendas",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"funcionario",
+										"gerenteVendas"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "buscarVendedor",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/funcionario/gerenteVendas/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"funcionario",
+										"gerenteVendas",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "cadastrarVendedor",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{   \"funcionarioRegister\" :\r\n        {\r\n            \"nome\":\"Salazar agamenon\",\r\n            \"cpf\":\"65590036675\",\r\n            \"dataNascimento\":\"22/01/2000\",\r\n            \"telefone\":\"11223344\",\r\n            \"statusTrabalho\":\"TRABALHANDO\"\r\n        }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/funcionario/gerenteVendas",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"funcionario",
+										"gerenteVendas"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "atualizarVendedor",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{   \"funcionarioRegister\" :\r\n        {\r\n            \"nome\":\"Salazar cunha da silva\",\r\n            \"cpf\":\"66693335714\",\r\n            \"dataNascimento\":\"22/01/2000\",\r\n            \"telefone\":\"11223344\",\r\n            \"statusTrabalho\":\"TRABALHANDO\"\r\n        }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/funcionario/gerenteVendas/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"funcionario",
+										"gerenteVendas",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "deletarVendedor",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/funcionario/gerenteVendas/2",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"funcionario",
+										"gerenteVendas",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "buscarFilaPedidos",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/funcionario/gerenteProducao/buscarPedidosFila",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"funcionario",
+										"gerenteProducao",
+										"buscarPedidosFila"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "cancelarPedido",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/funcionario/gerenteProducao/deletarPedido/9",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"funcionario",
+										"gerenteProducao",
+										"deletarPedido",
+										"9"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Produto",
+			"item": [
+				{
+					"name": "listarProdutos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/produto",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"produto"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "listarProdutosPorId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/produto/9",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"produto",
+								"9"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "cadastrarProduto",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n{\r\n    \"nome\":\"Jornal\",\r\n    \"codigo\":\"65590036672\",\r\n    \"valorProduto\":\"22.1\",\r\n    \"cpfGerenteVendas\":\"66693335755\",\r\n    \"cpfGerenteProducao\":\"66693335711\",\r\n    \"cpfGerenteFinanceiro\":\"66693335711\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/produto",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"produto"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "atualizarDadosProduto",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n{\r\n    \"nome\":\"Jornal cidade\",\r\n    \"codigo\":\"65590036622\",\r\n    \"valorProduto\":\"22.1\",\r\n    \"cpfGerenteVendas\":\"66693335755\",\r\n    \"cpfGerenteProducao\":\"66693335711\",\r\n    \"cpfGerenteFinanceiro\":\"66693335711\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/produto/10",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"produto",
+								"10"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ativarProduto",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n{\r\n    \"cpfGerenteVendas\":\"66693335755\",\r\n    \"cpfGerenteProducao\":\"66693335711\",\r\n    \"cpfGerenteFinanceiro\":\"66693335711\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/produto/ativar/9",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"produto",
+								"ativar",
+								"9"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "desativarProduto",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n{\r\n    \"cpfGerenteVendas\":\"66693335755\",\r\n    \"cpfGerenteProducao\":\"66693335711\",\r\n    \"cpfGerenteFinanceiro\":\"66693335711\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/produto/desativar/9",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"produto",
+								"desativar",
+								"9"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Pedido",
+			"item": [
+				{
+					"name": "EmpregadoVendedor",
+					"item": [
+						{
+							"name": "listarPedidos",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/vendedor",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"vendedor"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "listarPedidoPorId",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/vendedor/7",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"vendedor",
+										"7"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "abrirPedido",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "\r\n{\r\n    \"nomeCliente\":\"Jose da silva sauro\",\r\n    \"produtoId\": \"10\",\r\n    \"quantidade\": \"20\",\r\n    \"vendedorId\": \"1\"\r\n    \r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/vendedor",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"vendedor"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "atualizarDadosPedido",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "\r\n{\r\n    \"nomeCliente\":\"Jose da silva sauro\",\r\n    \"produtoId\": \"9\",\r\n    \"quantidade\": \"20\",\r\n    \"vendedorId\": \"1\"\r\n    \r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/vendedor/atualizarDados/7",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"vendedor",
+										"atualizarDados",
+										"7"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "colocarFilaProducao",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "\r\n{\r\n    \"nomeCliente\":\"Jose da silva sauro\",\r\n    \"produtoId\": \"9\",\r\n    \"quantidade\": \"20\",\r\n    \"vendedorId\": \"1\"\r\n    \r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/vendedor/colocarFila/9",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"vendedor",
+										"colocarFila",
+										"9"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "calculaTrocoFechaPedido",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "\r\n{\r\n    \"nomeCliente\":\"Jose da silva sauro\",\r\n    \"produtoId\": \"9\",\r\n    \"quantidade\": \"20\",\r\n    \"vendedorId\": \"1\"\r\n    \r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/vendedor/fechar/7?valorPago=300",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"vendedor",
+										"fechar",
+										"7"
+									],
+									"query": [
+										{
+											"key": "valorPago",
+											"value": "300"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "EmpregadoCopiador",
+					"item": [
+						{
+							"name": "tirarFilaProduzir",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "\r\n{\r\n    \"nomeCliente\":\"Jose da silva sauro\",\r\n    \"produtoId\": \"9\",\r\n    \"quantidade\": \"20\",\r\n    \"vendedorId\": \"1\"\r\n    \r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/copiador/tirarFila?copiadorId=1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"copiador",
+										"tirarFila"
+									],
+									"query": [
+										{
+											"key": "copiadorId",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "listarPedidosProduzindo",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/copiador",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"copiador"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "fecharImpressao",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "\r\n{\r\n    \"nomeCliente\":\"Jose da silva sauro\",\r\n    \"produtoId\": \"9\",\r\n    \"quantidade\": \"20\",\r\n    \"vendedorId\": \"1\"\r\n    \r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/copiador/fecharImpressao/7",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"copiador",
+										"fecharImpressao",
+										"7"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "CoplistarPedidosFila",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/copiador/buscarPedidosFila",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"copiador",
+										"buscarPedidosFila"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"description": "Colocar o id do copiador na URL, ele vai tirar o próximo da fila."
+				},
+				{
+					"name": "EmpregadoContador",
+					"item": [
+						{
+							"name": "listarPedidosPagoFinalizado",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/contador",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"contador"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "listarPedidosRegistrado",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/contador/listarPedidosRegistrado",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"contador",
+										"listarPedidosRegistrado"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "documentarPedido",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "\r\n{\r\n    \"nomeCliente\":\"Jose da silva sauro\",\r\n    \"produtoId\": \"9\",\r\n    \"quantidade\": \"20\",\r\n    \"vendedorId\": \"1\"\r\n    \r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/contador/documentar/7",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"contador",
+										"documentar",
+										"7"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "pedidosPorNomecliente",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "\r\n{\r\n    \"nomeCliente\":\"Jose da silva sauro\",\r\n    \"produtoId\": \"9\",\r\n    \"quantidade\": \"20\",\r\n    \"vendedorId\": \"1\"\r\n    \r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/contador/porCliente/?nomeCliente=Jose da silva sauro",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"contador",
+										"porCliente",
+										""
+									],
+									"query": [
+										{
+											"key": "nomeCliente",
+											"value": "Jose da silva sauro"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "listarPedidosPorProduto",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/contador/Produto/?nomeProduto=Revista grande GG",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"contador",
+										"Produto",
+										""
+									],
+									"query": [
+										{
+											"key": "nomeProduto",
+											"value": "Revista grande GG"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "pedidosMaioresQue",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/contador/maioresQue/20",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"contador",
+										"maioresQue",
+										"20"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	]
+}
