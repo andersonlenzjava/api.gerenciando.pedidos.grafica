@@ -80,7 +80,7 @@ neste link: https://www.computersciencemaster.com.br/exercicio-sistema-de-gerenc
 ###  Copiador:
 * ListarPedidosFila
 *  TirarFilaProduzir
-* ListarPeidodosProduzindo
+* ListarPedidosProduzindo
 *  FecharImpressao
 ###  Contador:
 * ListarPedidoPagoFinalizado

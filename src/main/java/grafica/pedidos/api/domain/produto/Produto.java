@@ -37,7 +37,7 @@ public class Produto {
         this.ativo = true;
     }
 
-    public void desativar() {
+    public void  desativar() {
         this.ativo = false;
     }
 }

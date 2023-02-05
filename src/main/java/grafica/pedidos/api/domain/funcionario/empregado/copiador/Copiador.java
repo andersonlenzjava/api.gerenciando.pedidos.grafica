@@ -25,16 +25,4 @@ public class Copiador {
         this.funcionario = new Funcionario (cpf, nome, dataNascimento, telefone);
     }
 
-    private void TirarFila() {
-
-    }
-
-    private void Produzir() {
-
-    }
-
-    private void FecharImpressao() {
-
-    }
-
 }

@@ -26,9 +26,4 @@ public class GerenteFinanceiro {
         this.funcionario = new Funcionario (cpf, nome, dataNascimento, telefone);
     }
 
-    private void CadastrarFuncionario(Contador contador) {
-
-    }
-
-
 }

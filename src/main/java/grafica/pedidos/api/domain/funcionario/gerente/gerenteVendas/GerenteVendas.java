@@ -27,10 +27,4 @@ public class GerenteVendas {
         this.funcionario = new Funcionario (cpf, nome, dataNascimento, telefone);
     }
 
-    private void CancelarPedido(Pedido pedido) {}
-
-    private void CadastrarVendedor(Vendedor vendedor) {
-
-    }
-
 }

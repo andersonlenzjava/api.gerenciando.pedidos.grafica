@@ -25,14 +25,4 @@ public class Vendedor {
         this.funcionario = new Funcionario (cpf, nome, dataNascimento, telefone);
     }
 
-
-    private void AbrirPedido() {
-    }
-
-    private void ColocarFila() {
-    }
-
-    private void FecharPedido() {
-    }
-
 }

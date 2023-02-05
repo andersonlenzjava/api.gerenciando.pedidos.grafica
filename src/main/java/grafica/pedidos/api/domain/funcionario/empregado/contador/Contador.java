@@ -27,10 +27,4 @@ public class Contador {
 
     }
 
-    private void RegistrarPedido() {
-    }
-
-    private void Relatorios() {
-    }
-
 }

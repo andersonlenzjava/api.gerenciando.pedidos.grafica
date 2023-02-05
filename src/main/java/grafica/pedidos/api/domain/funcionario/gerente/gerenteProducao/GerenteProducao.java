@@ -27,8 +27,4 @@ public class GerenteProducao {
         this.funcionario = new Funcionario (cpf, nome, dataNascimento, telefone);
     }
 
-    public void CancelarPedido(Pedido pedido) {}
-
-    private void CadastrarProdutorCopias(Copiador produtorCopias) {}
-
 }
