@@ -5,7 +5,7 @@
 Este projeto apresenta uma solução para o desafio do desenvolvimento de um sistema 
 para gerenciar as ordens de pedido de uma gráfica e cadastro dos funcionários em formato de API.
 
-A API permite cadadastrar e gerenciar os funcionarios da empresa. E também fazer o controle 
+A API permite cadastrar e gerenciar os funcionarios da empresa. E também fazer o controle 
 dos pedidos, conforme passam pelos setores da empresa: Vendas, Produção e Contabilidade. 
 
 
