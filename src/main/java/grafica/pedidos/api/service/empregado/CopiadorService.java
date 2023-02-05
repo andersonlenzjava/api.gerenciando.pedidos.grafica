@@ -46,6 +46,7 @@ public class CopiadorService {
     public ResponseEntity<CopiadorResponse> cadastrarCopiador(CopiadorRegister copiadorRegister,
                                                                UriComponentsBuilder uriBuilder) throws Exception {
 
+        // para que o primeiro copiador seja o do sistema, para não gerar problemas com null
         cadastrarcopiadorSistema();
 
         Optional<Copiador> copiadorOptional = copiadorRepository.findByFuncionarioCpfOrFuncionarioNomeIgnoreCase(

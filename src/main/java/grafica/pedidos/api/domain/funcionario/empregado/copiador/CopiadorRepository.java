@@ -12,7 +12,5 @@ public interface CopiadorRepository extends JpaRepository<Copiador, Long> {
 
     Page<Copiador> findByFuncionarioNomeIgnoreCase(String nomeCopiador, Pageable paginacao);
 
-    Optional<Copiador> findByFuncionarioCpfIgnoreCase(String cpf);
-
     Optional<Copiador> findByFuncionarioCpfOrFuncionarioNomeIgnoreCase(String cpf, String nome);
 }
