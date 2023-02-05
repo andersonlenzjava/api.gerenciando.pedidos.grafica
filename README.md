@@ -182,7 +182,16 @@ Para o produto obedecer a seguinte sequência:
 
 ---
 
-## Um melhor detalhamento do uso desta API é apresentado no video deste link.
+## Um melhor detalhamento do uso desta API é apresentado nos videos com os links abaixo.
+Video 1 - Apresentação do desafio e estabelecimento das funcionalidades, apresentação do diagrama de entidades.</br>
+https://youtu.be/dOMVVkOmFRY </br>
+Video 2 - Apresentação das técnicas e tecnologias utilizadas e o CRUD das entidades funcionário.</br>
+https://youtu.be/xidGlSMrdRA </br>
+Video 3 - Apresentação do CRUD do produto.</br>
+https://youtu.be/iRwtkG2a_LU </br>
+Video 4 - Parte 1 e 2 - Apresentação da integração das classes junto ao objeto pedido. </br>
+Parte 1 - https://youtu.be/OtC4g4cDzYU </br>
+Parte 2 - https://youtu.be/VzZBttbjSKg </br>
 
 ---
 
