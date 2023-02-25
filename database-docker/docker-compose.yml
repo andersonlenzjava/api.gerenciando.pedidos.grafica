@@ -1,0 +1,13 @@
+version: '3' #versão do docker-compose
+services: #servicõs a serem adicionados neste container devem ficar logo abaixo
+  postgres:
+    image: postgres:latest #imagem e versão
+    container_name: postgres #nome do container
+    environment: #definições de ambiente devem ficar aqui abaixo
+      POSTGRES_USER: root #usuário do banco
+      POSTGRES_PASSWORD: root #senha do banco
+      POSTGRES_DB: grafica_pedidos #nome do banco
+    ports:
+      - "5433:5432" # porta_da_maquina_fisica:porta_do_container
+    volumes:
+      - ./postgres-data:/var/lib/postgresql/data
