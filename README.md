@@ -97,6 +97,8 @@ neste link: https://www.computersciencemaster.com.br/exercicio-sistema-de-gerenc
 ## ✔️Etapas
 
 <img src="https://github.com/andersonlenzjava/api.gerenciando.pedidos.grafica/blob/main/Diagrama_entidades_inicial.png">
+<img src="https://github.com/andersonlenzjava/api.gerenciando.pedidos.grafica/blob/main/L%C3%B3gico_2_grafica.png">
+<img src="https://github.com/andersonlenzjava/api.gerenciando.pedidos.grafica/blob/main/modelo_fisico.JPG">
 
 - [x] Modelagem do relacionamento das entidades.
 - [x] Estabelecimento das funcionalidades.
