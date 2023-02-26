@@ -19,7 +19,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 public class CGFinaceiroController {
 
 //-----------------------------------------------------------
-//    Chefiar GerenteFinaceiro
+//    Chefiar GerenteFinaceiro ..........
 
     @Autowired
     private GerenteFinanceiroService gerenteFinaceiroService;
